@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bglogin5"
+    tools:context=".registerActivity">
+
+    <TextView
+        android:layout_marginTop="30px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tạo Tài Khoản"
+        android:gravity="center"
+        android:textColor="#13bf13"
+        android:textSize="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên Đăng Nhập:"
+        android:textSize="18dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="5px"
+        android:layout_marginTop="60px"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#A8A7A7"
+        android:background="@drawable/custom_input"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Họ Và Tên:"
+        android:textSize="18dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="50px"
+        android:layout_marginBottom="5px"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#A8A7A7"
+        android:background="@drawable/custom_input"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số Điện Thoại:"
+        android:textSize="18dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="50px"
+        android:layout_marginBottom="5px"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#A8A7A7"
+        android:background="@drawable/custom_input"
+        android:inputType="phone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giới Tính:"
+        android:textSize="18dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="50px"
+        android:layout_marginBottom="5px"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:spinnerMode="dropdown"
+        android:id="@+id/spnGender"
+        android:entries="@array/list"
+        android:backgroundTint="#13bf13" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày sinh:"
+        android:textSize="18dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="5px"
+        android:layout_marginTop="30px"/>
+    <TextView
+        android:layout_marginTop="50px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0000"
+        android:text="mm/dd/yyyy"
+        android:textColor="#A8A7A7"
+        android:textSize="20dp"
+        android:id="@+id/txtDOB"
+        android:drawableStart="@drawable/ic_calendar"/>
+    <Button
+        android:layout_marginTop="50px"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:shadowRadius="20"
+        android:text="Đăng Ký"
+        android:textColor="@color/black"
+        android:backgroundTint="#13bf13 "
+        />
+
+</LinearLayout>

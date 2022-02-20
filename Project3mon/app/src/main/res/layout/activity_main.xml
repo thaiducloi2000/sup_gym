@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bglogin4"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@drawable/logo_main"
+        android:layout_marginTop="40dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên Đăng Nhập:"
+        android:textSize="20dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="5px"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Tên Đăng Nhập"
+        android:textColorHint="#A8A7A7"
+        android:textColor="#A8A7A7"
+        android:drawableStart="@drawable/ic_baseline_account_circle_24"
+        android:background="@drawable/custom_input"
+        android:layout_marginBottom="64px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mật Khẩu:"
+        android:textSize="20dp"
+        android:textColor="#A8A7A7"
+        android:layout_marginLeft="20px"
+        android:layout_marginBottom="5px"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Mật Khẩu"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:inputType="textPassword"
+        android:textColorHint="#A8A7A7"
+        android:textColor="#e0dede"
+        android:background="@drawable/custom_input"
+        android:layout_marginBottom="80px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tạo Tài Khoản"
+            android:background="#0000"
+            android:textColor="#BAB2B2"
+            android:textSize="15dp"
+            android:gravity="left"
+            android:layout_marginLeft="20px"
+            android:onClick="clickToRegister"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quên Mật Khẩu"
+            android:background="#0000"
+            android:textColor="#BAB2B2"
+            android:textSize="15dp"
+            android:gravity="right"
+            android:layout_marginRight="20px"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="50px"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:shadowRadius="20"
+        android:text="Đăng Nhập"
+        android:onClick="clickToLogin"
+        android:textColor="@color/black"
+        android:backgroundTint="#13bf13"/>
+
+
+</LinearLayout>

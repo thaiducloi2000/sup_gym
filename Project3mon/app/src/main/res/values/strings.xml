@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Project3mon</string>
+    <string-array name="list">
+        <item>Nam</item>
+        <item>Nữ</item>
+        <item>Khác</item>
+    </string-array>
+    <string name="title_home">Trang Chu</string>
+    <string name="title_booking">Booking</string>
+    <string name="title_view_calendar">Lich tap</string>
+    <string name="title_profile">Ca Nhan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
