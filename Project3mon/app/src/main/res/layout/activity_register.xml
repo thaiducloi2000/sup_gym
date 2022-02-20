@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bglogin5"
+    android:background="@drawable/register_page"
     tools:context=".registerActivity">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tạo Tài Khoản"
+        android:textStyle="bold"
         android:gravity="center"
         android:textColor="#13bf13"
         android:textSize="30dp"/>
@@ -28,7 +29,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textColor="#A8A7A7"
+        android:textColor="@color/dark_white"
         android:background="@drawable/custom_input"
        />
 
@@ -44,7 +45,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textColor="#A8A7A7"
+        android:textColor="@color/dark_white"
         android:background="@drawable/custom_input"
        />
 
@@ -60,7 +61,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textColor="#A8A7A7"
+        android:textColor="@color/dark_white"
         android:background="@drawable/custom_input"
         android:inputType="phone"
         />
@@ -79,6 +80,7 @@
         android:layout_height="65dp"
         android:spinnerMode="dropdown"
         android:id="@+id/spnGender"
+        android:textColor="@color/dark_white"
         android:entries="@array/list"
         android:backgroundTint="#13bf13" />
 
@@ -97,7 +99,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#0000"
         android:text="mm/dd/yyyy"
-        android:textColor="#A8A7A7"
+        android:textColor="@color/dark_white"
         android:textSize="20dp"
         android:id="@+id/txtDOB"
         android:drawableStart="@drawable/ic_calendar"/>

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
+            android:name=".ChangeSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeMenuActivity"
             android:exported="false" />
         <activity

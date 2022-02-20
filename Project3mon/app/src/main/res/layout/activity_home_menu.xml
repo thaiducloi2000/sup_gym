@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="2dp"
         app:itemIconSize="29dp"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="@color/dark_gray"
         app:itemIconTint="@drawable/item_selecttor"
         app:itemTextColor="#A8A7A7"
         app:itemRippleColor="#A8A7A7"

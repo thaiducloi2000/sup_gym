@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +29,7 @@ public class HomeMenuActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment=null;
+                AppCompatActivity activity = null;
                 switch (item.getItemId()){
                     case R.id.action_home:
                         fragment=new HomeFragment();
@@ -45,5 +48,15 @@ public class HomeMenuActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void clickToEditProfile(View view) {
+        Intent intent = new Intent(this,EditProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void clickToChangeAccountSetting(View view) {
+        Intent intent = new Intent(this, ChangeSettingActivity.class);
+        startActivity(intent);
     }
 }
