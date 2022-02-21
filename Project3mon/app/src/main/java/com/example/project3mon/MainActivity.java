@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickToRegister(View view) {
-        Intent intent=new Intent(this,registerActivity.class);
+        Intent intent=new Intent(this,RoleActivity.class);
         startActivity(intent);
     }
 
