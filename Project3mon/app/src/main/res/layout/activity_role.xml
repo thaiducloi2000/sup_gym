@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_page"
+    tools:context=".RoleActivity">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Chọn vai trò bạn muốn đăng ký "
+    android:textAllCaps="true"
+    android:layout_marginTop="40dp"
+    android:textSize="30dp"
+    android:textColor="#13bf13"
+    android:gravity="center"/>
+
+<com.google.android.material.button.MaterialButton
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    style="@style/Widget.MaterialComponents.Button.TextButton"
+    app:strokeColor="@color/dark_white"
+    app:strokeWidth="1dp"
+    android:text="Khách Hàng"
+    android:textSize="20dp"
+    android:layout_marginTop="100dp"
+    android:layout_marginBottom="50dp"
+    android:drawableLeft="@drawable/ic_calendar"
+    android:textColor="@color/dark_white"
+    android:onClick="clickToCustomerRegister"
+    />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        app:strokeColor="@color/dark_white"
+        app:strokeWidth="1dp"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:text="Huấn Luyện Viên"
+        android:textColor="@color/dark_white"
+        android:onClick="clickToTrainerRegister"/>
+
+</LinearLayout>
