@@ -15,8 +15,7 @@ public class ChangeSettingActivity extends AppCompatActivity {
     }
 
     public void clickToBack(View view) {
-        Intent intent = new Intent(this, ProfileFragment.class);
-        startActivity(intent);
+        finish();
     }
 
     public void clickToLogout(View view) {
