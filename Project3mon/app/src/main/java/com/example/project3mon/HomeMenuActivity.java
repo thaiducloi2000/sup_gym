@@ -49,7 +49,6 @@ public class HomeMenuActivity extends AppCompatActivity {
             }
         });
     }
-
     public void clickToEditProfile(View view) {
         Intent intent = new Intent(this,EditProfileActivity.class);
         startActivity(intent);
@@ -59,4 +58,5 @@ public class HomeMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChangeSettingActivity.class);
         startActivity(intent);
     }
+
 }
