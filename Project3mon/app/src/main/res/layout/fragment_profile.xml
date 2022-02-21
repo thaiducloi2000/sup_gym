@@ -1,18 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".ProfileFragment">
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".HomeMenuActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#0000"
+            android:text="Chỉnh sửa"
+            android:layout_gravity="right"
+            android:textColor="#0bdb0e"
+            android:textAllCaps="false"
+            android:onClick="clickToEditProfile"
+            />
+    </LinearLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageAvatar"
+        android:src="@drawable/hi"
+        app:riv_oval="true"
+        android:layout_gravity="center"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Trang ca nhan"
-        android:textSize="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:text="Trinh Khanh Linh"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textColor="@color/white"/>
+        android:textSize="20dp"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_trainer"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            />
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Huấn luyện viên"
+            android:textAllCaps="false"
+            android:background="#0000"
+            android:gravity="bottom"
+            android:textColor="@color/gray"
 
-</FrameLayout>
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_favorite_24"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Yêu thích"
+            android:background="#0000"
+            android:textAllCaps="false"
+            android:gravity="bottom"
+            android:textColor="@color/gray"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:text="Thông báo"
+            android:gravity="bottom"
+            android:background="#0000"
+            android:textAllCaps="false"
+            android:textColor="@color/gray"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_settings_24"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnChangeSetting"
+            android:text="Cài đặt"
+            android:gravity="bottom"
+            android:textColor="@color/gray"
+            android:background="#0000"
+            android:textAllCaps="false"
+            android:onClick="clickToChangeAccountSetting"
+            />
+    </LinearLayout>
+
+</LinearLayout>

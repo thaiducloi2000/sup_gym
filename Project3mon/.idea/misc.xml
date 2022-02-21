@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/corner.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/ic_booking_icon.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/drawable/ic_trainer.xml" value="0.3828125" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_change_setting.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_edit_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_home_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_register.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/activity_user_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/custom_spinner.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/custom_spinner_dropdown.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/fragment_account_setting.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/fragment_booking.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/fragment_home.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/layout/fragment_profile.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidProject/sup_gym/Project3mon/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Project3mon/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28615384615384615" />
         <entry key="..\:/Project3mon/app/src/main/res/drawable/btnshowtext.xml" value="0.23425925925925925" />
         <entry key="..\:/Project3mon/app/src/main/res/drawable/custom_dropdown.xml" value="0.28615384615384615" />
