@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeMenuActivity extends AppCompatActivity {
-    
 
     private BottomNavigationView botNav;
     @Override
