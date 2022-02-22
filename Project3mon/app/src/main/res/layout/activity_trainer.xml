@@ -35,8 +35,8 @@
         android:layout_marginLeft="10dp"
         android:layout_below="@id/scode_profile"
         android:textSize="30dp"
-        android:text="LeTrongThang"
-        android:textColor="#2b3fad" />
+        android:text="Nguyen Phung Cong Danh"
+        android:textColor="@color/gray" />
 
     <TextView
         android:id="@+id/phone_profile"
@@ -58,7 +58,7 @@
         android:layout_below="@id/phone_profile"
         android:textSize="30dp"
         android:text="+840123456789"
-        android:textColor="#2b3fad" />
+        android:textColor="@color/gray" />
 
 
 </RelativeLayout>

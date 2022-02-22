@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/activity_home_menu.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/activity_main.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/activity_register.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/activity_role.xml" value="0.19635416666666666" />
         <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/activity_trainer.xml" value="0.19635416666666666" />
-        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/fragment_booking.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/color_spinner_item.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/demo.xml" value="0.22" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/fragment_booking.xml" value="0.22" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/fragment_home.xml" value="0.19635416666666666" />
+        <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/fragment_profile.xml" value="0.19635416666666666" />
         <entry key="..\:/congdanh/sup_gym/Project3mon/app/src/main/res/layout/list_item.xml" value="0.19635416666666666" />
       </map>
     </option>
