@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
+            android:name=".Trainer"
+            android:exported="false" />
+        <activity
             android:name=".RoleActivity"
             android:exported="false" />
         <activity
