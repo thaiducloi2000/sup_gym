@@ -11,4 +11,6 @@
     <string name="title_profile">Ca Nhan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="trainerDescription">Với kinh nghiệp dày dặn trainer có thể giúp bạn luyện tập 1 cách hiệu quả nhất </string>
+    <string name="exercisedescription">Không biết bắt đầu từ đâu hãy xem những bài luyện tập </string>
 </resources>
