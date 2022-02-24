@@ -59,4 +59,8 @@ public class HomeMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clickToTrainer1(View view) {
+        Intent intent = new Intent(this , Trainer1Activity.class);
+        startActivity(intent);
+    }
 }
