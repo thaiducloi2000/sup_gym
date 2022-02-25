@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".HomeMenuActivity">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageView1"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/hi"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/introductionTxt"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="TRAINER PROFILE"
+        android:textColor="@color/green" />
+
+    <TextView
+        android:id="@+id/nameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/textView1"
+        android:textSize="25dp"
+        android:text="Name: Nguyen Phung Cong Danh"
+        android:textColor="@color/gray" />
+
+    <TextView
+        android:id="@+id/genderTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTxt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Gender: Nam"
+        android:textColor="@color/gray"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/ageTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/genderTxt"
+        android:textSize="25dp"
+        android:text="Age: 22"
+        android:textColor="@color/gray"/>
+
+    <TextView
+        android:id="@+id/phoneTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ageTxt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Phone: 0903169962"
+        android:textColor="@color/gray"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/introductionTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/imageView1"
+        android:textSize="25dp"
+        android:text="6 mui kinh nghiem pt duoc 3 toi 4 nam "
+        android:textColor="@color/gray" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneTxt"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#13bf13"
+        android:shadowRadius="20"
+        android:text="Đăng Ky"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

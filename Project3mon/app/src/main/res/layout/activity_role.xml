@@ -27,7 +27,7 @@
     android:textSize="20dp"
     android:layout_marginTop="100dp"
     android:layout_marginBottom="50dp"
-    android:drawableLeft="@drawable/ic_calendar"
+    android:drawableLeft="@drawable/ic_icon_customer_0"
     android:textColor="@color/dark_white"
     android:onClick="clickToCustomerRegister"
     />
@@ -40,7 +40,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         app:strokeColor="@color/dark_white"
         app:strokeWidth="1dp"
-        android:drawableLeft="@drawable/ic_calendar"
+        android:drawableLeft="@drawable/ic_images"
         android:text="Huấn Luyện Viên"
         android:textColor="@color/dark_white"
         android:onClick="clickToTrainerRegister"/>
