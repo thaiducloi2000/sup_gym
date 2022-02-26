@@ -85,9 +85,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/phoneTxt"
         android:layout_gravity="center"
-        android:layout_marginTop="24dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#13bf13"
         android:shadowRadius="20"
+
         android:text="Đăng Ky"
         android:textColor="@color/black" />
 

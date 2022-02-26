@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/sup_gym/Project3mon/app/src/main/res/layout/activity_main.xml" value="0.1334853090172239" />
+        <entry key="..\:/sup_gym/Project3mon/app/src/main/res/layout/activity_trainer1.xml" value="0.264" />
+        <entry key="..\:/sup_gym/Project3mon/app/src/main/res/layout/fragment_booking.xml" value="0.264" />
+        <entry key="..\:/sup_gym/Project3mon/app/src/main/res/layout/fragment_view_calendar.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
