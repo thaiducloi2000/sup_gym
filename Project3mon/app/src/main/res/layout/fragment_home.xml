@@ -79,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
+                    android:textSize="17dp"
                     android:text="Danh Sách Trainer"
                     android:textColor="@color/white" />
 
@@ -91,11 +92,12 @@
 
 
                 <TextView
+                    android:textSize="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="10dp"
-                    android:text="Các Bài Tập "
+                    android:text="Các Bài Tập Phổ Biến"
                     android:textColor="@color/white" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -107,11 +109,12 @@
 
 
                 <TextView
+                    android:textSize="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="15dp"
-                    android:text="Danh Sách Trainer"
+                    android:text="Các Chế Độ Ăn Dinh Dưỡng"
                     android:textColor="@color/white" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -123,11 +126,12 @@
 
 
                 <TextView
+                    android:textSize="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="15dp"
-                    android:text="Danh Sách Trainer"
+                    android:text="Thực Phẩm Chức Năng Khuyen DÙng"
                     android:textColor="@color/white" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -136,7 +140,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="10dp" />
-
 
             </LinearLayout>
 
