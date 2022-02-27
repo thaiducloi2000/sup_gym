@@ -3,7 +3,6 @@ package com.example.project3mon;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,29 +59,29 @@ public class HomeFragment extends Fragment {
 
     private List<User> getListUser() {
         List<User> listUser = new ArrayList<>();
-        listUser.add(new User(R.drawable.hi, "Trọng Thắng-", "Personal Trainer"));
-        listUser.add(new User(R.drawable.hi, "Công Danh-", "Personal Trainer"));
-        listUser.add(new User(R.drawable.hi, "Kim Long-", "Personal Trainer"));
-        listUser.add(new User(R.drawable.hi, "Đức Lợi-", "Personal Trainer"));
-
+        listUser.add(new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer"));
+        listUser.add(new User(R.drawable.trainer2, "Công Danh", "Personal Trainer"));
+        listUser.add(new User(R.drawable.trainer3, "Kim Long", "Personal Trainer"));
+        listUser.add(new User(R.drawable.trainer4, "Đức Lợi", "Personal Trainer"));
+        listUser.add(new User(R.drawable.trainer5, "Gia Huy", "Personal Trainer"));
         return listUser;
     }
 
     private List<User> getListExercise() {
         List<User> listExercise = new ArrayList<>();
-        listExercise.add(new User(R.drawable.pic_exercise_hitdat, "Bài tập chống đẩy", ""));
-        listExercise.add(new User(R.drawable.pic_exercise_hitdat, "Chống đẩy chụm tay", ""));
-        listExercise.add(new User(R.drawable.pic_exercise_hitdat, "Bài tập hít xà kép", ""));
-        listExercise.add(new User(R.drawable.pic_exercise_hitdat, "Tập gập bụng", ""));
+        listExercise.add(new User(R.drawable.exercise4, "Bài tập chống đẩy", ""));
+        listExercise.add(new User(R.drawable.exercice1, "Chống đẩy chụm tay", ""));
+        listExercise.add(new User(R.drawable.exercice2, "Bài tập hít xà kép", ""));
+        listExercise.add(new User(R.drawable.exercice3, "Tập gập bụng", ""));
 
         return listExercise;
     }
 
     private List<User> getListDiet() {
         List<User> listDiet = new ArrayList<>();
-        listDiet.add(new User(R.drawable.pic_diet_anchay, "Chế độ ăn lỏng", ""));
-        listDiet.add(new User(R.drawable.pic_diet_anchay, "Chế độ ăn ít Calo", ""));
-        listDiet.add(new User(R.drawable.pic_diet_anchay, "Chế độ giàu calo", ""));
+        listDiet.add(new User(R.drawable.pic_diet_1, "Chế độ ăn lỏng", ""));
+        listDiet.add(new User(R.drawable.pic_diet_3, "Chế độ ăn ít Calo", ""));
+        listDiet.add(new User(R.drawable.pic_diet_2, "Chế độ giàu calo", ""));
         listDiet.add(new User(R.drawable.pic_diet_anchay, "Chế độ ăn chay", ""));
 
         return listDiet;
@@ -91,9 +90,9 @@ public class HomeFragment extends Fragment {
     private List<User> getListFunctionalFoods() {
         List<User> listFunctional = new ArrayList<>();
         listFunctional.add(new User(R.drawable.pic_ff_whey, "Whey Protein", ""));
-        listFunctional.add(new User(R.drawable.pic_ff_whey, "Casein", ""));
-        listFunctional.add(new User(R.drawable.pic_ff_whey, "Creatine", ""));
-        listFunctional.add(new User(R.drawable.pic_ff_whey, "BCAA", ""));
+        listFunctional.add(new User(R.drawable.pic_casein, "Casein", ""));
+        listFunctional.add(new User(R.drawable.pic_creatine, "Creatine", ""));
+        listFunctional.add(new User(R.drawable.pic_bcaa, "BCAA", ""));
 
         return listFunctional;
     }

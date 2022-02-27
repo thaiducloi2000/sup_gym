@@ -43,7 +43,7 @@ public class HomeMenuActivity extends AppCompatActivity {
                         fragment=new HomeFragment();
                         break;
                     case R.id.action_booking:
-                        fragment=new BookingFragment();
+                        fragment =new BookingFragment();
                         break;
                     case R.id.action_view_calendar:
                         fragment=new ViewCalendarFragment();

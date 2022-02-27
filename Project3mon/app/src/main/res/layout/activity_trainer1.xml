@@ -7,13 +7,6 @@
     android:background="@color/black"
     tools:context=".HomeMenuActivity">
 
-    <!--    <com.makeramen.roundedimageview.RoundedImageView-->
-    <!--        android:id="@+id/imageView1"-->
-    <!--        android:layout_width="250dp"-->
-    <!--        android:layout_height="250dp"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:src="@drawable/hi" />-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -44,7 +37,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/nameTxt"
+                android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView1"
@@ -58,7 +51,7 @@
                 android:id="@+id/genderTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/nameTxt"
+                android:layout_below="@id/txtName"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:text="Gender: Nam"
@@ -94,7 +87,7 @@
                 android:layout_below="@id/imageView1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="6 mui kinh nghiem pt duoc 3 toi 4 nam "
+                android:text="Sáu mui kinh nghiem pt duoc ba-bốn nam "
                 android:textColor="@color/gray"
                 android:textSize="25dp" />
 

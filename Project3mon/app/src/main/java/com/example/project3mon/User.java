@@ -6,7 +6,11 @@ public class User implements Serializable {
 
     private int resourceId;
     private String name;
+    private String description;
     private String address;
+    private String gender;
+    private String age;
+    private String phoneNumber;
 
     public User(int resourceId, String name, String address) {
         this.resourceId = resourceId;
