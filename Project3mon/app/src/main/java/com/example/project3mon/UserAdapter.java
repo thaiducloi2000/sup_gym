@@ -42,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         holder.imageView.setImageResource(user.getResourceId());
         holder.txtName.setText(user.getName());
-        holder.txtAddress.setText(user.getAddress());
+        holder.txtPosition.setText(user.getPosition());
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         bundle.putSerializable("User", user);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
-
     }
 
     @Override
@@ -72,7 +71,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-        private TextView txtName, txtAddress;
+        private TextView txtName, txtPosition;
         private LinearLayout layoutItem;
 
         public UserViewHolder(@NonNull View itemView) {
@@ -81,7 +80,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             layoutItem = itemView.findViewById(R.id.layout_item);
             imageView = itemView.findViewById(R.id.img_avata);
             txtName = itemView.findViewById(R.id.txtName);
-            txtAddress = itemView.findViewById(R.id.txtAddress);
+            txtPosition = itemView.findViewById(R.id.txtPosition);
 
         }
     }

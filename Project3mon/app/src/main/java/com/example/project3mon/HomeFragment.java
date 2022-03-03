@@ -29,10 +29,10 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        userAdapter = new UserAdapter(getActivity(),getListUser());
-        userAdapter_2 = new UserAdapter(getActivity(),getListExercise());
-        userAdapter_3 = new UserAdapter(getActivity(),getListDiet());
-        userAdapter_4 = new UserAdapter(getActivity(),getListFunctionalFoods());
+        userAdapter = new UserAdapter(getActivity(),getListTrainer());
+        userAdapter_2 = new UserAdapter(getActivity(),getListFavoriteTrainer());
+        userAdapter_3 = new UserAdapter(getActivity(),getListMostExpTrainer());
+        userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer());
 
 
         rcvData = getActivity().findViewById(R.id.rcv_data_1);
@@ -57,44 +57,70 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private List<User> getListUser() {
-        List<User> listUser = new ArrayList<>();
-        listUser.add(new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer"));
-        listUser.add(new User(R.drawable.trainer2, "Công Danh", "Personal Trainer"));
-        listUser.add(new User(R.drawable.trainer3, "Kim Long", "Personal Trainer"));
-        listUser.add(new User(R.drawable.trainer4, "Đức Lợi", "Personal Trainer"));
-        listUser.add(new User(R.drawable.trainer5, "Gia Huy", "Personal Trainer"));
-        return listUser;
+    private List<User> getListTrainer() {
+        List<User> listTrainer = new ArrayList<>();
+        listTrainer.add(
+                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 7 nam", "Nam", "27","0351231230"));
+        listTrainer.add(
+                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
+        listTrainer.add(
+                new User(R.drawable.trainer3, "Công Danh", "Personal Trainer",
+                        "Trẻ Trung, Năng Động, Yêu Nghề", "Nam", "21","0351111111"));
+        listTrainer.add(
+                new User(R.drawable.trainer4, "Gia Huy", "Personal Trainer",
+                        "Nhiệt Tình Với Công Việc", "Nam", "20","0342183282"));
+        listTrainer.add(
+                new User(R.drawable.trainer5, "Kim Long", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "23","0351231230"));
+        listTrainer.add(
+                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 6 nam", "Nam", "25","03558345837"));
+
+        return listTrainer;
     }
 
-    private List<User> getListExercise() {
-        List<User> listExercise = new ArrayList<>();
-        listExercise.add(new User(R.drawable.exercise4, "Bài tập chống đẩy", ""));
-        listExercise.add(new User(R.drawable.exercice1, "Chống đẩy chụm tay", ""));
-        listExercise.add(new User(R.drawable.exercice2, "Bài tập hít xà kép", ""));
-        listExercise.add(new User(R.drawable.exercice3, "Tập gập bụng", ""));
+    private List<User> getListFavoriteTrainer() {
+        List<User> listFavoriteTrainer = new ArrayList<>();
+        listFavoriteTrainer.add(
+                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "27","0351231230"));
+        listFavoriteTrainer.add(
+                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
+        listFavoriteTrainer.add(
+                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "25","03558345837"));
 
-        return listExercise;
+        return listFavoriteTrainer;
     }
 
-    private List<User> getListDiet() {
-        List<User> listDiet = new ArrayList<>();
-        listDiet.add(new User(R.drawable.pic_diet_1, "Chế độ ăn lỏng", ""));
-        listDiet.add(new User(R.drawable.pic_diet_3, "Chế độ ăn ít Calo", ""));
-        listDiet.add(new User(R.drawable.pic_diet_2, "Chế độ giàu calo", ""));
-        listDiet.add(new User(R.drawable.pic_diet_anchay, "Chế độ ăn chay", ""));
+    private List<User> getListMostExpTrainer() {
+        List<User> listMostExpTrainer = new ArrayList<>();
+        listMostExpTrainer.add(
+                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
+        listMostExpTrainer.add(
+                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 7 nam", "Nam", "27","0351231230"));
+        listMostExpTrainer.add(
+                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
+                        "Sáu mui kinh nghiem pt duoc 6 nam", "Nam", "25","03558345837"));
 
-        return listDiet;
+        return listMostExpTrainer;
     }
 
-    private List<User> getListFunctionalFoods() {
-        List<User> listFunctional = new ArrayList<>();
-        listFunctional.add(new User(R.drawable.pic_ff_whey, "Whey Protein", ""));
-        listFunctional.add(new User(R.drawable.pic_casein, "Casein", ""));
-        listFunctional.add(new User(R.drawable.pic_creatine, "Creatine", ""));
-        listFunctional.add(new User(R.drawable.pic_bcaa, "BCAA", ""));
+    private List<User> getListNewTrainer() {
+        List<User> listNewTrainer = new ArrayList<>();
+        listNewTrainer.add(
+                new User(R.drawable.trainer3, "Công Danh", "Personal Trainer",
+                        "Trẻ Trung, Năng Động, Yêu Nghề", "Nam", "21","0351111111"));
+        listNewTrainer.add(
+                new User(R.drawable.trainer4, "Gia Huy", "Personal Trainer",
+                        "Nhiệt Tình Với Công Việc", "Nam", "20","0342183282"));
 
-        return listFunctional;
+        return listNewTrainer;
     }
 
 }
