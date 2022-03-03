@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_item"
-    android:layout_width="170dp"
+    android:layout_width="190dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
@@ -31,24 +31,37 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/txtAddress"
-            android:gravity="center_horizontal"
+            android:id="@+id/txtPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HCM Dong "
+            android:gravity="center_horizontal"
+            android:text="Trainer  "
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtStarPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="35dp"
+            android:drawableStart="@drawable/ic_baseline_star_24"
+            android:text="4.9"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/btnView"
-            android:background="@drawable/my_button_bg"
-            android:gravity="center_horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="35dp"
+            android:background="@drawable/my_button_bg"
+            android:gravity="center_horizontal"
             android:text="Thông Tin"
             android:textColor="@color/dark_gray"
             android:textSize="16sp" />
+
+
 
     </LinearLayout>
 

@@ -6,16 +6,20 @@ public class User implements Serializable {
 
     private int resourceId;
     private String name;
+    private String position;
     private String description;
-    private String address;
     private String gender;
     private String age;
     private String phoneNumber;
 
-    public User(int resourceId, String name, String address) {
+    public User(int resourceId, String name, String position, String description, String gender, String age, String phoneNumber) {
         this.resourceId = resourceId;
         this.name = name;
-        this.address = address;
+        this.position = position;
+        this.description = description;
+        this.gender = gender;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getResourceId() {
@@ -34,11 +38,43 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
