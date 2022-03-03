@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 String sql="Select ID FROM tblAccount WHERE userName='"+edtUserID.getText()+"' AND password='"+edtPassword.getText()+"'";
                 stm=connection.prepareStatement(sql);
                 rs=stm.executeQuery();
-                while (rs.next()){
+                if (rs.next()){
                     Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(this,HomeMenuActivity.class);
                     startActivity(intent);
-                }if(!rs.next()){
+                }else{
                     Toast.makeText(this,"Sai Thông Tin Đăng Nhập",Toast.LENGTH_SHORT).show();
                 }
             }

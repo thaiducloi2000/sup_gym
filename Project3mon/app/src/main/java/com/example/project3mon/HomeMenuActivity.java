@@ -1,23 +1,16 @@
 package com.example.project3mon;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeMenuActivity extends AppCompatActivity {
 
@@ -58,6 +51,7 @@ public class HomeMenuActivity extends AppCompatActivity {
         });
 
     }
+
     public void clickToEditProfile(View view) {
         Intent intent = new Intent(this,EditProfileActivity.class);
         startActivity(intent);
