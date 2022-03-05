@@ -18,10 +18,10 @@ public class Trainer1Activity extends AppCompatActivity {
 
         imgUser = findViewById(R.id.imageView1);
         txtName = findViewById(R.id.txtName);
-        txtDescription = findViewById(R.id.introductionTxt);
-        txtGender = findViewById(R.id.genderTxt);
-        txtAge = findViewById(R.id.ageTxt);
-        txtPhone = findViewById(R.id.phoneTxt);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtGender = findViewById(R.id.txtGender);
+        txtAge = findViewById(R.id.txtAge);
+        txtPhone = findViewById(R.id.txtPhoneNumber);
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
