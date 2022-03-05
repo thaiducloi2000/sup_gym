@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 
 public class DBUtils {
 
-    public Connection openConnection()
+    public static Connection openConnection()
     {
         StrictMode.ThreadPolicy a=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(a);

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
-            android:name=".RegisterTrainerActivity"
+            android:name=".TrainerListActivity"
             android:exported="false" />
         <activity
             android:name=".Trainer1Activity"

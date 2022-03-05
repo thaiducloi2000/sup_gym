@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="bottom"
     android:background="@color/black"
+    android:orientation="vertical"
+
     tools:context=".HomeMenuActivity">
 
 
@@ -16,92 +19,259 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <RelativeLayout
+                android:id="@+id/layoutTop"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/exercise4"></RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutBottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@id/layoutTop"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDark"></RelativeLayout>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imageView1"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_above="@+id/layoutBottom"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/hi" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtNickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/introductionTxt"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="TRAINER PROFILE"
-                android:textColor="@color/green"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Name: Nguyen Phung Cong Danh"
-                android:textColor="@color/gray"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/genderTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtName"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Gender: Nam"
-                android:textColor="@color/gray"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/ageTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/genderTxt"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Age: 22"
-                android:textColor="@color/gray"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/phoneTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ageTxt"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Phone: 0903169962"
-                android:textColor="@color/gray"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/introductionTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_below="@id/imageView1"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Sáu mui kinh nghiem pt duoc ba-bốn nam "
+                android:layout_marginTop="10dp"
+                android:text="\@DucLoi547"
                 android:textColor="@color/gray"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
-            <Button
+            <TextView
+                android:id="@+id/txtFollow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtNickName"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="100000 người theo dõi"
+                android:textColor="@color/gray"
+                android:textSize="17dp" />
+
+
+            <LinearLayout
+                android:id="@+id/layoutNamePosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/phoneTxt"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="#13bf13"
-                android:shadowRadius="20"
-                android:text="Đăng Ky"
-                android:textColor="@color/black"
-                android:gravity="center"/>
+                android:layout_below="@+id/txtFollow"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtFollow"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Thái Đức Lợi"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text=" - "
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtPostion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtName"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Personal Trainer"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutNamePosition"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/philosophy"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutDescription"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Giới Tính:"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/txtGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Nam"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutGender"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Tuổi:"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/txtAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="22"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutAge"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="SĐT:"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/txtPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="0903169962"
+                    android:textColor="@color/gray"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/layoutPhone"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="34dp"
+                android:background="@color/dark_gray"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1"
+                        android:text="Mỗi Buổi Tập"
+                        android:textColor="@color/gray"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:text="1000000VND"
+                        android:textColor="@color/green"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#13bf13"
+                    android:gravity="center"
+                    android:shadowRadius="20"
+                    android:text="ĐẶT LỊCH"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+
+
+</LinearLayout>
