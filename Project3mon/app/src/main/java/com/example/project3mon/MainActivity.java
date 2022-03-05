@@ -38,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
         ResultSet rs=null;
         try {
             connection = c.openConnection();
-            if(connection!=null){
+            if(connection != null){
                 String sql="Select ID FROM tblAccount WHERE userName='"+edtUserID.getText()+"' AND password='"+edtPassword.getText()+"'";
                 stm=connection.prepareStatement(sql);
-                rs=stm.executeQuery();
-                while (rs.next()){
+                rs= stm.executeQuery();
+                if (rs.next()){
                     Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(this,HomeMenuActivity.class);
                     startActivity(intent);
-                }if(!rs.next()){
+                }
+                else{
                     Toast.makeText(this,"Sai Thông Tin Đăng Nhập",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -64,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }

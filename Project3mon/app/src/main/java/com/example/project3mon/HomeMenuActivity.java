@@ -22,6 +22,7 @@ import java.util.List;
 public class HomeMenuActivity extends AppCompatActivity {
 
     private BottomNavigationView botNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,36 +31,37 @@ public class HomeMenuActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        botNav=findViewById(R.id.botNav);
-        getSupportFragmentManager().beginTransaction().replace(R.id.body_container,new HomeFragment()).commit();
+        botNav = findViewById(R.id.botNav);
+        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
         botNav.setSelectedItemId(R.id.action_home);
         botNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment=null;
+                Fragment fragment = null;
                 AppCompatActivity activity = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.action_home:
-                        fragment=new HomeFragment();
+                        fragment = new HomeFragment();
                         break;
                     case R.id.action_booking:
-                        fragment =new BookingFragment();
+                        fragment = new BookingFragment();
                         break;
                     case R.id.action_view_calendar:
-                        fragment=new ViewCalendarFragment();
+                        fragment = new ViewCalendarFragment();
                         break;
                     case R.id.action_profile:
-                        fragment=new ProfileFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.body_container,fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
                 return true;
             }
         });
 
     }
+
     public void clickToEditProfile(View view) {
-        Intent intent = new Intent(this,EditProfileActivity.class);
+        Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
     }
 
@@ -69,8 +71,12 @@ public class HomeMenuActivity extends AppCompatActivity {
     }
 
     public void clickToTrainer1(View view) {
-        Intent intent = new Intent(this , Trainer1Activity.class);
+        Intent intent = new Intent(this, Trainer1Activity.class);
         startActivity(intent);
     }
 
+    public void clickToViewAll(View view) {
+        Intent intent = new Intent(this, TrainerListActivity.class);
+        startActivity(intent);
+    }
 }

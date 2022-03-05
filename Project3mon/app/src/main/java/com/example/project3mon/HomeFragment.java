@@ -61,7 +61,8 @@ public class HomeFragment extends Fragment {
         List<User> listTrainer = new ArrayList<>();
         listTrainer.add(
                 new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 7 nam", "Nam", "27","0351231230"));
+                        "Chẳng có công thức bí mật nào cả. Tôi nâng tạ nặng, tôi tập luyện chăm chỉ và tôi luôn đặt mục tiêu trở thành người giỏi nhất",
+                        "Nam", "27","0351231230"));
         listTrainer.add(
                 new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
                         "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));

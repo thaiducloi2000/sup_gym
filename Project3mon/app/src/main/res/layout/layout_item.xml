@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_marginEnd="35dp"
-            android:drawableStart="@drawable/ic_baseline_star_24"
+            android:drawableStart="@drawable/ic_star"
             android:text="4.9"
             android:textColor="@color/white"
             android:textSize="16sp" />
