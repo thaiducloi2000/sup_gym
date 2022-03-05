@@ -1,39 +1,49 @@
 package com.example.project3mon;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.sql.SQLException;
 
 public class HomeMenuActivity extends AppCompatActivity {
 
     private BottomNavigationView botNav;
-
+    private int USER =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_menu);
 
 
+
+        GetData data=new GetData();
+        Bundle bundle=getIntent().getExtras();
+        if(bundle==null){
+            return;
+        }
+        String ID=(String)bundle.get("ID");
+        int roleID=0;
+        try {
+            roleID=data.getRole(ID);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         botNav = findViewById(R.id.botNav);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
         botNav.setSelectedItemId(R.id.action_home);
+        int finalRoleID = roleID;
         botNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -48,6 +58,9 @@ public class HomeMenuActivity extends AppCompatActivity {
                         break;
                     case R.id.action_view_calendar:
                         fragment = new ViewCalendarFragment();
+                        if(finalRoleID >=1){
+                        fragment=new ViewCalendarFragment();
+                        }
                         break;
                     case R.id.action_profile:
                         fragment = new ProfileFragment();
@@ -57,7 +70,6 @@ public class HomeMenuActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     public void clickToEditProfile(View view) {
