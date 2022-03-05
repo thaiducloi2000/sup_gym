@@ -27,29 +27,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickToLogin(View view) throws SQLException {
-        edtUserID=(EditText) findViewById(R.id.edtUserID);
-        edtPassword=(EditText) findViewById(R.id.edtPassword);
-        DBUtils c=new DBUtils();
-        Connection connection=null;
-        PreparedStatement stm=null;
-        ResultSet rs=null;
-        try {
-            connection = c.openConnection();
-            if(connection != null){
-                String sql="Select ID FROM tblAccount WHERE userName='"+edtUserID.getText()+"' AND password='"+edtPassword.getText()+"'";
-                stm=connection.prepareStatement(sql);
-                rs= stm.executeQuery();
-                if (rs.next()){
-                    Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(this,HomeMenuActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    Toast.makeText(this,"Sai Thông Tin Đăng Nhập",Toast.LENGTH_SHORT).show();
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+        edtUserID=findViewById(R.id.edtUserID);
+        edtPassword=findViewById(R.id.edtPassword);
         GetData data=new GetData();
         String ID=data.checkLogin(edtUserID.getText().toString(),edtPassword.getText().toString());
         if (ID!=null){
