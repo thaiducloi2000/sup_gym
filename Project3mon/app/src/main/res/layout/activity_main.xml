@@ -85,7 +85,10 @@
         android:text="Đăng Nhập"
         android:onClick="clickToLogin"
         android:textColor="@color/black"
-        android:backgroundTint="#13bf13"/>
+        android:backgroundTint="#13bf13"
+        />
+<!--        android:backgroundTint="#FFCE54"-->
+
 
 
 </LinearLayout>
