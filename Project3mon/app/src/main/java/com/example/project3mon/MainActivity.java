@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,17 +50,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }catch (Exception e){
             e.printStackTrace();
+        GetData data=new GetData();
+        String ID=data.checkLogin(edtUserID.getText().toString(),edtPassword.getText().toString());
+        if (ID!=null){
+            Bundle bundle=new Bundle();
+            bundle.putSerializable("ID",ID);
+            Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this,HomeMenuActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }else{
             Toast.makeText(this,"Sai Thông Tin Đăng Nhập",Toast.LENGTH_SHORT).show();
-        }finally {
-            if(rs!=null){
-                rs.close();
-            }if(stm!=null){
-                stm.close();
-            }if(connection!=null){
-                connection.close();
-            }
         }
-
     }
 
 }
