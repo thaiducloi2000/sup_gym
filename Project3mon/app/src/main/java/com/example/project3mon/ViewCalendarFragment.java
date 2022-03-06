@@ -5,9 +5,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
@@ -69,10 +71,21 @@ public class ViewCalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_view_calendar, container, false);
         List<EventDay> events = new ArrayList<>();
+
         Calendar calendar = Calendar.getInstance();
-        events.add(new EventDay(calendar, R.drawable.ic_baseline_event_available_24, Color.parseColor("#228B22")));
+        calendar.add(Calendar.DAY_OF_MONTH,2);
+        events.add(new EventDay(calendar, R.drawable.ic_baseline_event_available_24));
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.add(Calendar.DAY_OF_MONTH,4);
+        events.add(new EventDay(calendar2, R.drawable.ic_baseline_event_available_24));
+
         CalendarView calendarView = (CalendarView) view.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
+
+        TextView txtlink =(TextView) view.findViewById(R.id.txtlink);
+        txtlink.setMovementMethod(LinkMovementMethod.getInstance());
+        txtlink.setLinkTextColor(Color.GREEN);
         // Inflate the layout for this fragment
         return view;
     }

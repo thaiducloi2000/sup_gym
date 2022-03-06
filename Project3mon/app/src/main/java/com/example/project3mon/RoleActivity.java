@@ -20,7 +20,7 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     public void clickToTrainerRegister(View view) {
-        Intent intent=new Intent(this,registerActivity.class);
+        Intent intent=new Intent(this,RegisterTrainerActivity.class);
         startActivity(intent);
     }
 }

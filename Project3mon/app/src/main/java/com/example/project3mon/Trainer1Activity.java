@@ -1,10 +1,12 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Trainer1Activity extends AppCompatActivity {
 
@@ -35,5 +37,10 @@ public class Trainer1Activity extends AppCompatActivity {
         txtAge.setText(user.getAge());
         txtPhone.setText(user.getPhoneNumber());
 
+    }
+
+    public void clickToBooking(View view) {
+        Intent intent=new Intent(this,PopupForm.class);
+        startActivity(intent);
     }
 }

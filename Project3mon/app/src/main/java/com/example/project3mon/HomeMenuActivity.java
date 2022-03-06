@@ -17,7 +17,6 @@ import java.sql.SQLException;
 public class HomeMenuActivity extends AppCompatActivity {
 
     private BottomNavigationView botNav;
-    private int USER =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
