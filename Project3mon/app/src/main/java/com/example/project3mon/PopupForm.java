@@ -19,7 +19,7 @@ public class PopupForm extends Activity {
         int wigth=dm.widthPixels;
         int height=dm.heightPixels;
 
-        getWindow().setLayout((int)(wigth*.5),(int)(height*.5));
+        getWindow().setLayout((int)(wigth*.8),(int)(height*.5));
 
         WindowManager.LayoutParams params=getWindow().getAttributes();
         params.gravity= Gravity.CENTER;
