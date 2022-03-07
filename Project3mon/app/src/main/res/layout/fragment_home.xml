@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="30dp"
-                        android:text="Danh Sách Trainer"
+                        android:text="Danh Sách HLV"
                         android:textColor="@color/white"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="10dp"
-                    android:text="Trainer Phù Hợp"
+                    android:text="HLV Phù Hợp"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="15dp"
-                    android:text="Trainer Nhiều Kinh Nghiệm"
+                    android:text="HLV Nhiều Kinh Nghiệm"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -153,17 +153,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:paddingTop="15dp"
-                    android:text="Trainer Mới"
+                    android:text="HLV Mới"
                     android:textColor="@color/white"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_data_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
 

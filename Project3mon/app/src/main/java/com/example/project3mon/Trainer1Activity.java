@@ -1,8 +1,6 @@
 package com.example.project3mon;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,8 +37,4 @@ public class Trainer1Activity extends AppCompatActivity {
 
     }
 
-    public void clickToBooking(View view) {
-        Intent intent=new Intent(this,PopupForm.class);
-        startActivity(intent);
-    }
 }
