@@ -289,22 +289,23 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="130dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:backgroundTint="#13bf13"
             android:gravity="center"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:shadowRadius="20"
             android:text="ĐẶT LỊCH"
-            android:textColor="@color/black"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp"
+            android:textColor="@color/green"
             android:textSize="20dp"
-            android:textStyle="normal"
-            android:onClick="clickToBooking"
-            tools:ignore="OnClick" />
+            android:textStyle="bold"
+            />
 
     </LinearLayout>
 
