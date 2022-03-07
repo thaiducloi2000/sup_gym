@@ -23,7 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".Trainer1Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".RoleActivity"
             android:exported="false" />
@@ -35,10 +35,10 @@
             android:exported="false" />
         <activity
             android:name=".HomeMenuActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".registerActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,10 +1,10 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Trainer1Activity extends AppCompatActivity {
 
@@ -36,4 +36,5 @@ public class Trainer1Activity extends AppCompatActivity {
         txtPhone.setText(user.getPhoneNumber());
 
     }
+
 }
