@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".EditTrainerProfileActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="Chỉnh sửa hồ sơ"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/trainer1"
+            app:riv_oval="true"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:background="#0000"
+            android:text="Sửa ảnh"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:textColor="#0bdb0e"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="TÊN NGƯỜI DÙNG"
+            android:textColor="@color/gray"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtName"
+            android:text="Le Trong Thang"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="SỐ ĐIỆN THOẠI"
+            android:textColor="@color/gray"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPhoneNumber"
+            android:text="0979399749"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="GIỚI TÍNH"
+            android:textColor="@color/gray"/>
+        <Spinner
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:id="@+id/spSex"
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="NGÀY SINH"
+            android:textColor="@color/gray"/>
+
+        <Button
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtBirthday"
+            android:text="08/05/2000"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:background="#0000"
+            style="?spinnerStyle"
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="EMAIL"
+            android:textColor="@color/gray"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEmail"
+            android:text="trongthang@gmail.com"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật"
+            android:textStyle="bold"
+            android:backgroundTint="#0bdb0e"
+            android:textColor="@color/black"
+
+            />
+    </LinearLayout>
+</FrameLayout>

@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
-            android:name=".PopupForm"
-            android:theme="@style/AppTheme.Popup"
-            />
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditTrainerProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".TrainerListActivity"
             android:exported="false" />

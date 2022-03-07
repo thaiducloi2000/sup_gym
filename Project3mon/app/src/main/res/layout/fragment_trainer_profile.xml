@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeMenuActivity"
     android:background="@color/background"
-    android:orientation="vertical"
-    tools:context=".HomeMenuActivity">
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:layout_gravity="right"
             android:textColor="#0bdb0e"
             android:textAllCaps="false"
-            android:onClick="clickToEditProfile"
+            android:onClick="clickToEditTrainerProfile"
             />
     </LinearLayout>
 
@@ -34,7 +34,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/imageAvatar"
-        android:src="@drawable/hi"
+        android:src="@drawable/trainer1"
         app:riv_oval="true"
         android:layout_gravity="center"/>
 
@@ -44,7 +44,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
-        android:text="Trinh Khanh Linh"
+        android:text="Trọng Thắng"
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"/>
@@ -55,14 +55,14 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_trainer"
+            android:src="@drawable/ic_customer"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             />
         <Button
             android:layout_width="350dp"
             android:layout_height="40dp"
-            android:text="Huấn luyện viên"
+            android:text="Khách hàng"
             android:textAllCaps="false"
             android:background="#0000"
             android:gravity="bottom"
@@ -152,5 +152,6 @@
             android:onClick="clickToChangeAccountSetting"
             />
     </LinearLayout>
+
 
 </LinearLayout>
