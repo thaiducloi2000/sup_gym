@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditTrainerProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".TrainerListActivity"
             android:exported="false" />
         <activity
