@@ -102,4 +102,9 @@ public class HomeMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditTrainerProfileActivity.class);
         startActivity(intent);
     }
+
+    public void clickToViewNotification(View view) {
+        Intent intent = new Intent(this, NotificationActivity.class);
+        startActivity(intent);
+    }
 }
