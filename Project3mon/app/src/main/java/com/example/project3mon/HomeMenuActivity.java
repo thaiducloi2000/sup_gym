@@ -17,6 +17,8 @@ import java.sql.SQLException;
 public class HomeMenuActivity extends AppCompatActivity {
 
     private BottomNavigationView botNav;
+    private int CUSTOMER = 1;
+    private int TRAINER = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,12 @@ public class HomeMenuActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.action_profile:
-                        fragment = new ProfileFragment();
+                        if(finalRoleID == CUSTOMER){
+                            fragment = new ProfileFragment();
+                        }
+                        if(finalRoleID == TRAINER){
+                            fragment = new TrainerProfileFragment();
+                        }
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
@@ -88,6 +95,16 @@ public class HomeMenuActivity extends AppCompatActivity {
 
     public void clickToViewAll(View view) {
         Intent intent = new Intent(this, TrainerListActivity.class);
+        startActivity(intent);
+    }
+
+    public void clickToEditTrainerProfile(View view) {
+        Intent intent = new Intent(this, EditTrainerProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void clickToViewNotification(View view) {
+        Intent intent = new Intent(this, NotificationActivity.class);
         startActivity(intent);
     }
 }

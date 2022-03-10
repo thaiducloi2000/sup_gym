@@ -40,7 +40,8 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
         if(user == null){
             return;
         }
-        holder.imgAvatar.setImageResource(user.getResourceId());
+        int imgResID = mContext.getResources().getIdentifier(user.getImage(), "drawable", mContext.getPackageName());
+        holder.imgAvatar.setImageResource(imgResID);
         holder.txtName.setText(user.getName());
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {

@@ -40,7 +40,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             return;
         }
 
-        holder.imageView.setImageResource(user.getResourceId());
+        int imgResID = mContext.getResources().getIdentifier(user.getImage(), "drawable", mContext.getPackageName());
+        holder.imageView.setImageResource(imgResID);
         holder.txtName.setText(user.getName());
         holder.txtPosition.setText(user.getPosition());
 

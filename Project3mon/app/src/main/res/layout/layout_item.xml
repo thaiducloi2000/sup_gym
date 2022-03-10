@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_item"
     android:layout_width="190dp"
     android:layout_height="wrap_content"
@@ -50,16 +51,21 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:background="@drawable/my_button_bg"
-            android:gravity="center_horizontal"
+            android:gravity="center"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp"
+            android:textStyle="bold"
             android:text="Thông Tin"
-            android:textColor="@color/dark_gray"
-            android:textSize="16sp" />
+            android:shadowRadius="20"
+            android:textColor="@color/green"
+            android:textSize="12dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            />
 
 
 
