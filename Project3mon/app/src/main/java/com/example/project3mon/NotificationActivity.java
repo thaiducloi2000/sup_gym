@@ -1,9 +1,10 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project3mon.adapter.NotificationAdapter;
 import com.example.project3mon.dto.Notification;
@@ -29,5 +30,9 @@ public class NotificationActivity extends AppCompatActivity {
         adapter = new NotificationAdapter(listNotification);
         listView = findViewById(R.id.listViewNotification);
         listView.setAdapter(adapter);
+    }
+
+    public void clicktoBack(View view) {
+        finish();
     }
 }

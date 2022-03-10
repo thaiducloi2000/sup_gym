@@ -1,21 +1,16 @@
 package com.example.project3mon;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -64,10 +59,7 @@ public class HomeFragment extends Fragment {
         rcvData_4.setAdapter(userAdapter_4);
 
     }
-
-    public static Uri getUrl(int res){
-        return Uri.parse("android.resource://your.package.here/drawable/image_name");
-    }
+    
 
     private List<User> getListTrainer() throws Exception {
         List<User> listTrainer = new ArrayList<>();

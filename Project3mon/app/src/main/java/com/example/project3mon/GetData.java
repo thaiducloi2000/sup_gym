@@ -1,8 +1,5 @@
 package com.example.project3mon;
 
-import android.content.Context;
-import android.net.Uri;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,7 +79,7 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT TOP fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
+                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
                         " FROM tblUserAccounts WHERE status = 'Active' ";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
@@ -126,7 +123,7 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT TOP fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
+                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
                         " FROM tblUserAccounts WHERE status = 'Active' AND gender = 'Nữ' ";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
