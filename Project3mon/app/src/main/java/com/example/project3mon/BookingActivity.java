@@ -1,18 +1,23 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.Locale;
 
 public class BookingActivity extends AppCompatActivity {
 
     private Button btnTime,btnTime2;
+    private TextView txtName,txtPrice;
+    private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,20 @@ public class BookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking);
         btnTime=findViewById(R.id.btnTime);
         btnTime2=findViewById(R.id.btnTime2);
+        txtName=findViewById(R.id.txtName);
+        txtPrice=findViewById(R.id.txtPrice);
+        imageAvatar=findViewById(R.id.imageAvatar);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User user=(User) bundle.get("User");
+        String Price=(String) bundle.get("Price");
+        int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
+        imageAvatar.setImageResource(imgResID);
+        txtName.setText(user.getName());
+        txtPrice.setText(Price+" / 1 Buổi");
     }
 
     public void clickToChooseTime(View view) {
