@@ -1,5 +1,6 @@
 package com.example.project3mon;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -29,11 +34,14 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        userAdapter = new UserAdapter(getActivity(),getListTrainer());
-        userAdapter_2 = new UserAdapter(getActivity(),getListFavoriteTrainer());
-        userAdapter_3 = new UserAdapter(getActivity(),getListMostExpTrainer());
-        userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer());
-
+        try {
+            userAdapter = new UserAdapter(getActivity(),getListTrainer());
+            userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer());
+            userAdapter_3 = new UserAdapter(getActivity(),getListMostExpTrainer());
+            userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         rcvData = getActivity().findViewById(R.id.rcv_data_1);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
@@ -57,69 +65,33 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private List<User> getListTrainer() {
-        List<User> listTrainer = new ArrayList<>();
-        listTrainer.add(
-                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
-                        "Chẳng có công thức bí mật nào cả. Tôi nâng tạ nặng, tôi tập luyện chăm chỉ và tôi luôn đặt mục tiêu trở thành người giỏi nhất",
-                        "Nam", "27","0351231230"));
-        listTrainer.add(
-                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
-        listTrainer.add(
-                new User(R.drawable.trainer3, "Công Danh", "Personal Trainer",
-                        "Trẻ Trung, Năng Động, Yêu Nghề", "Nam", "21","0351111111"));
-        listTrainer.add(
-                new User(R.drawable.trainer4, "Gia Huy", "Personal Trainer",
-                        "Nhiệt Tình Với Công Việc", "Nam", "20","0342183282"));
-        listTrainer.add(
-                new User(R.drawable.trainer5, "Kim Long", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "23","0351231230"));
-        listTrainer.add(
-                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 6 nam", "Nam", "25","03558345837"));
+    public static Uri getUrl(int res){
+        return Uri.parse("android.resource://your.package.here/drawable/image_name");
+    }
 
+    private List<User> getListTrainer() throws Exception {
+        List<User> listTrainer = new ArrayList<>();
+        GetData data = new GetData();
+        listTrainer = data.getListTrainer();
         return listTrainer;
     }
 
-    private List<User> getListFavoriteTrainer() {
-        List<User> listFavoriteTrainer = new ArrayList<>();
-        listFavoriteTrainer.add(
-                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "27","0351231230"));
-        listFavoriteTrainer.add(
-                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
-        listFavoriteTrainer.add(
-                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc ba-bốn nam", "Nam", "25","03558345837"));
-
-        return listFavoriteTrainer;
+    private List<User> getListFemaleTrainer() throws SQLException {
+        List<User> listFemaleTrainer = new ArrayList<>();
+        GetData data = new GetData();
+        listFemaleTrainer = data.getListFemaleTrainer();
+        return listFemaleTrainer;
     }
 
     private List<User> getListMostExpTrainer() {
         List<User> listMostExpTrainer = new ArrayList<>();
-        listMostExpTrainer.add(
-                new User(R.drawable.trainer2, "Đức Lợi", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 10 nam, vô địch thế giới năm 2023", "Nam", "30","0354555666"));
-        listMostExpTrainer.add(
-                new User(R.drawable.trainer1, "Trọng Thắng", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 7 nam", "Nam", "27","0351231230"));
-        listMostExpTrainer.add(
-                new User(R.drawable.trainer1, "Tấn Phát", "Personal Trainer",
-                        "Sáu mui kinh nghiem pt duoc 6 nam", "Nam", "25","03558345837"));
 
         return listMostExpTrainer;
     }
 
     private List<User> getListNewTrainer() {
         List<User> listNewTrainer = new ArrayList<>();
-        listNewTrainer.add(
-                new User(R.drawable.trainer3, "Công Danh", "Personal Trainer",
-                        "Trẻ Trung, Năng Động, Yêu Nghề", "Nam", "21","0351111111"));
-        listNewTrainer.add(
-                new User(R.drawable.trainer4, "Gia Huy", "Personal Trainer",
-                        "Nhiệt Tình Với Công Việc", "Nam", "20","0342183282"));
+
 
         return listNewTrainer;
     }

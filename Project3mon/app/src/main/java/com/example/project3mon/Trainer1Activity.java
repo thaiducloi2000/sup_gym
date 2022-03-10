@@ -8,10 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+
 public class Trainer1Activity extends AppCompatActivity {
 
     private ImageView imgUser;
     private TextView txtName, txtDescription, txtGender, txtAge, txtPhone;
+
+    Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+    String s = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +36,12 @@ public class Trainer1Activity extends AppCompatActivity {
         }
 
         User user = (User) bundle.get("User");
-        imgUser.setImageResource(user.getResourceId());
+        int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
+        imgUser.setImageResource(imgResID);
         txtName.setText(user.getName());
         txtDescription.setText(user.getDescription());
         txtGender.setText(user.getGender());
-        txtAge.setText(user.getAge());
+        txtAge.setText(formatter.format(user.getBirthday()));
         txtPhone.setText(user.getPhoneNumber());
 
     }

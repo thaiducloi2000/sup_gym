@@ -1,11 +1,20 @@
 package com.example.project3mon;
 
+import android.content.Context;
+import android.net.Uri;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class GetData {
+
+    public GetData() {
+    }
 
     public String checkLogin(String userName, String password) throws SQLException {
         String ID=null;
@@ -64,4 +73,97 @@ public class GetData {
         }
         return role;
     }
+
+    public List<User> getListTrainer() throws SQLException {
+        List<User> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT TOP fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
+                        " FROM tblUserAccounts WHERE status = 'Active' ";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    String fullName = rs.getString("fullName");
+                    String position = rs.getString("position");
+                    String description = rs.getString("description");
+                    String image = rs.getString("image");
+                    Date birthday = rs.getDate("birthday");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String gender = rs.getString("gender");
+                    String confirmInfo = rs.getString("confirmInfo");
+                    String email = rs.getString("email");
+                    int roleID = rs.getInt("roleID");
+
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    public List<User> getListFemaleTrainer() throws SQLException {
+        List<User> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT TOP fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
+                        " FROM tblUserAccounts WHERE status = 'Active' AND gender = 'Nữ' ";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    String fullName = rs.getString("fullName");
+                    String position = rs.getString("position");
+                    String description = rs.getString("description");
+                    String image = rs.getString("image");
+                    Date birthday = rs.getDate("birthday");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String gender = rs.getString("gender");
+                    String confirmInfo = rs.getString("confirmInfo");
+                    String email = rs.getString("email");
+                    int roleID = rs.getInt("roleID");
+
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+
+
+
+
 }
