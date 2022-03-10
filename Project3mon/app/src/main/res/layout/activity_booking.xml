@@ -66,9 +66,10 @@
         android:textColor="@color/dark_white"
         android:textSize="20dp"/>
     <TextView
+        android:id="@+id/txtPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100.000VND / 1 Buổi"
+        android:text="100.000 VND / 1 Buổi"
         android:layout_marginLeft="10dp"
         android:textColor="@color/dark_white"
         android:gravity="center"
