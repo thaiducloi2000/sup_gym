@@ -1,14 +1,103 @@
 package com.example.project3mon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
 
-public class EditTrainerProfileActivity extends AppCompatActivity {
+import com.makeramen.roundedimageview.RoundedImageView;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class EditTrainerProfileActivity extends AppCompatActivity{
+    private Button txtBirthday;
+    private String selectSex;
+    private Spinner spSex;
+    private EditText txtName, txtDescription, txtPhoneNumber, txtEmail;
+    private RoundedImageView avatar;
+    private int MEN =0 , WOMEN = 1, OTHER =2;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_trainer_profile);
+        avatar = findViewById(R.id.imageAvatarProfile);
+        txtName = findViewById(R.id.txtNameProfile);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtPhoneNumber = findViewById(R.id.txtPhoneNumber);
+        spSex = findViewById(R.id.spSex);
+        txtBirthday = findViewById(R.id.txtBirthday);
+        txtEmail = findViewById(R.id.txtEmail);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User user = (User) bundle.get("userProfile");
+        int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
+        avatar.setImageResource(imgResID);
+        txtName.setText(user.getName());
+        txtDescription.setText(user.getDescription());
+        txtPhoneNumber.setText(user.getPhoneNumber());
+        List<String> dataSex = new ArrayList<>();
+        dataSex.add("Nam");
+        dataSex.add("Nữ");
+        dataSex.add("Khác");
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.color_spinner_item, dataSex);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spSex.setAdapter(adapter);
+        spSex.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectSex = spSex.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        String gender = user.getGender();
+        spSex.setSelection(OTHER);
+        if(gender.equals("Nam")){
+            spSex.setSelection(MEN);
+        }if(gender.equals("Nữ")){
+            spSex.setSelection(WOMEN);
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String birthday = sdf.format(user.getBirthday());
+        txtBirthday.setText(birthday);
+        txtEmail.setText(user.getEmail());
+    }
+
+    public void clickToChangeBirthday(View view) {
+        Calendar calendar=Calendar.getInstance();
+        int Year=calendar.get(Calendar.YEAR);
+        int Month=calendar.get(Calendar.MONTH);
+        int Day=calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog dialog=new DatePickerDialog(EditTrainerProfileActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth,
+                mDateSetListener,Year,Month,Day);
+        dialog.getWindow();
+        dialog.show();
+        mDateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int Year, int Month, int Day) {
+                Month= Month+1;
+                String day=Month + "/" + Day +"/" + Year;
+                txtBirthday.setText(day);
+            }
+        };
     }
 }

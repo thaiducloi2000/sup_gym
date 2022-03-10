@@ -79,7 +79,14 @@ public class HomeMenuActivity extends AppCompatActivity {
     }
 
     public void clickToEditProfile(View view) {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User userProfile = (User) bundle.get("userProfile");
+        bundle.putSerializable("userProfile", userProfile);
         Intent intent = new Intent(this, EditProfileActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -99,7 +106,14 @@ public class HomeMenuActivity extends AppCompatActivity {
     }
 
     public void clickToEditTrainerProfile(View view) {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User userProfile = (User) bundle.get("userProfile");
+        bundle.putSerializable("userProfile", userProfile);
         Intent intent = new Intent(this, EditTrainerProfileActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

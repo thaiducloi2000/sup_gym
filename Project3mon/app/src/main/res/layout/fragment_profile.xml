@@ -33,7 +33,7 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:id="@+id/imageAvatar"
+        android:id="@+id/imageAvatarProfile"
         android:src="@drawable/hi"
         app:riv_oval="true"
         android:layout_gravity="center"/>
@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:id="@+id/txtNameProfile"
         android:textColor="@color/white"
         android:text="Trinh Khanh Linh"
         android:textStyle="bold"
