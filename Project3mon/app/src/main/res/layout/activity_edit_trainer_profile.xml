@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".EditTrainerProfileActivity">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +30,7 @@
             android:src="@drawable/trainer1"
             app:riv_oval="true"
             android:layout_gravity="center"
+            android:id="@+id/imageAvatarProfile"
             />
         <Button
             android:layout_width="wrap_content"
@@ -46,12 +51,33 @@
         <EditText
             android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txtName"
+            android:id="@+id/txtNameProfile"
             android:text="Le Trong Thang"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textColor="@color/white"
-
+            />
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="MÔ TẢ BẢN THÂN"
+            android:textColor="@color/gray"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:id="@+id/txtDescription"
+            android:text="@string/exercisedescription"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:textColor="@color/white"
             />
         <TextView
             android:layout_width="380dp"
@@ -118,6 +144,7 @@
             android:textColor="@color/white"
             android:background="#0000"
             style="?spinnerStyle"
+            android:onClick="clickToChangeBirthday"
             />
         <TextView
             android:layout_width="380dp"
@@ -153,7 +180,7 @@
             android:textStyle="bold"
             android:backgroundTint="#0bdb0e"
             android:textColor="@color/black"
-
             />
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void clickToLogin(View view) throws SQLException {
+    public void clickToLogin(View view) throws SQLException, Exception {
         edtUserID=findViewById(R.id.edtUserID);
         edtPassword=findViewById(R.id.edtPassword);
         GetData data=new GetData();
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         if (ID!=null){
             Bundle bundle=new Bundle();
             bundle.putSerializable("ID",ID);
+            User userProfile = data.getUserProfile(ID);
+            bundle.putSerializable("userProfile", userProfile);
             Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(this,HomeMenuActivity.class);
             intent.putExtras(bundle);
