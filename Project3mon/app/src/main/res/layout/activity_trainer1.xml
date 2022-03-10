@@ -7,7 +7,7 @@
     android:layout_gravity="bottom"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".HomeMenuActivity">
+    tools:context=".Trainer1Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -259,12 +259,14 @@
         android:layout_weight="1"
         android:background="@color/dark_gray"
         android:gravity="center|bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <LinearLayout
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -305,6 +307,7 @@
             android:textColor="@color/green"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:onClick="clickToBooking"
             />
 
     </LinearLayout>
