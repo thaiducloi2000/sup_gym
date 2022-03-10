@@ -51,20 +51,17 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
             android:id="@+id/btnView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:gravity="center"
-            app:strokeColor="@color/green"
-            app:strokeWidth="1dp"
             android:textStyle="bold"
             android:text="Thông Tin"
-            android:shadowRadius="20"
+            android:background="@drawable/custom_input_2"
             android:textColor="@color/green"
             android:textSize="12dp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             />
 
 
