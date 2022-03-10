@@ -1,33 +1,33 @@
 package com.example.project3mon;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable {
 
-    private int resourceId;
+
     private String name;
     private String position;
     private String description;
-    private String gender;
-    private String age;
+    private String image;
+    private Date birthday;
     private String phoneNumber;
+    private String gender;
+    private String confirmInfo;
+    private String email;
+    private int roleID;
 
-    public User(int resourceId, String name, String position, String description, String gender, String age, String phoneNumber) {
-        this.resourceId = resourceId;
+    public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String confirmInfo, String email, int roleID) {
         this.name = name;
         this.position = position;
         this.description = description;
-        this.gender = gender;
-        this.age = age;
+        this.image = image;
+        this.birthday = birthday;
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+        this.gender = gender;
+        this.confirmInfo = confirmInfo;
+        this.email = email;
+        this.roleID = roleID;
     }
 
     public String getName() {
@@ -38,6 +38,14 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -46,12 +54,28 @@ public class User implements Serializable {
         this.description = description;
     }
 
-    public String getPosition() {
-        return position;
+    public String getImage() {
+        return image;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getGender() {
@@ -62,19 +86,27 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public String getAge() {
-        return age;
+    public String getConfirmInfo() {
+        return confirmInfo;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setConfirmInfo(String confirmInfo) {
+        this.confirmInfo = confirmInfo;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 }
