@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
+import java.sql.SQLException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,8 +20,12 @@ import java.util.Date;
 
 public class Trainer1Activity extends AppCompatActivity {
 
+    private LinearLayout layoutBooking;
+    private MaterialButton btnBooking;
     private ImageView imgUser;
     private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtPrice;
+    private int CUSTOMER = 1;
+    private int TRAINER = 2;
 
     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
     String s = "";
@@ -32,6 +41,7 @@ public class Trainer1Activity extends AppCompatActivity {
         txtGender = findViewById(R.id.txtGender);
         txtAge = findViewById(R.id.txtAge);
         txtPhone = findViewById(R.id.txtPhoneNumber);
+        btnBooking = findViewById(R.id.btnBooking);
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
@@ -51,6 +61,14 @@ public class Trainer1Activity extends AppCompatActivity {
         txtAge.setText(age+"");
         txtPhone.setText(user.getPhoneNumber());
 
+        layoutBooking=findViewById(R.id.layoutBooking);
+        int roleID = (int) bundle.get("roleID");
+        if(roleID == CUSTOMER){
+            layoutBooking.setVisibility(View.VISIBLE);
+        }
+        if(roleID == TRAINER){
+            layoutBooking.setVisibility(View.GONE);
+        }
     }
 
     public void clickToBooking(View view) {

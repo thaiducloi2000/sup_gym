@@ -20,10 +20,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     private Context mContext;
     private List<User> mList;
+    private int roleID;
 
-    public UserAdapter(Context context, List<User> mList) {
+    public UserAdapter(Context context, List<User> mList, int roleID) {
         this.mList = mList;
         this.mContext =context;
+        this.roleID = roleID;
+    }
+
+    public int getRoleID() {
+        return roleID;
     }
 
     @NonNull
@@ -61,6 +67,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         Intent intent = new Intent(mContext, Trainer1Activity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("User", user);
+        bundle.putSerializable("roleID", getRoleID());
         intent.putExtras(bundle);
         mContext.startActivity(intent);
     }
