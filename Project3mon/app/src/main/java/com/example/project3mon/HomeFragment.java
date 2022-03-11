@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        Bundle bundle = getArguments();
+        Bundle bundle = getActivity().getIntent().getExtras();
         if(bundle == null){
             return;
         }
@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         try {
             userAdapter = new UserAdapter(getActivity(),getListTrainer(), roleID);
             userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer(), roleID);
-            userAdapter_3 = new UserAdapter(getActivity(),getListMostExpTrainer(),roleID);
+            userAdapter_3 = new UserAdapter(getActivity(),getListHotExpTrainer(),roleID);
             userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer(), roleID);
         } catch (Exception e) {
             e.printStackTrace();

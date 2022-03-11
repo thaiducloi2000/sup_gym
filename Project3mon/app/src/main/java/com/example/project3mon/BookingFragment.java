@@ -29,8 +29,13 @@ public class BookingFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Bundle bundle = getActivity().getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        int roleID = (int) bundle.get("roleID");
         try {
-            trainerListAdapter = new TrainerListAdapter(getActivity(),getListTrainer());
+            trainerListAdapter = new TrainerListAdapter(getActivity(),getListTrainer(), roleID);
         } catch (Exception e) {
             e.printStackTrace();
         }
