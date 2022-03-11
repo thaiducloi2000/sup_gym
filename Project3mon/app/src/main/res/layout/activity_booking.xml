@@ -105,11 +105,12 @@
         />
 
     <TextView
+        android:id="@+id/txtShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:text="Buổi tập sễ diễn ra vào ngày 9,11,13 tháng 3 năm 2022"
+        android:text="Buổi tập sễ diễn ra vào ngày "
         android:textColor="@color/dark_white"
         android:textSize="20dp"/>
 

@@ -124,7 +124,7 @@ public class GetData {
             conn = DBUtils.openConnection();
             if(conn!=null){
                 String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' AND gender = 'Nữ' AND roleID = 2";
+                        " FROM tblUserAccounts WHERE status = 'Active' AND gender = N'Nữ' AND roleID = 2";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
@@ -169,12 +169,40 @@ public class GetData {
             conn = DBUtils.openConnection();
             if(conn!=null){
                 String sql="SELECT TOP 4 fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' ORDER BY ID DESC AND roleID = 2";
+                        " FROM tblUserAccounts WHERE status = 'Active' AND roleID = 2 ORDER BY ID DESC";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
                     String fullName = rs.getString("fullName");
+                    String position = rs.getString("position");
+                    String description = rs.getString("description");
+                    String image = rs.getString("image");
+                    Date birthday = rs.getDate("birthday");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String gender = rs.getString("gender");
+                    String confirmInfo = rs.getString("confirmInfo");
+                    String email = rs.getString("email");
+                    int roleID = rs.getInt("roleID");
 
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
     public User getUserProfile(String id) throws Exception{
         User user = null;
         Connection conn=null;
@@ -194,15 +222,8 @@ public class GetData {
                     Date birthday = rs.getDate("birthday");
                     String phoneNumber = rs.getString("phoneNumber");
                     String gender = rs.getString("gender");
-                    String confirmInfo = rs.getString("confirmInfo");
                     String email = rs.getString("email");
-                    int roleID = rs.getInt("roleID");
-
-                    if(list == null){
-                        list = new ArrayList<>();
-                    }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
-                    String email = rs.getString("email");
+//                    int roleID = rs.getInt("roleID");
                     user = new User(name,position,description, image, birthday, phoneNumber, gender, email);
                 }
             }
@@ -217,7 +238,7 @@ public class GetData {
                 conn.close();
             }
         }
-        return list;
+        return user;
     }
 
     public List<User> getListHotTrainer() throws SQLException {

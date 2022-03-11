@@ -9,14 +9,19 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class BookingActivity extends AppCompatActivity {
 
     private Button btnTime,btnTime2;
-    private TextView txtName,txtPrice;
+    private TextView txtName,txtPrice,txtShow;
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     @Override
@@ -28,6 +33,7 @@ public class BookingActivity extends AppCompatActivity {
         txtName=findViewById(R.id.txtName);
         txtPrice=findViewById(R.id.txtPrice);
         imageAvatar=findViewById(R.id.imageAvatar);
+        txtShow=findViewById(R.id.txtShow);
 
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
@@ -39,6 +45,34 @@ public class BookingActivity extends AppCompatActivity {
         imageAvatar.setImageResource(imgResID);
         txtName.setText(user.getName());
         txtPrice.setText(Price+" / 1 Buổi");
+        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        List<String> listday=new ArrayList<>();
+        calendarView.setOnDayClickListener(new OnDayClickListener() {
+            @Override
+            public void onDayClick(EventDay eventDay) {
+                int date=eventDay.getCalendar().getTime().getDate();
+                String alo="";
+//                if(listday.size()>0){
+//                    for (int i = 0; i < listday.size(); i++) {
+//                        if (listday.get(i).equals(date)) {
+//                            listday.remove(date);
+//                        }else{
+//                            listday.add(date+"");
+//                        }
+//                    }
+//                }else {
+                    listday.add(date+"");
+//                }
+                for (int i = 0; i < listday.size(); i++) {
+                    if(i==(listday.size()-1)){
+                        alo += listday.get(i);
+                    }else{
+                        alo += listday.get(i) + ",";
+                    }
+                }
+                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng 3 năm 2022");
+            }
+        });
     }
 
     public void clickToChooseTime(View view) {

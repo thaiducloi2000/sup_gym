@@ -18,11 +18,10 @@ import java.util.Date;
 public class Trainer1Activity extends AppCompatActivity {
 
     private ImageView imgUser;
-    private TextView txtName, txtDescription, txtGender, txtAge, txtPhone;
     private MaterialButton btnBooking;
     private int CUSTOMER = 1;
     private int TRAINER = 2;
-    private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtPrice;
+    private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtEmail,txtNickName,txtPrice;
     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     String s = "";
@@ -40,6 +39,8 @@ public class Trainer1Activity extends AppCompatActivity {
         txtGender = findViewById(R.id.txtGender);
         txtAge = findViewById(R.id.txtAge);
         txtPhone = findViewById(R.id.txtPhoneNumber);
+        txtEmail=findViewById(R.id.txtEmail);
+        txtNickName=findViewById(R.id.txtNickName);
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
@@ -51,20 +52,19 @@ public class Trainer1Activity extends AppCompatActivity {
         txtName.setText(user.getName());
         txtDescription.setText(user.getDescription());
         txtGender.setText(user.getGender());
-//        txtAge.setText(formatter.format(user.getBirthday()));
         Date birthday=user.getBirthday();
         int year=birthday.getYear();
         int curDate = Calendar.getInstance().getTime().getYear();
         int age=curDate-year;
         txtAge.setText(age+"");
         txtPhone.setText(user.getPhoneNumber());
-
-        if(user.getRoleID() == 1){
-            btnBooking.setVisibility(View.GONE);
-        }else{
-
-        }
-
+        txtEmail.setText(user.getEmail());
+//        if(user.getRoleID()==TRAINER){
+//            btnBooking.setVisibility(View.GONE);
+//        }if(user.getRoleID()==CUSTOMER){
+//            btnBooking.setVisibility(View.VISIBLE);
+//        }
+       txtNickName.setText("@"+user.getImage());
     }
 
     public void clickToBooking(View view) {
