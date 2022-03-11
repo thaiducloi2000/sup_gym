@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,11 +19,13 @@ import java.util.Date;
 
 public class Trainer1Activity extends AppCompatActivity {
 
-    private ImageView imgUser;
+    private LinearLayout layoutBooking;
     private MaterialButton btnBooking;
+    private ImageView imgUser;
     private int CUSTOMER = 1;
     private int TRAINER = 2;
     private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtEmail,txtNickName,txtPrice;
+
     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     String s = "";
@@ -39,8 +43,12 @@ public class Trainer1Activity extends AppCompatActivity {
         txtGender = findViewById(R.id.txtGender);
         txtAge = findViewById(R.id.txtAge);
         txtPhone = findViewById(R.id.txtPhoneNumber);
+
+        btnBooking = findViewById(R.id.btnBooking);
+
         txtEmail=findViewById(R.id.txtEmail);
         txtNickName=findViewById(R.id.txtNickName);
+
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
@@ -59,12 +67,16 @@ public class Trainer1Activity extends AppCompatActivity {
         txtAge.setText(age+"");
         txtPhone.setText(user.getPhoneNumber());
         txtEmail.setText(user.getEmail());
-//        if(user.getRoleID()==TRAINER){
-//            btnBooking.setVisibility(View.GONE);
-//        }if(user.getRoleID()==CUSTOMER){
-//            btnBooking.setVisibility(View.VISIBLE);
-//        }
-       txtNickName.setText("@"+user.getImage());
+        txtNickName.setText("@"+user.getImage());
+
+        layoutBooking=findViewById(R.id.layoutBooking);
+        int roleID = (int) bundle.get("roleID");
+        if(roleID == CUSTOMER){
+            layoutBooking.setVisibility(View.VISIBLE);
+        }
+        if(roleID == TRAINER){
+            layoutBooking.setVisibility(View.GONE);
+        }
     }
 
     public void clickToBooking(View view) {

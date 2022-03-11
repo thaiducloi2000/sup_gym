@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,11 +30,17 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        Bundle bundle = getArguments();
+        if(bundle == null){
+            return;
+        }
+        int roleID = (int) bundle.get("roleID");
+      // Toast.makeText(getActivity(), "roleID:" + roleID, Toast.LENGTH_SHORT).show();
         try {
-            userAdapter = new UserAdapter(getActivity(),getListTrainer());
-            userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer());
-            userAdapter_3 = new UserAdapter(getActivity(),getListHotExpTrainer());
-            userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer());
+            userAdapter = new UserAdapter(getActivity(),getListTrainer(), roleID);
+            userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer(), roleID);
+            userAdapter_3 = new UserAdapter(getActivity(),getListMostExpTrainer(),roleID);
+            userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer(), roleID);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,6 +64,8 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager_4 = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         rcvData_4.setLayoutManager(linearLayoutManager_4);
         rcvData_4.setAdapter(userAdapter_4);
+
+
 
     }
     

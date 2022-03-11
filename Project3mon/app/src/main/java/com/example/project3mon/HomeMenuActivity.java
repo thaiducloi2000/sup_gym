@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,10 @@ public class HomeMenuActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         botNav = findViewById(R.id.botNav);
-        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
+        bundle.putSerializable("roleID", roleID);
+        Fragment homeFragment = new HomeFragment();
+        homeFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
         botNav.setSelectedItemId(R.id.action_home);
         int finalRoleID = roleID;
         botNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,6 +75,8 @@ public class HomeMenuActivity extends AppCompatActivity {
                         }
                         break;
                 }
+                bundle.putSerializable("roleID", finalRoleID);
+                fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
                 return true;
             }
