@@ -42,7 +42,7 @@ public class HomeMenuActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         botNav = findViewById(R.id.botNav);
-        bundle.putSerializable("roleID", roleID);
+
         Fragment homeFragment = new HomeFragment();
         homeFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
@@ -75,8 +75,7 @@ public class HomeMenuActivity extends AppCompatActivity {
                         }
                         break;
                 }
-                bundle.putSerializable("roleID", finalRoleID);
-                fragment.setArguments(bundle);
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
                 return true;
             }
@@ -106,7 +105,14 @@ public class HomeMenuActivity extends AppCompatActivity {
     }
 
     public void clickToViewAll(View view) {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        int roleID = (int) bundle.get("roleID");
+        bundle.putSerializable("roleID", roleID);
         Intent intent = new Intent(this, TrainerListActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

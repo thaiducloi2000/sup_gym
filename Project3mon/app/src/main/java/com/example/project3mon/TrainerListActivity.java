@@ -23,8 +23,13 @@ public class TrainerListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        int roleID = (int) bundle.get("roleID");
         try {
-            trainerListAdapter = new TrainerListAdapter(this, getListTrainer());
+            trainerListAdapter = new TrainerListAdapter(this, getListTrainer(), roleID);
         } catch (Exception e) {
             e.printStackTrace();
         }

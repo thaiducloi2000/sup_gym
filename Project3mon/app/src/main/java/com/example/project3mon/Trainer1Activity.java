@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -17,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Trainer1Activity extends AppCompatActivity {
+public class Trainer1Activity extends AppCompatActivity{
 
     private LinearLayout layoutBooking;
     private MaterialButton btnBooking;
@@ -34,8 +35,6 @@ public class Trainer1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer1);
-
-        btnBooking = findViewById(R.id.btnBooking);
 
         imgUser = findViewById(R.id.imageView1);
         txtName = findViewById(R.id.txtName);
@@ -57,7 +56,7 @@ public class Trainer1Activity extends AppCompatActivity {
         User user = (User) bundle.get("User");
         int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
         imgUser.setImageResource(imgResID);
-        txtName.setText(user.getName());
+        txtName.setText(user.getName() + " - " + user.getPosition());
         txtDescription.setText(user.getDescription());
         txtGender.setText(user.getGender());
         Date birthday=user.getBirthday();
@@ -70,6 +69,7 @@ public class Trainer1Activity extends AppCompatActivity {
         txtNickName.setText("@"+user.getImage());
 
         layoutBooking=findViewById(R.id.layoutBooking);
+
         int roleID = (int) bundle.get("roleID");
         if(roleID == CUSTOMER){
             layoutBooking.setVisibility(View.VISIBLE);
@@ -92,4 +92,5 @@ public class Trainer1Activity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }

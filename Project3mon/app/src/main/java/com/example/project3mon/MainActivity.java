@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             bundle.putSerializable("ID",ID);
             User userProfile = data.getUserProfile(ID);
             bundle.putSerializable("userProfile", userProfile);
+            int roleID=data.getRole(ID);
+            bundle.putSerializable("roleID", roleID);
             Toast.makeText(this,"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(this,HomeMenuActivity.class);
             intent.putExtras(bundle);
