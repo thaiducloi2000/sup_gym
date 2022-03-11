@@ -43,6 +43,7 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
         int imgResID = mContext.getResources().getIdentifier(user.getImage(), "drawable", mContext.getPackageName());
         holder.imgAvatar.setImageResource(imgResID);
         holder.txtName.setText(user.getName());
+        holder.txtEmail.setText(user.getEmail());
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +51,6 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
                 onClickToDetal(user);
             }
         });
-
     }
 
     private void onClickToDetal(User user) {
@@ -71,7 +71,7 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
 
 
     public class TrainerViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtName;
+        private TextView txtName, txtEmail;
         private CircularImageView imgAvatar;
         private LinearLayout layoutItem;
 
@@ -80,6 +80,7 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
 
             layoutItem = itemView.findViewById(R.id.layout_item_2);
             txtName = itemView.findViewById(R.id.txtName);
+            txtEmail = itemView.findViewById(R.id.txtEmail);
             imgAvatar = itemView.findViewById(R.id.img_avata);
         }
     }
