@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,15 +18,21 @@ import java.util.Date;
 public class Trainer1Activity extends AppCompatActivity {
 
     private ImageView imgUser;
+    private TextView txtName, txtDescription, txtGender, txtAge, txtPhone;
+    private MaterialButton btnBooking;
+    private int CUSTOMER = 1;
+    private int TRAINER = 2;
     private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtPrice;
-
     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+
     String s = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer1);
+
+        btnBooking = findViewById(R.id.btnBooking);
 
         imgUser = findViewById(R.id.imageView1);
         txtName = findViewById(R.id.txtName);
@@ -50,6 +58,12 @@ public class Trainer1Activity extends AppCompatActivity {
         int age=curDate-year;
         txtAge.setText(age+"");
         txtPhone.setText(user.getPhoneNumber());
+
+        if(user.getRoleID() == 1){
+            btnBooking.setVisibility(View.GONE);
+        }else{
+
+        }
 
     }
 
