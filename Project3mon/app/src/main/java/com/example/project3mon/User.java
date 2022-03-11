@@ -30,6 +30,17 @@ public class User implements Serializable {
         this.roleID = roleID;
     }
 
+    public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String email) {
+        this.name = name;
+        this.position = position;
+        this.description = description;
+        this.image = image;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }

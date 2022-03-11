@@ -280,6 +280,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/txtPrice"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"

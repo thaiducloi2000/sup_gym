@@ -22,7 +22,7 @@ public class Trainer1Activity extends AppCompatActivity {
     private MaterialButton btnBooking;
     private int CUSTOMER = 1;
     private int TRAINER = 2;
-
+    private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtPrice;
     Format formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     String s = "";
@@ -68,7 +68,16 @@ public class Trainer1Activity extends AppCompatActivity {
     }
 
     public void clickToBooking(View view) {
-        Intent intent=new Intent(Trainer1Activity.this,BookingActivity.class);
+       Intent intent=new Intent(Trainer1Activity.this,BookingActivity.class);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User user = (User) bundle.get("User");
+        TextView price=findViewById(R.id.txtPrice);
+        bundle.putSerializable("Price",price.getText().toString());
+        bundle.putSerializable("User",user);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

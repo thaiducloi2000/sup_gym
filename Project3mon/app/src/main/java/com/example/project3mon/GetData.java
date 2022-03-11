@@ -174,6 +174,20 @@ public class GetData {
                 rs=stm.executeQuery();
                 while (rs.next()){
                     String fullName = rs.getString("fullName");
+
+    public User getUserProfile(String id) throws Exception{
+        User user = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try{
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql = "Select fullName,position, description, image, birthday, phoneNumber, gender, email from tblUserAccounts WHERE ID='"+id+"'";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                if(rs.next()){
+                    String name = rs.getString("fullName");
                     String position = rs.getString("position");
                     String description = rs.getString("description");
                     String image = rs.getString("image");
@@ -188,6 +202,8 @@ public class GetData {
                         list = new ArrayList<>();
                     }
                     list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                    String email = rs.getString("email");
+                    user = new User(name,position,description, image, birthday, phoneNumber, gender, email);
                 }
             }
         }catch (Exception e){
@@ -247,7 +263,6 @@ public class GetData {
         }
         return list;
     }
-
 
 
 }

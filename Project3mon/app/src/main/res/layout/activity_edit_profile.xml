@@ -24,6 +24,7 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:id="@+id/imageAvatarProfile"
         android:src="@drawable/hi"
         app:riv_oval="true"
         android:layout_gravity="center"
@@ -47,7 +48,7 @@
     <EditText
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:id="@+id/txtName"
+        android:id="@+id/txtNameProfile"
         android:text="Trinh Khanh Linh"
         android:textStyle="bold"
         android:layout_gravity="center"

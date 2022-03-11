@@ -42,7 +42,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         int imgResID = mContext.getResources().getIdentifier(user.getImage(), "drawable", mContext.getPackageName());
         holder.imageView.setImageResource(imgResID);
-        holder.txtName.setText(user.getName());
+
+        String name[] = user.getName().split(" ");
+        String shortName = name[name.length - 2] + " " + name[name.length - 1];
+
+        holder.txtName.setText(shortName);
         holder.txtPosition.setText(user.getPosition());
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
