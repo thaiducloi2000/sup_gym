@@ -23,9 +23,8 @@ public class HomeMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home_menu);
-
-
 
         GetData data=new GetData();
         Bundle bundle=getIntent().getExtras();

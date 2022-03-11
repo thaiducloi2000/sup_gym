@@ -84,15 +84,17 @@ public class HomeFragment extends Fragment {
         return listFemaleTrainer;
     }
 
-    private List<User> getListMostExpTrainer() {
+    private List<User> getListHotExpTrainer() throws SQLException {
         List<User> listMostExpTrainer = new ArrayList<>();
-
+        GetData data = new GetData();
+        listMostExpTrainer = data.getListHotTrainer();
         return listMostExpTrainer;
     }
 
-    private List<User> getListNewTrainer() {
+    private List<User> getListNewTrainer() throws SQLException {
         List<User> listNewTrainer = new ArrayList<>();
-
+        GetData data = new GetData();
+        listNewTrainer = data.getListNewTrainer();
 
         return listNewTrainer;
     }
