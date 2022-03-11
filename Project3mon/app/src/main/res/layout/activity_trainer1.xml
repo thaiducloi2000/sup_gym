@@ -264,7 +264,7 @@
         >
 
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
@@ -282,12 +282,12 @@
 
             <TextView
                 android:id="@+id/txtPrice"
-                android:layout_width="130dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="25dp"
                 android:layout_weight="1"
-                android:text="100.000 VND"
+                android:text="100.000 VND / 1h"
                 android:textColor="@color/green"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -311,7 +311,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:onClick="clickToBooking"
-            android:visibility="visible"/>
+            />
 
     </LinearLayout>
 
