@@ -21,7 +21,7 @@ import java.util.Locale;
 public class BookingActivity extends AppCompatActivity {
 
     private Button btnTime,btnTime2;
-    private TextView txtName,txtPrice,txtShow;
+    private TextView txtName,txtPrice,txtShow,txtNotiCheck;
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     @Override
@@ -34,6 +34,7 @@ public class BookingActivity extends AppCompatActivity {
         txtPrice=findViewById(R.id.txtPrice);
         imageAvatar=findViewById(R.id.imageAvatar);
         txtShow=findViewById(R.id.txtShow);
+        txtNotiCheck=findViewById(R.id.txtNotiCheck);
 
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
@@ -51,6 +52,7 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onDayClick(EventDay eventDay) {
                 int date=eventDay.getCalendar().getTime().getDate();
+                int month=eventDay.getCalendar().getTime().getMonth()+1;
                 String alo="";
 //                if(listday.size()>0){
 //                    for (int i = 0; i < listday.size(); i++) {
@@ -70,7 +72,9 @@ public class BookingActivity extends AppCompatActivity {
                         alo += listday.get(i) + ",";
                     }
                 }
-                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng 3 năm 2022");
+                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng" + month +" năm 2022");
+                txtNotiCheck.setText("Ngày "+date+" HLV này còn trống lịch từ 10:00 đến 12:00 và 17:30 đén 19:30");
+                txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
             }
         });
     }
