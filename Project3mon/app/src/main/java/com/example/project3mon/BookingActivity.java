@@ -15,6 +15,7 @@ import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,17 +55,12 @@ public class BookingActivity extends AppCompatActivity {
                 int date=eventDay.getCalendar().getTime().getDate();
                 int month=eventDay.getCalendar().getTime().getMonth()+1;
                 String alo="";
-//                if(listday.size()>0){
-//                    for (int i = 0; i < listday.size(); i++) {
-//                        if (listday.get(i).equals(date)) {
-//                            listday.remove(date);
-//                        }else{
-//                            listday.add(date+"");
-//                        }
-//                    }
-//                }else {
+                if(listday.contains(date+"")){
+                    listday.remove(date+"");
+                }else{
                     listday.add(date+"");
-//                }
+                }
+                Collections.sort(listday);
                 for (int i = 0; i < listday.size(); i++) {
                     if(i==(listday.size()-1)){
                         alo += listday.get(i);
@@ -72,7 +68,7 @@ public class BookingActivity extends AppCompatActivity {
                         alo += listday.get(i) + ",";
                     }
                 }
-                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng" + month +" năm 2022");
+                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
                 txtNotiCheck.setText("Ngày "+date+" HLV này còn trống lịch từ 10:00 đến 12:00 và 17:30 đén 19:30");
                 txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
             }
@@ -86,22 +82,10 @@ public class BookingActivity extends AppCompatActivity {
                 hour=selectHour;
                 minute=selectMinute;
                 btnTime.setText("Từ: "+String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+                btnTime2.setText("Đến: "+String.format(Locale.getDefault(),"%02d:%02d",hour+1,minute));
             }
         };
         TimePickerDialog timePickerDialog = new TimePickerDialog(BookingActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth,onTimeSetListener,hour,minute,true);
-        timePickerDialog.show();
-    }
-
-    public void clickToChooseTime2(View view) {
-        TimePickerDialog.OnTimeSetListener onTimeSetListener =new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
-                hour2=selectHour;
-                minute2=selectMinute;
-                btnTime2.setText("Đên: "+String.format(Locale.getDefault(),"%02d:%02d",hour2,minute2));
-            }
-        };
-        TimePickerDialog timePickerDialog = new TimePickerDialog(BookingActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth,onTimeSetListener,hour2,minute2,true);
         timePickerDialog.show();
     }
 
