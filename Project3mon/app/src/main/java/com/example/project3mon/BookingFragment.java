@@ -1,5 +1,6 @@
 package com.example.project3mon;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,7 @@ public class BookingFragment extends Fragment {
 
     private RecyclerView rcvData;
     private TrainerListAdapter trainerListAdapter;
+    private BottomNavigationItemView booking;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,9 +30,12 @@ public class BookingFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_booking, container, false);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onStart() {
         super.onStart();
+        booking = getActivity().findViewById(R.id.action_booking);
+        booking.setEnabled(false);
         Bundle bundle = getActivity().getIntent().getExtras();
         if(bundle == null){
             return;
