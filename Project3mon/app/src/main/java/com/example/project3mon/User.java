@@ -18,6 +18,22 @@ public class User implements Serializable {
     private int roleID;
     private float price;
 
+
+    public User(String ID, String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String confirmInfo, String email, int roleID, float price) {
+        this.ID = ID;
+        this.name = name;
+        this.position = position;
+        this.description = description;
+        this.image = image;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.confirmInfo = confirmInfo;
+        this.email = email;
+        this.roleID = roleID;
+        this.price = price;
+    }
+
     public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String confirmInfo, String email, int roleID, float price) {
         this.name = name;
         this.position = position;
