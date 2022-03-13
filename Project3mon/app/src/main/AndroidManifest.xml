@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
-
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookingActivity"
             android:exported="false" />
         <activity

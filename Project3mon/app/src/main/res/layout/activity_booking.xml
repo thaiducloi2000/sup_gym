@@ -193,7 +193,8 @@
             android:shadowRadius="20"
             android:text="Xác Nhận"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:onClick="clickToConfirmBooking"/>
     </LinearLayout>
 
     </LinearLayout>
