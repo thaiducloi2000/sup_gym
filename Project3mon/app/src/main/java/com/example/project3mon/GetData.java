@@ -71,7 +71,7 @@ public class GetData {
         return role;
     }
 
-    public List<User> getListTrainer() throws SQLException {
+    public List<User> getListTrainer(int limit) throws SQLException {
         List<User> list = null;
         Connection conn=null;
         PreparedStatement stm=null;
@@ -79,9 +79,11 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' AND roleID = 2 ";
+                String sql="SELECT TOP (?) fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price " +
+                        " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID " +
+                        " WHERE status = 'Active' AND roleID = 2 ";
                 stm=conn.prepareStatement(sql);
+                stm.setInt(1, limit);
                 rs=stm.executeQuery();
                 while (rs.next()){
                     String fullName = rs.getString("fullName");
@@ -94,11 +96,12 @@ public class GetData {
                     String confirmInfo = rs.getString("confirmInfo");
                     String email = rs.getString("email");
                     int roleID = rs.getInt("roleID");
+                    float price = rs.getFloat("price");
 
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
                 }
             }
         }catch (Exception e){
@@ -123,8 +126,9 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' AND gender = N'Nữ' AND roleID = 2";
+                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price" +
+                        " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID " +
+                        " WHERE status = 'Active' AND gender = N'Nữ' AND roleID = 2 ";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
@@ -138,11 +142,12 @@ public class GetData {
                     String confirmInfo = rs.getString("confirmInfo");
                     String email = rs.getString("email");
                     int roleID = rs.getInt("roleID");
+                    float price = rs.getFloat("price");
 
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
                 }
             }
         }catch (Exception e){
@@ -168,8 +173,9 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT TOP 4 fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' AND roleID = 2 ORDER BY ID DESC";
+                String sql="SELECT TOP 4 fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price " +
+                        " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID " +
+                        " WHERE status = 'Active' AND roleID = 2 ORDER BY A.ID DESC";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
@@ -183,11 +189,12 @@ public class GetData {
                     String confirmInfo = rs.getString("confirmInfo");
                     String email = rs.getString("email");
                     int roleID = rs.getInt("roleID");
+                    float price = rs.getFloat("price");
 
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
                 }
             }
         }catch (Exception e){
@@ -249,8 +256,9 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID " +
-                        " FROM tblUserAccounts WHERE status = 'Active' AND roleID = 2 ORDER BY id OFFSET 5 ROWS FETCH NEXT 5 ROWS ONLY ";
+                String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price " +
+                        " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID" +
+                        " WHERE status = 'Active' AND roleID = 2 ORDER BY A.ID OFFSET 5 ROWS FETCH NEXT 5 ROWS ONLY ";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
@@ -264,11 +272,12 @@ public class GetData {
                     String confirmInfo = rs.getString("confirmInfo");
                     String email = rs.getString("email");
                     int roleID = rs.getInt("roleID");
+                    float price = rs.getFloat("price");
 
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID));
+                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
                 }
             }
         }catch (Exception e){
