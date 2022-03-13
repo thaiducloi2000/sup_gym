@@ -1,6 +1,7 @@
 package com.example.project3mon;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -112,5 +113,10 @@ public class BookingActivity extends AppCompatActivity {
 
     public void clicktoBack2(View view) {
         finish();
+    }
+
+    public void clickToConfirmBooking(View view) {
+        Intent intent = new Intent(this, PaymentActivity.class);
+        startActivity(intent);
     }
 }
