@@ -81,13 +81,14 @@ public class GetData {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT TOP (?) fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price " +
+                String sql="SELECT TOP (?) A.ID,fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price " +
                         " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID " +
                         " WHERE status = 'Active' AND roleID = 2 ";
                 stm=conn.prepareStatement(sql);
                 stm.setInt(1, limit);
                 rs=stm.executeQuery();
                 while (rs.next()){
+                    String ID = rs.getString("ID");
                     String fullName = rs.getString("fullName");
                     String position = rs.getString("position");
                     String description = rs.getString("description");
@@ -103,7 +104,7 @@ public class GetData {
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add(new User(fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
+                    list.add(new User(ID,fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, price));
                 }
             }
         }catch (Exception e){
@@ -369,7 +370,7 @@ public class GetData {
         return list;
     }
 
-    public List<String> getTime(String id,Date day) throws SQLException {
+    public List<String> getSchedulesCustomer(String id,Date day) throws SQLException {
         List<String> list = null;
         Connection conn=null;
         PreparedStatement stm=null;
@@ -408,4 +409,43 @@ public class GetData {
         return list;
     }
 
+
+    public List<String> getSchedulesTrainer(String id,Date day) throws SQLException {
+        List<String> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT startTime,endTime  " +
+                        " FROM tblSchedules " +
+                        " WHERE bookingID in (Select bookingID from tblBooking where customerID IN (SELECT customerID FROM tblBooking WHERE trainerID LIKE '"+id+"')) AND sheduleDay LIKE CONVERT(date,?)";
+                stm=conn.prepareStatement(sql);
+                java.sql.Date ulDay=new java.sql.Date(day.getTime());
+                stm.setDate(1, ulDay);
+                rs=stm.executeQuery();
+                if (rs.next()){
+                    Time startTime=rs.getTime("startTime");
+                    Time endTime=rs.getTime("endTime");
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    String s=startTime.getHours()+":"+String.format("%02d",startTime.getMinutes())+" - "+endTime.getHours()+":"+String.format("%02d",endTime.getMinutes());
+                    list.add(s);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
 }

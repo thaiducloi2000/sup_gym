@@ -14,6 +14,7 @@ import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -67,11 +68,31 @@ public class BookingActivity extends AppCompatActivity {
                         alo += listday.get(i) + ",";
                     }
                 }
+                GetData dao=new GetData();
+                List<String> list=new ArrayList<>();
+                try {
+                    list=dao.getSchedulesTrainer(user.getID(),eventDay.getCalendar().getTime());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                String message="";
+                if(list!=null){
+                    message+="Ngày "+date+" HLV bận vào khung giờ ";
+                    for(int i=0;i<list.size();i++){
+                        if(i==(list.size()-1)){
+                            message+=list.get(i);
+                        }else{
+                            message+=list.get(i)+",";
+                        }
+                    }
+                    txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
+                }else{
+                    txtNotiCheck.setBackground(null);
+                }
+                txtNotiCheck.setText(message+"");
                 txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
-                txtNotiCheck.setText("Ngày "+date+" HLV này còn trống lịch từ 10:00 đến 12:00 và 17:30 đén 19:30");
-                txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
                 txtSumary.setText((int)(listday.size()*user.getPrice())+" VNĐ");
-            }
+                }
         });
     }
 

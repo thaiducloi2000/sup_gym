@@ -25,6 +25,7 @@ import java.util.List;
  * Use the {@link ViewCalendarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class ViewCalendarFragment extends Fragment {
 
     private LinearLayout layoutView;
@@ -103,7 +104,7 @@ public class ViewCalendarFragment extends Fragment {
                         List<String> string=new ArrayList<>();
                         List<User> list=new ArrayList<>();
                         try {
-                            string=dao.getTime((String)bundle.get("ID"),events.get(i).getCalendar().getTime());
+                            string=dao.getSchedulesCustomer((String)bundle.get("ID"),events.get(i).getCalendar().getTime());
                             list=dao.getPersonalTrainer((String)bundle.get("ID"));
                             TextView txtFromTo=view.findViewById(R.id.txtFromTo);
                             txtFromTo.setText(string+"");
