@@ -16,8 +16,9 @@ public class User implements Serializable {
     private String confirmInfo;
     private String email;
     private int roleID;
+    private float price;
 
-    public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String confirmInfo, String email, int roleID) {
+    public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String confirmInfo, String email, int roleID, float price) {
         this.name = name;
         this.position = position;
         this.description = description;
@@ -28,6 +29,7 @@ public class User implements Serializable {
         this.confirmInfo = confirmInfo;
         this.email = email;
         this.roleID = roleID;
+        this.price = price;
     }
 
     public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String email) {
@@ -119,5 +121,13 @@ public class User implements Serializable {
 
     public void setRoleID(int roleID) {
         this.roleID = roleID;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

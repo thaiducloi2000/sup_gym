@@ -72,15 +72,13 @@ public class HomeFragment extends Fragment {
         rcvData_4.setLayoutManager(linearLayoutManager_4);
         rcvData_4.setAdapter(userAdapter_4);
 
-
-
     }
 
 
     private List<User> getListTrainer() throws Exception {
         List<User> listTrainer = new ArrayList<>();
         GetData data = new GetData();
-        listTrainer = data.getListTrainer();
+        listTrainer = data.getListTrainer(5);
         return listTrainer;
     }
 

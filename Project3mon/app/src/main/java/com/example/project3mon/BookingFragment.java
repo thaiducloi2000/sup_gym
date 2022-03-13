@@ -56,7 +56,7 @@ public class BookingFragment extends Fragment {
     private List<User> getListTrainer() throws Exception {
         List<User> listTrainer = new ArrayList<>();
         GetData data = new GetData();
-        listTrainer = data.getListTrainer();
+        listTrainer = data.getListTrainer(100);
         return listTrainer;
     }
 }

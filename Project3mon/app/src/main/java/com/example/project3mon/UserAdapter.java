@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         String shortName = name[name.length - 2] + " " + name[name.length - 1];
 
         holder.txtName.setText(shortName);
-        holder.txtPrice.setText(user.getPosition());
+        holder.txtPrice.setText(user.getPrice()+ " VNĐ");
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
