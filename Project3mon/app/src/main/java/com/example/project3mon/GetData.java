@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -294,5 +296,116 @@ public class GetData {
         return list;
     }
 
+    public List<Calendar> getListday(String id) throws SQLException {
+        List<Calendar> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT sheduleDay " +
+                        " FROM tblSchedules " +
+                        " WHERE bookingID in (Select bookingID from tblBooking where customerID LIKE '"+id+"')";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    Date date=rs.getDate("sheduleDay");
+                    Calendar day=Calendar.getInstance();
+                    day.setTime(date);
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(day);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    public List<User> getPersonalTrainer(String id) throws SQLException{
+        List<User> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT fullName,image " +
+                        " FROM tblUserAccounts" +
+                        " WHERE ID IN (Select trainerID FROM tblBooking WHERE customerID LIKE '"+id+"' AND ID in (SELECT bookingID from tblSchedules)) ";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    String fullName = rs.getString("fullName");
+                    String image = rs.getString("image");
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(new User(fullName, "", "", image, null, "", "", "", "", 0, 0));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    public List<String> getTime(String id,Date day) throws SQLException {
+        List<String> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT startTime,endTime  " +
+                        " FROM tblSchedules " +
+                        " WHERE bookingID in (Select bookingID from tblBooking where customerID LIKE '"+id+"') AND sheduleDay LIKE CONVERT(date,?)";
+                stm=conn.prepareStatement(sql);
+                java.sql.Date ulDay=new java.sql.Date(day.getTime());
+                stm.setDate(1, ulDay);
+                rs=stm.executeQuery();
+                if (rs.next()){
+                    Time startTime=rs.getTime("startTime");
+                    Time endTime=rs.getTime("endTime");
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    String s=startTime.getHours()+":"+String.format("%02d",startTime.getMinutes())+" - "+endTime.getHours()+":"+String.format("%02d",endTime.getMinutes());
+                   list.add(s);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
 
 }

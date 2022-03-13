@@ -1,24 +1,21 @@
 package com.example.project3mon;
 
-import static android.content.ContentValues.TAG;
-
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -77,18 +74,23 @@ public class ViewCalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_view_calendar, container, false);
         List<EventDay> events = new ArrayList<>();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH,2);
-        events.add(new EventDay(calendar, R.drawable.ic_baseline_event_available_24));
-
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.add(Calendar.DAY_OF_MONTH,4);
-        events.add(new EventDay(calendar2, R.drawable.ic_baseline_event_available_24));
+        GetData dao=new GetData();
+        Bundle bundle=getActivity().getIntent().getExtras();
+        List<Calendar> list=new ArrayList<>();
+        if(!(bundle==null)){
+            String id=(String)bundle.get("ID");
+            try {
+                list=dao.getListday(id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        for (Calendar calendar:list) {
+            events.add(new EventDay(calendar, R.drawable.ic_baseline_event_available_24));
+        }
 
         CalendarView calendarView = (CalendarView) view.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
-
         layoutView=view.findViewById(R.id.layoutView);
 
         calendarView.setOnDayClickListener(new OnDayClickListener() {
@@ -98,6 +100,16 @@ public class ViewCalendarFragment extends Fragment {
                 for (int i = 0; i < events.size(); i++) {
                     int event=events.get(i).getCalendar().getTime().getDate();
                     if (event==date){
+                        List<String> string=new ArrayList<>();
+                        List<User> list=new ArrayList<>();
+                        try {
+                            string=dao.getTime((String)bundle.get("ID"),events.get(i).getCalendar().getTime());
+                            list=dao.getPersonalTrainer((String)bundle.get("ID"));
+                            TextView txtFromTo=view.findViewById(R.id.txtFromTo);
+                            txtFromTo.setText(string+"");
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
                         layoutView.setVisibility(View.VISIBLE);
                         break;
                     }else {
@@ -111,7 +123,6 @@ public class ViewCalendarFragment extends Fragment {
         TextView txtlink =(TextView) view.findViewById(R.id.txtlink);
         txtlink.setMovementMethod(LinkMovementMethod.getInstance());
         txtlink.setLinkTextColor(Color.GREEN);
-        // Inflate the layout for this fragment
         return view;
     }
 }
