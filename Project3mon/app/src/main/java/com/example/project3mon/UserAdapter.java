@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         String shortName = name[name.length - 2] + " " + name[name.length - 1];
 
         holder.txtName.setText(shortName);
-        holder.txtPosition.setText(user.getPosition());
+        holder.txtPrice.setText(user.getPosition());
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-        private TextView txtName, txtPosition;
+        private TextView txtName, txtPrice;
         private LinearLayout layoutItem;
 
         public UserViewHolder(@NonNull View itemView) {
@@ -91,8 +91,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             layoutItem = itemView.findViewById(R.id.layout_item);
             imageView = itemView.findViewById(R.id.img_avata);
             txtName = itemView.findViewById(R.id.txtName);
-            txtPosition = itemView.findViewById(R.id.txtPosition);
-
+            txtPrice = itemView.findViewById(R.id.txtPrice);
         }
     }
 }
