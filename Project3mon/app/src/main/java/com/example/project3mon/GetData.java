@@ -128,7 +128,7 @@ public class GetData {
             if(conn!=null){
                 String sql="SELECT fullName, position, description, image, birthday, phoneNumber, gender, confirmInfo, email, roleID, B.price" +
                         " FROM tblUserAccounts A JOIN tblPrice B ON A.ID = B.trainerID " +
-                        " WHERE status = 'Active' AND gender = N'Nữ' AND roleID = 2 ";
+                        " WHERE status = 'Active' AND gender = 'Nu' AND roleID = 2 ";
                 stm=conn.prepareStatement(sql);
                 rs=stm.executeQuery();
                 while (rs.next()){
@@ -231,7 +231,7 @@ public class GetData {
                     String gender = rs.getString("gender");
                     String email = rs.getString("email");
 //                    int roleID = rs.getInt("roleID");
-                    user = new User(name,position,description, image, birthday, phoneNumber, gender, email);
+                    user = new User(id,name,position,description, image, birthday, phoneNumber, gender, email);
                 }
             }
         }catch (Exception e){

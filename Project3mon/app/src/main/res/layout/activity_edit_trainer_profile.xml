@@ -15,15 +15,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="Chỉnh sửa hồ sơ"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#0000"
+                android:onClick="clickToBack"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:text="Chỉnh sửa hồ sơ"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -180,6 +194,7 @@
             android:textStyle="bold"
             android:backgroundTint="#0bdb0e"
             android:textColor="@color/black"
+            android:onClick="clickToSaveTrainerProfile"
             />
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

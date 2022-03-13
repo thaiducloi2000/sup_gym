@@ -34,12 +34,19 @@ public class TrainerProfileFragment extends Fragment {
         if(bundle == null){
             return;
         }
-        User user = (User) bundle.get("userProfile");
-        avatar = getActivity().findViewById(R.id.imageAvatarProfile);
-        txtName = getActivity().findViewById(R.id.txtNameProfile);
-        int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", getActivity().getPackageName());
-        avatar.setImageResource(imgResID);
-        txtName.setText(user.getName());
+        GetData data = new GetData();
+        User userProfile = (User) bundle.get("userProfile");
+        User user = null;
+        try {
+            user = data.getUserProfile(userProfile.getID()); // load lại db sau khi update
+            avatar = getActivity().findViewById(R.id.imageAvatarProfile);
+            txtName = getActivity().findViewById(R.id.txtNameProfile);
+            int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", getActivity().getPackageName());
+            avatar.setImageResource(imgResID);
+            txtName.setText(user.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
