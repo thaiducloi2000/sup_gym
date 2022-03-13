@@ -105,7 +105,7 @@ public class EditTrainerProfileActivity extends AppCompatActivity{
             @Override
             public void onDateSet(DatePicker datePicker, int Year, int Month, int Day) {
                 Month= Month+1;
-                String day=Month + "/" + Day +"/" + Year;
+                String day=Month + "-" + Day +"-" + Year;
                 txtBirthday.setText(day);
             }
         };

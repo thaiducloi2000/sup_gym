@@ -127,7 +127,7 @@ public class EditProfileActivity extends AppCompatActivity implements DatePicker
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         int month = i1 + 1;
-        String date = i2 + "/" + month + "/" + i;
+        String date = i2 + "-" + month + "-" + i;
         txtBirthday.setText(date);
     }
 
