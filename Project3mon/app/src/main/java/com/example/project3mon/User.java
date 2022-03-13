@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-
+    private String ID;
     private String name;
     private String position;
     private String description;
@@ -32,7 +32,8 @@ public class User implements Serializable {
         this.price = price;
     }
 
-    public User(String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String email) {
+    public User(String ID, String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, String email) {
+        this.ID = ID;
         this.name = name;
         this.position = position;
         this.description = description;
@@ -41,6 +42,33 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.email = email;
+    }
+
+    public User(String ID, String name, Date birthday, String phoneNumber, String gender, String email) {
+        this.ID = ID;
+        this.name = name;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.email = email;
+    }
+
+    public User(String ID, String name, String description, Date birthday, String phoneNumber, String gender, String email) {
+        this.ID = ID;
+        this.name = name;
+        this.description = description;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.email = email;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getName() {
