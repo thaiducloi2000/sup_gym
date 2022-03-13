@@ -174,11 +174,12 @@
         android:textColor="@color/dark_white"
         android:textSize="25dp"/>
     <TextView
+        android:id="@+id/txtSumary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="30px"
-        android:text="300.000 VNĐ"
+        android:text="0 VNĐ"
         android:layout_gravity="center"
         android:textColor="@color/green"
         android:textSize="20dp"/>

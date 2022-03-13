@@ -22,7 +22,7 @@ import java.util.Locale;
 public class BookingActivity extends AppCompatActivity {
 
     private Button btnTime,btnTime2;
-    private TextView txtName,txtPrice,txtShow,txtNotiCheck;
+    private TextView txtName,txtPrice,txtShow,txtNotiCheck,txtSumary;
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     @Override
@@ -36,17 +36,16 @@ public class BookingActivity extends AppCompatActivity {
         imageAvatar=findViewById(R.id.imageAvatar);
         txtShow=findViewById(R.id.txtShow);
         txtNotiCheck=findViewById(R.id.txtNotiCheck);
-
+        txtSumary=findViewById(R.id.txtSumary);
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
         }
         User user=(User) bundle.get("User");
-        String Price=(String) bundle.get("Price");
         int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
         imageAvatar.setImageResource(imgResID);
         txtName.setText(user.getName());
-        txtPrice.setText(Price+" / 1 Buổi");
+        txtPrice.setText((int) user.getPrice()+" VND/1h");
         CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
         List<String> listday=new ArrayList<>();
         calendarView.setOnDayClickListener(new OnDayClickListener() {
@@ -71,6 +70,7 @@ public class BookingActivity extends AppCompatActivity {
                 txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
                 txtNotiCheck.setText("Ngày "+date+" HLV này còn trống lịch từ 10:00 đến 12:00 và 17:30 đén 19:30");
                 txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
+                txtSumary.setText((int)(listday.size()*user.getPrice())+" VNĐ");
             }
         });
     }
