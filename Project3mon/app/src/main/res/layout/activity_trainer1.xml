@@ -43,8 +43,8 @@
                 android:layout_marginBottom="-60dp"
                 android:src="@drawable/hi"
                 app:civ_border="true"
-                app:civ_border_width="2dp"
                 app:civ_border_color="@color/green"
+                app:civ_border_width="2dp"
                 app:civ_shadow="true"
                 app:civ_shadow_color="@color/green"
                 app:civ_shadow_radius="5dp" />

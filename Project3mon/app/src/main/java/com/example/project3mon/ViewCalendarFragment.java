@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ import java.util.List;
 public class ViewCalendarFragment extends Fragment {
 
     private LinearLayout layoutView;
+    private BottomNavigationItemView viewCalendar;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,6 +77,8 @@ public class ViewCalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_view_calendar, container, false);
+        viewCalendar = getActivity().findViewById(R.id.action_view_calendar);
+        viewCalendar.setEnabled(false);
         List<EventDay> events = new ArrayList<>();
         GetData dao=new GetData();
         Bundle bundle=getActivity().getIntent().getExtras();
