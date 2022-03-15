@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
         <activity
+            android:name=".VideoPlay"
+            android:exported="false" />
+        <activity
+            android:name=".VideoList"
+            android:exported="false" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="false" />
         <activity

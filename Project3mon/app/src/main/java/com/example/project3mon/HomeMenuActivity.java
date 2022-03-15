@@ -132,4 +132,9 @@ public class HomeMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeMenuActivity.this, NotificationActivity.class);
         startActivity(intent);
     }
+
+    public void clickToViewVideo(View view) {
+        Intent intent = new Intent(HomeMenuActivity.this, VideoList.class);
+        startActivity(intent);
+    }
 }
