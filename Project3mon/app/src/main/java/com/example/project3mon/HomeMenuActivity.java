@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,13 +19,16 @@ import java.sql.SQLException;
 public class HomeMenuActivity extends AppCompatActivity {
 
     private BottomNavigationView botNav;
+    ImageView checkmark;
+    boolean check = false;
     private int CUSTOMER = 1;
     private int TRAINER = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home_menu);
+
+        checkmark = findViewById(R.id.checkMark);
 
         GetData data=new GetData();
         Bundle bundle=getIntent().getExtras();
@@ -136,5 +140,16 @@ public class HomeMenuActivity extends AppCompatActivity {
     public void clickToViewVideo(View view) {
         Intent intent = new Intent(HomeMenuActivity.this, VideoList.class);
         startActivity(intent);
+    }
+
+
+    public void clickToCheckMark(View view) {
+        if(!check){
+            checkmark.setImageResource(R.drawable.icon_checkmark_green);
+            check = true;
+        }else{
+            checkmark.setImageResource(R.drawable.icon_checkmark_gray);
+            check = false;
+        }
     }
 }

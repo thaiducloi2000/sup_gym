@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/video_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,54 +9,72 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="15dp"
     android:background="@color/dark_gray"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".HomeMenuActivity">
+
 
     <RelativeLayout
-        android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></RelativeLayout>
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/videoBackground"
-        android:layout_width="370dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:layout_below="@+id/top"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/exercise4"
-        android:orientation="horizontal"></ImageView>
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></RelativeLayout>
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/top"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/ic_baseline_play_circle_outline_24" />
 
-    <TextView
-        android:id="@+id/videoDuration"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="115dp"
-        android:gravity="center"
-        android:layout_marginStart="310dp"
-        android:text="01:40"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:background="@color/dark_gray"
-        android:textColor="@color/white"
-        android:layout_below="@+id/top"/>
+        <ImageView
+            android:id="@+id/videoBackground"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/exercise4"
+            android:orientation="horizontal"
+            android:scaleType="fitXY"></ImageView>
 
-    <TextView
-        android:id="@+id/videoName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/videoBackground"
-        android:layout_marginTop="10dp"
-        android:text="Video Name"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/top"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/ic_baseline_play_circle_outline_24" />
+
+        <ImageView
+            android:id="@+id/checkMark"
+            android:layout_width="50dp"
+            android:layout_height="39dp"
+            android:layout_below="@+id/top"
+            android:layout_marginStart="320dp"/>
+
+        <TextView
+            android:id="@+id/videoDuration"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_marginStart="265dp"
+            android:layout_marginTop="130dp"
+            android:background="@color/dark_gray"
+            android:gravity="center"
+            android:text="01:40"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/videoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/videoBackground"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Video Name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
