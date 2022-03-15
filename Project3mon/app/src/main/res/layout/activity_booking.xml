@@ -118,29 +118,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:layout_marginTop="20dp"
-            android:id="@+id/btnTime"
-            android:text="Từ :"
-            android:backgroundTint="#0000"
-            android:textColor="@color/dark_white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:text="Khung giờ: "
             android:textSize="20dp"
-            android:onClick="clickToChooseTime"/>
-
-        <Button
-            android:layout_width="wrap_content"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:id="@+id/btnTime2"
-            android:text="Đến :"
-            android:backgroundTint="#0000"
-            android:textColor="@color/dark_white"
-            android:textSize="20dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:scrollbarSize="30dp"
+            style="@style/Widget.AppCompat.Spinner"
+            android:id="@+id/spChooseDate"
+            android:backgroundTint="@color/white" />
     </LinearLayout>
 
         <TextView

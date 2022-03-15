@@ -4,11 +4,14 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
@@ -27,12 +30,21 @@ public class BookingActivity extends AppCompatActivity {
     private TextView txtName,txtPrice,txtShow,txtNotiCheck,txtSumary;
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
+    private AppCompatSpinner spChooseDate;
+    private List<String> dateSelect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
-        btnTime=findViewById(R.id.btnTime);
-        btnTime2=findViewById(R.id.btnTime2);
+        spChooseDate = findViewById(R.id.spChooseDate);
+        dateSelect = new ArrayList<>();
+        dateSelect.add("7:00 - 8:00");
+        dateSelect.add("8:30 - 9:30");
+        dateSelect.add("13:30 - 14:30");
+        dateSelect.add("16:30 - 17:30");
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.color_spinner_item, dateSelect);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spChooseDate.setAdapter(adapter);
         txtName=findViewById(R.id.txtName);
         txtPrice=findViewById(R.id.txtPrice);
         imageAvatar=findViewById(R.id.imageAvatar);
