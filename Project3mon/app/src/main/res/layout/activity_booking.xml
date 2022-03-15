@@ -123,8 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:id="@+id/txtTime"
             android:layout_gravity="center"
-            android:text="Khung giờ: "
+            android:text="Khung giờ buổi tập: "
             android:textSize="20dp"
             android:textColor="@color/white"/>
         <androidx.appcompat.widget.AppCompatSpinner
@@ -137,6 +138,32 @@
             android:id="@+id/spChooseDate"
             android:backgroundTint="@color/white" />
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 2: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate2"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtNotiCheck"
