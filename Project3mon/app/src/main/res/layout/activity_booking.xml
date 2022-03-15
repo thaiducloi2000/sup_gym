@@ -134,7 +134,8 @@
             android:layout_marginLeft="15dp"
             android:scrollbarSize="30dp"
             style="@style/Widget.AppCompat.Spinner"
-            android:id="@+id/spChooseDate"/>
+            android:id="@+id/spChooseDate"
+            android:backgroundTint="@color/white" />
     </LinearLayout>
 
         <TextView
