@@ -52,7 +52,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         String str = String.valueOf(mpl.getDuration() % 60000);
         String second = str.substring(0, 2);
 
-
+        int markResID = mContext.getResources().getIdentifier(video.getCheckMark(), "drawable", mContext.getPackageName());
+        holder.txtCheckMark.setImageResource(markResID);
         holder.txtVideoName.setText(video.getVideoName());
         holder.txtTimeDuration.setText(minute +":" + second);
 
@@ -82,9 +83,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     public class VideoViewHoler extends RecyclerView.ViewHolder {
 
-        private ImageView txtVideoBackground;
+        private ImageView txtVideoBackground, txtCheckMark;
         private TextView txtVideoName, txtTimeDuration;
-        private RelativeLayout layoutItem ;
+        private RelativeLayout layoutItem;
 
         public VideoViewHoler(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +94,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             txtVideoName = itemView.findViewById(R.id.videoName);
             txtTimeDuration = itemView.findViewById(R.id.videoDuration);
             txtVideoBackground = itemView.findViewById(R.id.videoBackground);
+            txtCheckMark = itemView.findViewById(R.id.checkMark);
         }
     }
 

@@ -6,6 +6,7 @@ import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -35,6 +36,9 @@ public class VideoPlay extends AppCompatActivity {
 
         //Start Video
         videoView.start();
+    }
 
+    public void clickToCheckMark(View view) {
+        finish();
     }
 }
