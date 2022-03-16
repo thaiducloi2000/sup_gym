@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            android:id="@+id/layout_spinner"
+            android:id="@+id/layout_spinner2"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -163,6 +163,161 @@
                 style="@style/Widget.AppCompat.Spinner"
                 android:id="@+id/spChooseDate2"
                 android:backgroundTint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner3"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 3: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate3"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner4"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 4: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate4"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner5"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 5: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate5"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner6"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 6: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate6"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/layout_spinner7"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Khung giờ buổi tập 7: "
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:scrollbarSize="30dp"
+                style="@style/Widget.AppCompat.Spinner"
+                android:id="@+id/spChooseDate7"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_spinner_loop_option"
+            android:visibility="gone">
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/spLoopOption"
+                android:backgroundTint="@color/white"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/txtLoopOption"
+                android:text="Chức năng lặp này chỉ áp dụng khi số buổi tập nhiều hơn 3"
+                android:textSize="20dp"
+                android:textColor="@color/green"/>
         </LinearLayout>
 
         <TextView
@@ -208,6 +363,7 @@
 
 </LinearLayout>
         <Button
+            android:id="@+id/btnConfirmBooking"
             android:layout_width="240dp"
             android:layout_height="75dp"
             android:layout_marginTop="30px"

@@ -16,4 +16,7 @@ public class PaymentActivity extends AppCompatActivity {
     public void clickToBack(View view) {
         finish();
     }
+
+    public void clickToConfirmPayment(View view) {
+    }
 }
