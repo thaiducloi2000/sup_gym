@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -104,21 +103,9 @@ public class BookingActivity extends AppCompatActivity {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                String message="";
-                if(list!=null){
-//                    message+="Ngày "+date+" HLV bận vào khung giờ ";
-                    for(int i=0;i<list.size();i++){
-                        if(i==(list.size()-1)){
-                            message+=list.get(i);
-                        }else{
-                            message+=list.get(i)+",";
-                        }
-                    }
-//                    txtNotiCheck.setBackground(getDrawable(R.drawable.custom_input_2));
-                }else{
+                if(list==null){
                     txtNotiCheck.setBackground(null);
                 }
-//                txtNotiCheck.setText(message+"");
                 txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
                 txtSumary.setText((int)(listday.size()*user.getPrice())+" VNĐ");
                 if(listday.size()==2){
