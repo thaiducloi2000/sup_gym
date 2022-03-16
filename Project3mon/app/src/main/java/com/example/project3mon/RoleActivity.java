@@ -1,10 +1,10 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RoleActivity extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class RoleActivity extends AppCompatActivity {
     }
 
     public void clickToTrainerRegister(View view) {
-        Intent intent=new Intent(this,RegisterTrainerActivity.class);
+        Intent intent=new Intent(RoleActivity.this,RegisterTrainerActivity.class);
         startActivity(intent);
     }
 }
