@@ -5,18 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class PaymentActivity extends AppCompatActivity {
+public class FindPassActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_find_pass);
     }
 
-    public void clickToBack(View view) {
-        finish();
-    }
-
-    public void clickToConfirmPayment(View view) {
+    public void clickToNewPass(View view) {
     }
 }

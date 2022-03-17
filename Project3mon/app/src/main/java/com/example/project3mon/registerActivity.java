@@ -1,25 +1,31 @@
 package com.example.project3mon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.project3mon.dao.SaveDataDAO;
+
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class registerActivity extends AppCompatActivity {
 
     private Spinner spnGender;
     private TextView txtDOB;
+    private EditText edtUsername,edtFullName,edtPhoneNumber,edtEmail,edtPassword;
     private static final String TAG= "registerActivity";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     @Override
@@ -53,5 +59,40 @@ public class registerActivity extends AppCompatActivity {
                 txtDOB.setText(day);
             }
         };
+    }
+
+    public void clickToRegisterCustomer(View view) throws ParseException, SQLException {
+        edtUsername=findViewById(R.id.edtUsername);
+        edtFullName=findViewById(R.id.edtFullName);
+        edtPhoneNumber=findViewById(R.id.edtPhoneNumber);
+        edtEmail=findViewById(R.id.edtEmail);
+        txtDOB=findViewById(R.id.txtDOB);
+        spnGender=findViewById(R.id.spnGender);
+        edtPassword=findViewById(R.id.edtPassword);
+        String gender="";
+        String g=spnGender.getSelectedItem().toString();
+        if(g.equals("Nam")){
+            gender="Nam";
+        }if(g.equals("Nữ")){
+            gender="Nu";
+        }if(g.equals("Khac")){
+            gender="Khac";
+        }
+        String userName=edtUsername.getText().toString();
+        String fullName=edtFullName.getText().toString();
+        String phone=edtPhoneNumber.getText().toString();
+        String email=edtEmail.getText().toString();
+        String password=edtPassword.getText().toString();
+        Date dob= new SimpleDateFormat("dd/MM/yyyy").parse(txtDOB.getText().toString());
+        SaveDataDAO dao=new SaveDataDAO();
+        User user=new User("",fullName,"Customer","Yêu Màu Hồng Thích Màu Tím Ghét Sự Giả Dối","trainer3",dob,phone,gender,email);
+        boolean check=dao.CreateAccount(user,userName,password);
+        if(check){
+            Toast.makeText(this,"Đăng Ký Tài Khoản Thành Công",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent();
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"Đăng Ký Tài Khoản Thất Bại",Toast.LENGTH_SHORT).show();
+        }
     }
 }

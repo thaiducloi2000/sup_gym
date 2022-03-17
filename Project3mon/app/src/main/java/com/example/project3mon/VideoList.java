@@ -1,11 +1,11 @@
 package com.example.project3mon;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
 
 import com.example.project3mon.adapter.VideoAdapter;
 import com.example.project3mon.dto.Video;
@@ -38,6 +38,7 @@ public class VideoList extends AppCompatActivity {
         videos.add( new Video("video2","video_gym_1","exercice3", "bài tập khởi động hay", "icon_checkmark_gray"));
         videos.add( new Video("video3","video_gym_1", "exercice2", "bài tập cơ tay", "icon_checkmark_gray"));
         videos.add( new Video("video4","video_gym_1", "exercice1", "bài tập hít đất", "icon_checkmark_gray"));
+
         return videos ;
     }
 

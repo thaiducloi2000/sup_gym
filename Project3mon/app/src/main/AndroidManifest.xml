@@ -25,6 +25,9 @@
             android:name=".BookingActivity"
             android:exported="false" />
         <activity
+            android:name=".RegisterTrainerActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
