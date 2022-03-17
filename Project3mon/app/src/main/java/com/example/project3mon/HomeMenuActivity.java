@@ -152,4 +152,9 @@ public class HomeMenuActivity extends AppCompatActivity {
             check = false;
         }
     }
+
+    public void clicktoViewWallet(View view) {
+        Intent intent = new Intent(HomeMenuActivity.this, ViewWalletActivity.class);
+        startActivity(intent);
+    }
 }
