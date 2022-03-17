@@ -25,6 +25,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     private Context mContext;
     private List<Video> list;
 
+    private static final String VIDEO_SAMPLE =
+            "https://firebasestorage.googleapis.com/v0/b/supgym-fd72d.appspot.com/o/video_gym_1.mp4?alt=media&token=21f9bb84-0030-4e7c-94c3-88c8dd30e361";
+
     public VideoAdapter(Context mContext, List<Video> list) {
         this.mContext = mContext;
         this.list = list;

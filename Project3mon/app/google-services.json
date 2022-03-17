@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "804950017768",
+    "project_id": "supgym-fd72d",
+    "storage_bucket": "supgym-fd72d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804950017768:android:2f8aba0e0442811708eb5d",
+        "android_client_info": {
+          "package_name": "com.example.project3mon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804950017768-33j4g666bue010rug6kgkea13snrk1ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWCCMLNH8fMzWDFbIArunLktPCTMBZr1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804950017768-33j4g666bue010rug6kgkea13snrk1ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
