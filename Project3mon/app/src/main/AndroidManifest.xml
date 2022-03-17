@@ -19,6 +19,12 @@
             android:name=".VideoList"
             android:exported="false" />
         <activity
+            android:name=".FindPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewWalletActivity"
+            android:exported="false" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="false" />
         <activity

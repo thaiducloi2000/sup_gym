@@ -47,4 +47,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clickToChangePassword(View view) {
+        Intent intent=new Intent(this,FindPassActivity.class);
+        startActivity(intent);
+    }
 }
