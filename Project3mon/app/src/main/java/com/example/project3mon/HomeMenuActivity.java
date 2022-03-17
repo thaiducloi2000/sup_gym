@@ -143,6 +143,7 @@ public class HomeMenuActivity extends AppCompatActivity {
     }
 
 
+
     public void clickToCheckMark(View view) {
         if(!check){
             checkmark.setImageResource(R.drawable.icon_checkmark_green);
@@ -157,4 +158,5 @@ public class HomeMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeMenuActivity.this, ViewWalletActivity.class);
         startActivity(intent);
     }
+
 }
