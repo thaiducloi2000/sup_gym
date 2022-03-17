@@ -29,7 +29,7 @@
             android:paddingBottom="10dp"
             android:text="Thanh toán"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -126,4 +126,14 @@
 
         </LinearLayout>
     </RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:text="Xác nhận thanh toán"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/black"
+            android:onClick="clickToConfirmPayment"/>
+
+    
 </LinearLayout>
