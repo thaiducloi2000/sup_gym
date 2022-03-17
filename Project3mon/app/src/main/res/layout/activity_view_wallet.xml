@@ -39,20 +39,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Số tiền có trong ví "
-            android:textColor="@color/green"
+            android:textColor="@color/dark_white"
             android:textSize="30dp"
             android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3000 Sup Coins "
+        android:id="@+id/txtWallet"
+        android:text="0 Sup Coins "
         android:textColor="@color/green"
         android:textSize="25dp"
         android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lịch sử giao dịch :"
+        android:text="Lịch sử nạp tiền :"
         android:layout_marginTop="15dp"
         android:textColor="@color/dark_white"
         android:textSize="25dp"
@@ -65,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ngày giao dịch"
+            android:text="Ngày nạp tiền"
             android:textColor="@color/dark_white"
             android:layout_marginLeft="5dp"
             android:textSize="25dp"
@@ -81,78 +82,11 @@
             android:textSize="25dp"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15-1-2022"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:textSize="25dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="100.000 VND"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:gravity="right"
-            android:textSize="25dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="30-2-2022"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:textSize="25dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="299.000 VND"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:gravity="right"
-            android:textSize="25dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8-3-2022"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:textSize="25dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1.199.000 VND"
-            android:textColor="@color/dark_white"
-            android:layout_marginLeft="5dp"
-            android:gravity="right"
-            android:textSize="25dp"
-            />
-    </LinearLayout>
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="5dp"
+       android:id="@+id/listViewHistoryRecharge"/>
 
 
 

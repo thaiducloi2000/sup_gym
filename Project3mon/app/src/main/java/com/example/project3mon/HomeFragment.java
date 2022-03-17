@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,11 +42,13 @@ public class HomeFragment extends Fragment {
             return;
         }
         int roleID = (int) bundle.get("roleID");
+        String userID = (String) bundle.get("ID");
+
         try {
-            userAdapter = new UserAdapter(getActivity(),getListTrainer(), roleID);
-            userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer(), roleID);
-            userAdapter_3 = new UserAdapter(getActivity(),getListHotExpTrainer(),roleID);
-            userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer(), roleID);
+            userAdapter = new UserAdapter(getActivity(),getListTrainer(), roleID, userID);
+            userAdapter_2 = new UserAdapter(getActivity(),getListFemaleTrainer(), roleID, userID);
+            userAdapter_3 = new UserAdapter(getActivity(),getListHotExpTrainer(),roleID, userID);
+            userAdapter_4 = new UserAdapter(getActivity(),getListNewTrainer(), roleID, userID);
         } catch (Exception e) {
             e.printStackTrace();
         }

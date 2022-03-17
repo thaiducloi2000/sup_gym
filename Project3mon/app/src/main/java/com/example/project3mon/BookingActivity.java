@@ -33,14 +33,17 @@ public class BookingActivity extends AppCompatActivity {
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     private AppCompatSpinner spChooseDate,spChooseDate2,spChooseDate3,spChooseDate4,spChooseDate5,spChooseDate6,spChooseDate7, spLoopOption;
-    private List<String> dateSelect,dateSelect2, loop_option;
+    private List<String> dateSelect,dateSelect2, loop_option , listday;
     private LinearLayout layoutspinner7,layoutspinner2,layoutspinner3,layoutspinner4,layoutspinner5,layoutspinner6, layout_loop_option;
     private int loop;
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
-
+        btnConfirm = findViewById(R.id.btnConfirmBooking);
+        btnConfirm.setEnabled(false);
         txtTime=findViewById(R.id.txtTime);
         layoutspinner2 = findViewById(R.id.layout_spinner2);
         layoutspinner3 = findViewById(R.id.layout_spinner3);
@@ -119,7 +122,7 @@ public class BookingActivity extends AppCompatActivity {
         txtName.setText(user.getName());
         txtPrice.setText((int) user.getPrice()+" VND/1h");
         CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
-        List<String> listday=new ArrayList<>();
+        listday=new ArrayList<>();
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
@@ -151,7 +154,7 @@ public class BookingActivity extends AppCompatActivity {
                 }
                 txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
                 txtSumary.setText((int)(listday.size()*user.getPrice())+" VNĐ");
-                btnConfirm = findViewById(R.id.btnConfirmBooking);
+
                 btnConfirm.setEnabled(true);
                 layout_loop_option.setVisibility(View.GONE);
                 spLoopOption.setSelection(0);
@@ -160,7 +163,9 @@ public class BookingActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         loop = spLoopOption.getSelectedItemPosition();
                         if(loop == 1){
-                            txtSumary.setText((int)(listday.size()*user.getPrice()*2)+" VND/1h");
+                            txtSumary.setText((int)(listday.size()*user.getPrice()*2)+" VND");
+                        }else if(loop == 0){
+                            txtSumary.setText((int)(listday.size()*user.getPrice())+" VND");
                         }
                     }
 
@@ -215,12 +220,16 @@ public class BookingActivity extends AppCompatActivity {
                 if(listday.size() >=3){
                     layout_loop_option.setVisibility(View.VISIBLE);
                 }
+
                 if(listday.size() >= 8){
                     Toast.makeText(BookingActivity.this, "Không được chọn quá 7 buổi", Toast.LENGTH_SHORT).show();
+                    btnConfirm.setEnabled(false);
+                }else if(listday.size() == 0){
                     btnConfirm.setEnabled(false);
                 }
             }
         });
+        userID = (String) bundle.get("userID");
     }
 
     public void clickToChooseTime(View view) {
@@ -243,6 +252,11 @@ public class BookingActivity extends AppCompatActivity {
 
     public void clickToConfirmBooking(View view) {
         Intent intent = new Intent(this, PaymentActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("userID", userID);
+        bundle.putSerializable("totalPrice", txtSumary.getText().toString());
+        intent.putExtras(bundle);
         startActivity(intent);
+       
     }
 }
