@@ -156,6 +156,13 @@ public class HomeMenuActivity extends AppCompatActivity {
 
     public void clicktoViewWallet(View view) {
         Intent intent = new Intent(HomeMenuActivity.this, ViewWalletActivity.class);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        String userID= (String) bundle.get("ID");
+        bundle.putSerializable("userID", userID);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/txtDateRecharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="17-3-2022"
+        android:textSize="25dp"
+        android:textColor="@color/dark_white"/>
+
+    <TextView
+        android:id="@+id/txtCastCharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:text="100,000 VND"
+        android:gravity="right"
+        android:textSize="25dp"
+        android:textColor="@color/dark_white"/>
+</LinearLayout>

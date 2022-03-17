@@ -485,4 +485,61 @@ public class GetData {
         }
         return list;
     }
+
+    public String getNameByID(String userID) throws SQLException{
+        String name="";
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="Select fullName FROM tblUserAccounts WHERE ID='"+userID+"'";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                if (rs.next()){
+                    name=rs.getString("fullName");
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return name;
+    }
+    public int getWalletByID(String userID)throws SQLException{
+        int wallet= 0;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="Select wallet FROM tblUserAccounts WHERE ID='"+userID+"'";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                if (rs.next()){
+                    wallet = rs.getInt("wallet");
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return wallet;
+    }
 }

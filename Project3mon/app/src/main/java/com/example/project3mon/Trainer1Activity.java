@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +23,7 @@ public class Trainer1Activity extends AppCompatActivity{
     private int CUSTOMER = 1;
     private int TRAINER = 2;
     private TextView txtName, txtDescription, txtGender, txtAge, txtPhone,txtEmail,txtNickName,txtPrice;
-
+    private String userID;
 
     String s = "";
 
@@ -73,6 +74,7 @@ public class Trainer1Activity extends AppCompatActivity{
         if(roleID == TRAINER){
             layoutBooking.setVisibility(View.GONE);
         }
+        userID = (String) bundle.get("userID");
     }
 
     public void clickToBooking(View view) {
@@ -83,8 +85,10 @@ public class Trainer1Activity extends AppCompatActivity{
         }
         User user = (User) bundle.get("User");
         bundle.putSerializable("User",user);
+        bundle.putSerializable("userID",userID);
         intent.putExtras(bundle);
         startActivity(intent);
+        finish();
     }
 
 }
