@@ -73,6 +73,7 @@
             android:textColor="#D2D2D2"
             android:textSize="15dp"
             android:gravity="right"
+            android:onClick="clickToChangePassword"
             android:layout_marginRight="20px"/>
     </LinearLayout>
 
