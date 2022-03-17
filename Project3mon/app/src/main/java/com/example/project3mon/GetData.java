@@ -334,6 +334,43 @@ public class GetData {
         return list;
     }
 
+    public List<Calendar> getListdayTrainer(String id) throws SQLException {
+        List<Calendar> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT sheduleDay " +
+                        " FROM tblSchedules " +
+                        " WHERE bookingID in (Select bookingID from tblBooking where trainerID LIKE '"+id+"')";
+                stm=conn.prepareStatement(sql);
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    Date date=rs.getDate("sheduleDay");
+                    Calendar day=Calendar.getInstance();
+                    day.setTime(date);
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(day);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
     public List<User> getPersonalTrainer(String id) throws SQLException{
         List<User> list = null;
         Connection conn=null;
@@ -420,7 +457,7 @@ public class GetData {
             if(conn!=null){
                 String sql="SELECT startTime,endTime  " +
                         " FROM tblSchedules " +
-                        " WHERE bookingID in (Select bookingID from tblBooking where customerID IN (SELECT customerID FROM tblBooking WHERE trainerID LIKE '"+id+"')) AND sheduleDay LIKE CONVERT(date,?)";
+                        " WHERE bookingID in (Select bookingID from tblBooking where trainerID LIKE '"+id+"') AND sheduleDay LIKE CONVERT(date,?)";
                 stm=conn.prepareStatement(sql);
                 java.sql.Date ulDay=new java.sql.Date(day.getTime());
                 stm.setDate(1, ulDay);
