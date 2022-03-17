@@ -72,8 +72,8 @@ public class AddVideoActivity extends AppCompatActivity {
 
         // setup progress dialog
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setMessage("Uploading Video");
+        progressDialog.setTitle("Vui Lòng Chờ");
+        progressDialog.setMessage("Đang Đăng Tải Video");
         progressDialog.setCanceledOnTouchOutside(false);
 
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -82,12 +82,14 @@ public class AddVideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 title = edtTitle.getText().toString().trim();
-                if (TextUtils.isEmpty(title)) {
-                    Toast.makeText(AddVideoActivity.this, "Title is require....", Toast.LENGTH_SHORT).show();
-                } else if (videoUri == null) {
-                    Toast.makeText(AddVideoActivity.this, "Pick a video before you can upload....", Toast.LENGTH_SHORT).show();
-                }
-                uploadVideoToFirebase();
+                    if (TextUtils.isEmpty(title)) {
+                        Toast.makeText(AddVideoActivity.this, "Vui Lòng Nhập Tiêu Đề....", Toast.LENGTH_SHORT).show();
+                    }if (videoUri == null) {
+                        Toast.makeText(AddVideoActivity.this, "Vui lòng chọn video trước khi đăng....", Toast.LENGTH_SHORT).show();
+                    }else{
+                        uploadVideoToFirebase();
+                    }
+
             }
         });
 
@@ -138,7 +140,7 @@ public class AddVideoActivity extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void unused) {
                                             progressDialog.dismiss();
-                                            Toast.makeText(AddVideoActivity.this, "Video Uploaded........", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddVideoActivity.this, "Video Đã Được Đăng...", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {

@@ -33,8 +33,8 @@
         android:layout_below="@+id/videoVidew"
         android:layout_marginTop="5dp"
         android:background="@color/gray"
-        android:text="Upload Video"
-        android:textColor="@color/white"/>
+        android:text="Đăng Video"
+        android:textColor="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pickVideoTab"
