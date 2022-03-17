@@ -53,7 +53,7 @@
                 app:strokeColor="@color/green"
                 app:strokeWidth="1dp" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="clickToCheckMark"
+                android:onClick="clickToUploadVideo"
                 android:shadowRadius="20"
                 android:text="Gửi Video"
                 android:textColor="@color/green"

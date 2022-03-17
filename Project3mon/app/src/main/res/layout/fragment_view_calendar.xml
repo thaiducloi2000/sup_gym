@@ -107,6 +107,7 @@
                     android:onClick="clickToViewVideo"
                     android:text="Xem Bài Tập"
                     android:textColor="@color/black" />
+
                 <Button
                     android:id="@+id/btnAccept"
                     android:layout_width="140dp"
@@ -114,6 +115,17 @@
                     android:layout_marginStart="10dp"
                     android:backgroundTint="@color/green"
                     android:text=" Xác Nhận"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/btnBaiTapDone"
+                    android:layout_width="140dp"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/green"
+                    android:text="Xem Bài Nộp"
+                    android:onClick="clickToViewBaiTapDone"
                     android:textColor="@color/black" />
             </LinearLayout>
 
