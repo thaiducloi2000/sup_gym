@@ -44,20 +44,25 @@ public class HomeMenuActivity extends AppCompatActivity {
         }
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        botNav = findViewById(R.id.botNav);
-
-        Fragment homeFragment = new HomeFragment();
-        homeFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
-        botNav.setSelectedItemId(R.id.action_home);
         int finalRoleID = roleID;
+        if(finalRoleID==1){
+            Fragment homeFragment = new HomeFragment();
+            homeFragment.setArguments(bundle);
+            botNav = findViewById(R.id.botNav);
+            getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
+            botNav.setSelectedItemId(R.id.action_home);
+        }if(finalRoleID==2){
+            Fragment homeFragment = new HomeFragment();
+            homeFragment.setArguments(bundle);
+            botNav = findViewById(R.id.botNav);
+            getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
+            botNav.setSelectedItemId(R.id.action_home);
+        }
         botNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                AppCompatActivity activity = null;
-                switch (item.getItemId()) {
+                    switch (item.getItemId()) {
                     case R.id.action_home:
                         fragment = new HomeFragment();
                         break;
