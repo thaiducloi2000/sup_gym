@@ -25,7 +25,7 @@
 
     <LinearLayout
         android:id="@+id/button"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -47,25 +47,6 @@
                 android:onClick="clickToCheckMark"
                 android:shadowRadius="20"
                 android:text="Hoàn Thành"
-                android:textColor="@color/green"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:strokeColor="@color/green"
-                app:strokeWidth="1dp" />
-
-            <Button
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnDone"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="400dp"
-                android:layout_marginEnd="30dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:onClick="clickToUploadVideo"
-                android:shadowRadius="20"
-                android:text="Gửi Video"
                 android:textColor="@color/green"
                 android:textSize="20dp"
                 android:textStyle="bold"

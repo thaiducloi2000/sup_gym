@@ -5,16 +5,17 @@ import java.io.Serializable;
 public class Video implements Serializable {
 
     private String videoID;
+    private String videoName;
     private String videoUrl;
     private String background;
-    private String videoName;
     private String checkMark;
 
-    public Video(String videoID, String videoUrl, String background, String videoName, String checkMark) {
+
+    public Video(String videoID, String videoName, String videoUrl, String background, String checkMark) {
         this.videoID = videoID;
+        this.videoName = videoName;
         this.videoUrl = videoUrl;
         this.background = background;
-        this.videoName = videoName;
         this.checkMark = checkMark;
     }
 

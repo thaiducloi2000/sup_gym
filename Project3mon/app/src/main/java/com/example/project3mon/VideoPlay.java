@@ -63,9 +63,6 @@ public class VideoPlay extends AppCompatActivity {
 
     }
 
-    public void clickToUploadVideo(View view) {
-        startActivity( new Intent(VideoPlay.this, AddVideoActivity.class));
-    }
 
     private class updateView extends AsyncTask<Void, Integer, Void> {
 
