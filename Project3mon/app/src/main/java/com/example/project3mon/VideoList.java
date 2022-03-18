@@ -1,5 +1,6 @@
 package com.example.project3mon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -34,15 +35,19 @@ public class VideoList extends AppCompatActivity {
 
     public List<Video> getListVideo (){
         List<Video> videos = new ArrayList<>();
-        videos.add( new Video("video1","video_gym_1","exercise4", "tập toàn bộ các nhóm cơ", "icon_checkmark_green"));
-        videos.add( new Video("video2","video_gym_1","exercice3", "bài tập khởi động hay", "icon_checkmark_gray"));
-        videos.add( new Video("video3","video_gym_1", "exercice2", "bài tập cơ tay", "icon_checkmark_gray"));
-        videos.add( new Video("video4","video_gym_1", "exercice1", "bài tập hít đất", "icon_checkmark_gray"));
+        videos.add( new Video("video1","tập toàn bộ các nhóm cơ","video_gym_1", "exercise4", "icon_checkmark_green"));
+        videos.add( new Video("video2","bài tập khởi động hay","video_gym_1", "exercice3", "icon_checkmark_gray"));
+        videos.add( new Video("video3","bài tập cơ tay", "video_gym_1", "exercice2", "icon_checkmark_gray"));
+        videos.add( new Video("video4","bài tập hít đất", "video_gym_1", " exercice1", "icon_checkmark_gray"));
 
         return videos ;
     }
 
     public void clicktoBack2(View view) {
         finish();
+    }
+
+    public void clickToViewExerciseUpload(View view) {
+        startActivity( new Intent(VideoList.this, ViewUploadedVideo.class));
     }
 }

@@ -25,6 +25,8 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.project3mon.dao.VideoDAO;
+import com.example.project3mon.dto.Video;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,9 +37,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class AddVideoActivity extends AppCompatActivity {
+
+    private static final String VIDEO_SAMPLE =
+            "https://firebasestorage.googleapis.com/v0/b/supgym-fd72d.appspot.com/o/video_gym_1.mp4?alt=media&token=21f9bb84-0030-4e7c-94c3-88c8dd30e361";
 
     private ActionBar actionBar;
     private EditText edtTitle;
@@ -69,6 +75,31 @@ public class AddVideoActivity extends AppCompatActivity {
         videoView = findViewById(R.id.videoVidew);
         btnUploadVideo = findViewById(R.id.btnUploadVideo);
         pickVideoTab = findViewById(R.id.pickVideoTab);
+
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            Toast.makeText(AddVideoActivity.this, "bundle is null", Toast.LENGTH_SHORT).show();
+        } else {
+            Video video = (Video) bundle.get("video");
+            if (video.getVideoUrl() != null || video.getVideoUrl() != "") {
+                btnUploadVideo.setText("Edit Video");
+                edtTitle.setText(video.getVideoName());
+
+                Toast.makeText(AddVideoActivity.this, video.getVideoUrl(), Toast.LENGTH_SHORT).show();
+
+                MediaController mediaController = new MediaController(this);
+                mediaController.setAnchorView(videoView);
+
+
+                Uri uri = Uri.parse(video.getVideoUrl());
+                videoView.setMediaController(mediaController);
+                videoView.setVideoURI(uri);
+                videoView.requestFocus();
+                videoView.start();
+            }
+        }
+
 
         // setup progress dialog
         progressDialog = new ProgressDialog(this);
@@ -104,6 +135,7 @@ public class AddVideoActivity extends AppCompatActivity {
 
     private void uploadVideoToFirebase() {
         progressDialog.show();
+        VideoDAO dao = new VideoDAO();
 
         String timestamp = "" + System.currentTimeMillis();
         String filePathName = "Videos/" + "video_" + timestamp;
@@ -128,6 +160,16 @@ public class AddVideoActivity extends AppCompatActivity {
                             hashMap.put("title", title);
                             hashMap.put("timestamp", timestamp + "");
                             hashMap.put("videoUrl", dowloadUri + "");
+
+                            Video video =
+                                    new Video(timestamp, title, dowloadUri+"", "exercice1", "icon_checkmark_green");
+                            try {
+                                if(dao.AddNewVideo(video, 3)){
+                                    Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
 
                             DatabaseReference databaseReference =
                                     FirebaseDatabase
