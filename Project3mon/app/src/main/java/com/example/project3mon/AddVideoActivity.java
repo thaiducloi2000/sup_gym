@@ -100,7 +100,6 @@ public class AddVideoActivity extends AppCompatActivity {
             }
         }
 
-
         // setup progress dialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Vui Lòng Chờ");
@@ -120,7 +119,6 @@ public class AddVideoActivity extends AppCompatActivity {
                     }else{
                         uploadVideoToFirebase();
                     }
-
             }
         });
 
