@@ -52,7 +52,7 @@ public class HomeMenuActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
             botNav.setSelectedItemId(R.id.action_home);
         }if(finalRoleID==2){
-            Fragment homeFragment = new HomeFragment();
+            Fragment homeFragment = new HomeTrainerFragment();
             homeFragment.setArguments(bundle);
             botNav = findViewById(R.id.botNav);
             getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
@@ -64,7 +64,11 @@ public class HomeMenuActivity extends AppCompatActivity {
                 Fragment fragment = null;
                     switch (item.getItemId()) {
                     case R.id.action_home:
-                        fragment = new HomeFragment();
+                        if(finalRoleID==1){
+                            fragment = new HomeFragment();
+                        }if(finalRoleID==2){
+                        fragment = new HomeTrainerFragment();
+                        }
                         break;
                     case R.id.action_booking:
                         fragment = new BookingFragment();
