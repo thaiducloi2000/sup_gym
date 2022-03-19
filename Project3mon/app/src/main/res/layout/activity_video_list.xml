@@ -42,14 +42,13 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/btnDone"
+            android:id="@+id/btnVideoUploaded"
             android:layout_marginStart="110dp"
             android:layout_marginEnd="30dp"
-            android:onClick="clickToViewExerciseUpload"
             android:shadowRadius="20"
             android:text="Video Đã Đăng"
             android:textColor="@color/green"
@@ -57,6 +56,7 @@
             android:textStyle="bold"
             app:strokeColor="@color/green"
             app:strokeWidth="1dp" />
+
 
     </LinearLayout>
 
