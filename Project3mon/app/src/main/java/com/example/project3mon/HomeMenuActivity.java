@@ -68,6 +68,7 @@ public class HomeMenuActivity extends AppCompatActivity {
                             fragment = new HomeFragment();
                         }if(finalRoleID==2){
                         fragment = new HomeTrainerFragment();
+
                         }
                         break;
                     case R.id.action_booking:
@@ -171,6 +172,18 @@ public class HomeMenuActivity extends AppCompatActivity {
         }
         String userID= (String) bundle.get("ID");
         bundle.putSerializable("userID", userID);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void clickToViewListVideoTrainer(View view) {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User userProfile = (User) bundle.get("userProfile");
+        bundle.putSerializable("userProfile", userProfile);
+        Intent intent = new Intent(this, VideoList.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

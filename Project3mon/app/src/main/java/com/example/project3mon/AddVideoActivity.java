@@ -42,9 +42,6 @@ import java.util.HashMap;
 
 public class AddVideoActivity extends AppCompatActivity {
 
-    private static final String VIDEO_SAMPLE =
-            "https://firebasestorage.googleapis.com/v0/b/supgym-fd72d.appspot.com/o/video_gym_1.mp4?alt=media&token=21f9bb84-0030-4e7c-94c3-88c8dd30e361";
-
     private ActionBar actionBar;
     private EditText edtTitle;
     private VideoView videoView;
@@ -60,6 +57,9 @@ public class AddVideoActivity extends AppCompatActivity {
     private String title;
 
     private ProgressDialog progressDialog;
+    private Bundle bundle;
+    private boolean check = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,21 +76,18 @@ public class AddVideoActivity extends AppCompatActivity {
         btnUploadVideo = findViewById(R.id.btnUploadVideo);
         pickVideoTab = findViewById(R.id.pickVideoTab);
 
-
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
         if (bundle == null) {
-            Toast.makeText(AddVideoActivity.this, "bundle is null", Toast.LENGTH_SHORT).show();
-        } else {
+
+        }
+        try {
             Video video = (Video) bundle.get("video");
             if (video.getVideoUrl() != null || video.getVideoUrl() != "") {
                 btnUploadVideo.setText("Edit Video");
                 edtTitle.setText(video.getVideoName());
 
-                Toast.makeText(AddVideoActivity.this, video.getVideoUrl(), Toast.LENGTH_SHORT).show();
-
                 MediaController mediaController = new MediaController(this);
                 mediaController.setAnchorView(videoView);
-
 
                 Uri uri = Uri.parse(video.getVideoUrl());
                 videoView.setMediaController(mediaController);
@@ -98,6 +95,8 @@ public class AddVideoActivity extends AppCompatActivity {
                 videoView.requestFocus();
                 videoView.start();
             }
+        } catch (Exception e) {
+            check = false;
         }
 
         // setup progress dialog
@@ -112,13 +111,14 @@ public class AddVideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 title = edtTitle.getText().toString().trim();
-                    if (TextUtils.isEmpty(title)) {
-                        Toast.makeText(AddVideoActivity.this, "Vui Lòng Nhập Tiêu Đề....", Toast.LENGTH_SHORT).show();
-                    }if (videoUri == null) {
-                        Toast.makeText(AddVideoActivity.this, "Vui lòng chọn video trước khi đăng....", Toast.LENGTH_SHORT).show();
-                    }else{
-                        uploadVideoToFirebase();
-                    }
+                if (TextUtils.isEmpty(title)) {
+                    Toast.makeText(AddVideoActivity.this, "Vui Lòng Nhập Tiêu Đề....", Toast.LENGTH_SHORT).show();
+                }
+                if (videoUri == null) {
+                    Toast.makeText(AddVideoActivity.this, "Vui lòng chọn video trước khi đăng....", Toast.LENGTH_SHORT).show();
+                } else {
+                    uploadVideoToFirebase();
+                }
             }
         });
 
@@ -160,13 +160,23 @@ public class AddVideoActivity extends AppCompatActivity {
                             hashMap.put("videoUrl", dowloadUri + "");
 
                             Video video =
-                                    new Video(timestamp, title, dowloadUri+"", "exercice1", "icon_checkmark_green");
-                            try {
-                                if(dao.AddNewVideo(video, 3)){
-                                    Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                    new Video(timestamp, title, dowloadUri + "", "exercice1", "icon_checkmark_green");
+                            if (check) {
+                                try {
+                                    if (dao.AddNewVideo(video, 3)) {
+                                        Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
                                 }
-                            } catch (SQLException throwables) {
-                                throwables.printStackTrace();
+                            } else {
+                                try {
+                                    if (dao.AddNewVideo(video, 4)) {
+                                        Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                }
                             }
 
                             DatabaseReference databaseReference =

@@ -14,19 +14,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.project3mon.dto.Video;
 import com.google.android.material.button.MaterialButton;
 
 public class VideoPlay extends AppCompatActivity {
 
-    private static final String VIDEO_SAMPLE =
-            "https://firebasestorage.googleapis.com/v0/b/supgym-fd72d.appspot.com/o/video_gym_1.mp4?alt=media&token=21f9bb84-0030-4e7c-94c3-88c8dd30e361";
-
     private VideoView myVideo;
     private LinearLayout linearButton;
-    private Button btnDone;
-//    TextView txtDuration, txtCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +31,12 @@ public class VideoPlay extends AppCompatActivity {
         setContentView(R.layout.activity_video_play);
         myVideo = findViewById(R.id.video);
         linearButton = findViewById(R.id.button);
-        btnDone = findViewById(R.id.btnDone);
 
-//        btnDone.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity( new Intent(VideoPlay.this, AddVideoActivity.class));
-//            }
-//        });
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        Video video = (Video) bundle.get("videoPlay");
 
 //        txtDuration = findViewById(R.id.duration);
 //        txtCurrent = findViewById(R.id.current);
@@ -51,9 +46,10 @@ public class VideoPlay extends AppCompatActivity {
         //Create MediaController
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(myVideo);
+        Toast.makeText(this, video.getVideoUrl(), Toast.LENGTH_SHORT).show();
 
         // Parse Video Link
-        Uri uri = Uri.parse(VIDEO_SAMPLE);
+        Uri uri = Uri.parse(video.getVideoUrl());
 
         // set MediaController And Video Uri
         myVideo.setMediaController(mediaController);

@@ -33,7 +33,6 @@ public class RegisterTrainerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_trainer);
-        setContentView(R.layout.activity_register);
         spnGender=findViewById(R.id.spnGender);
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.custom_spinner,getResources().getStringArray(R.array.list));
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);

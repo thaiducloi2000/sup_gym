@@ -25,9 +25,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     private Context mContext;
     private List<Video> list;
 
-    private static final String VIDEO_SAMPLE =
-            "https://firebasestorage.googleapis.com/v0/b/supgym-fd72d.appspot.com/o/video_gym_1.mp4?alt=media&token=21f9bb84-0030-4e7c-94c3-88c8dd30e361";
-
     public VideoAdapter(Context mContext, List<Video> list) {
         this.mContext = mContext;
         this.list = list;
@@ -49,16 +46,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         int imgResID = mContext.getResources().getIdentifier(video.getBackground(), "drawable", mContext.getPackageName());
         holder.txtVideoBackground.setImageResource(imgResID);
 
-        int videoID = mContext.getResources().getIdentifier(video.getVideoUrl(), "raw", mContext.getPackageName());
-        MediaPlayer mpl = MediaPlayer.create(mContext, videoID);
-        int minute = mpl.getDuration() / 60000;
-        String str = String.valueOf(mpl.getDuration() % 60000);
-        String second = str.substring(0, 2);
 
         int markResID = mContext.getResources().getIdentifier(video.getCheckMark(), "drawable", mContext.getPackageName());
         holder.txtCheckMark.setImageResource(markResID);
         holder.txtVideoName.setText(video.getVideoName());
-        holder.txtTimeDuration.setText(minute +":" + second);
+        holder.txtTimeDuration.setText("04" +":" + "33");
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +63,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     private void onClickToDetal(Video video) {
         Intent intent = new Intent(mContext, VideoPlay.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("video", video);
+        bundle.putSerializable("videoPlay", video);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
     }
