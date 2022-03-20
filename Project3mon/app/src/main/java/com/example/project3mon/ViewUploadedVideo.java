@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project3mon.adapter.VideoAdapter;
 import com.example.project3mon.adapter.VideoUploadListAdapter;
@@ -21,24 +23,31 @@ public class ViewUploadedVideo extends AppCompatActivity {
 
     private RecyclerView rcvVideo;
     private VideoUploadListAdapter adapter;
+    private TextView txtUploadVideo;
 
     Bundle bundle;
-    User user;
+    User user, trainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_uploaded_video);
+        txtUploadVideo = findViewById(R.id.txtUploadVideo);
 
         bundle = getIntent().getExtras();
-        if(bundle == null){
-        }
-        else {
-            user = (User) bundle.get("User");
+        if (bundle == null) {
+        } else {
+
+            user = (User) bundle.get("user");
+            trainer = (User) bundle.get("trainer");
+
+            if (trainer == null) {
+                txtUploadVideo.setVisibility(View.VISIBLE);
+            }
         }
 
         try {
-            adapter = new VideoUploadListAdapter(this, getListVideo());
+            adapter = new VideoUploadListAdapter(this, getListVideo(), user);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -49,11 +58,11 @@ public class ViewUploadedVideo extends AppCompatActivity {
         rcvVideo.setAdapter(adapter);
     }
 
-    public List<Video> getListVideo () throws SQLException {
+    public List<Video> getListVideo() throws SQLException {
         List<Video> videos = new ArrayList<>();
         VideoDAO dao = new VideoDAO();
         videos = dao.getUserVideo(Integer.parseInt(user.getID()));
-        return videos ;
+        return videos;
     }
 
     public void clicktoBack2(View view) {
@@ -61,6 +70,11 @@ public class ViewUploadedVideo extends AppCompatActivity {
     }
 
     public void clickToUploadNewVideo(View view) {
-        startActivity( new Intent(this, AddVideoActivity.class));
+        Intent intent = new Intent(ViewUploadedVideo.this, AddVideoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user", user);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
     }
 }

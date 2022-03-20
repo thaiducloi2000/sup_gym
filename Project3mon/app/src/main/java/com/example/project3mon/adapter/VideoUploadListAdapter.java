@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project3mon.AddVideoActivity;
 import com.example.project3mon.R;
+import com.example.project3mon.User;
 import com.example.project3mon.VideoPlay;
 import com.example.project3mon.dto.Video;
 
@@ -26,10 +28,12 @@ public class VideoUploadListAdapter extends RecyclerView.Adapter<VideoUploadList
 
     private Context mContext;
     private List<Video> list;
+    private User user;
 
-    public VideoUploadListAdapter(Context mContext, List<Video> list) {
+    public VideoUploadListAdapter(Context mContext, List<Video> list, User user) {
         this.mContext = mContext;
         this.list = list;
+        this.user = user;
     }
 
     @NonNull
@@ -59,6 +63,8 @@ public class VideoUploadListAdapter extends RecyclerView.Adapter<VideoUploadList
     private void onClickToDetal(Video video) {
         Intent intent = new Intent(mContext, AddVideoActivity.class);
         Bundle bundle = new Bundle();
+        Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
+        bundle.putSerializable("user", user);
         bundle.putSerializable("video", video);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
@@ -76,7 +82,7 @@ public class VideoUploadListAdapter extends RecyclerView.Adapter<VideoUploadList
     public class VideoUploadListHolder extends RecyclerView.ViewHolder {
 
         private ImageView txtCheckMark;
-        private TextView txtExerciseName;
+        private TextView txtExerciseName, txtEvaluate;
         private LinearLayout layoutItem;
 
         public VideoUploadListHolder(@NonNull View itemView) {
@@ -84,7 +90,7 @@ public class VideoUploadListAdapter extends RecyclerView.Adapter<VideoUploadList
 
             layoutItem = itemView.findViewById(R.id.layout_exercise);
             txtExerciseName = itemView.findViewById(R.id.txtExercise);
-//            txtCheckMark = itemView.findViewById(R.id.checkMark);
+            txtCheckMark = itemView.findViewById(R.id.checkMark);
         }
     }
 

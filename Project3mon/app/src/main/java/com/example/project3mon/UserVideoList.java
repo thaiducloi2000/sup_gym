@@ -20,13 +20,23 @@ public class UserVideoList extends AppCompatActivity {
     private RecyclerView rcvVideo;
     private VideoAdapter adapter;
 
+    Bundle bundle;
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
 
+        bundle = getIntent().getExtras();
+        if(bundle == null){
+
+        }else{
+            user = (User) bundle.get("userProfile");
+        }
+
         try {
-            adapter = new VideoAdapter(this, getListVideo());
+            adapter = new VideoAdapter(this, getListVideo() , user);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
