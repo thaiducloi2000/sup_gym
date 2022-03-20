@@ -27,6 +27,8 @@ public class VideoList extends AppCompatActivity {
     private RecyclerView rcvVideo;
     private VideoAdapter adapter;
     private MaterialButton btnVideoUploaded;
+    Bundle bundle;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,21 +36,32 @@ public class VideoList extends AppCompatActivity {
         setContentView(R.layout.activity_video_list);
         btnVideoUploaded = findViewById(R.id.btnVideoUploaded);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            Toast.makeText(this, bundle + "", Toast.LENGTH_SHORT).show();
+        bundle = getIntent().getExtras();
+        user = (User) bundle.get("userProfile");
+
+        if (user != null) {
             btnVideoUploaded.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(VideoList.this, ViewUploadedVideo.class));
+                    Intent intent = new Intent(VideoList.this, ViewUploadedVideo.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("User", user);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
+
             });
-        } else {
+        }
+        else {
             btnVideoUploaded.setText("Đăng Video");
             btnVideoUploaded.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(VideoList.this, AddVideoActivity.class));
+                    Intent intent = new Intent(VideoList.this, AddVideoActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("check", true);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
             });
         }

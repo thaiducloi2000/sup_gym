@@ -78,11 +78,12 @@ public class AddVideoActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         if (bundle == null) {
-
+            check = true;
         }
         try {
             Video video = (Video) bundle.get("video");
-            if (video.getVideoUrl() != null || video.getVideoUrl() != "") {
+            Toast.makeText(this, video+"", Toast.LENGTH_SHORT).show();
+            if (video != null) {
                 btnUploadVideo.setText("Edit Video");
                 edtTitle.setText(video.getVideoName());
 
@@ -94,10 +95,13 @@ public class AddVideoActivity extends AppCompatActivity {
                 videoView.setVideoURI(uri);
                 videoView.requestFocus();
                 videoView.start();
+                check = false;
             }
         } catch (Exception e) {
             check = false;
         }
+
+        Toast.makeText(this, check+"", Toast.LENGTH_SHORT).show();
 
         // setup progress dialog
         progressDialog = new ProgressDialog(this);
@@ -163,7 +167,7 @@ public class AddVideoActivity extends AppCompatActivity {
                                     new Video(timestamp, title, dowloadUri + "", "exercice1", "icon_checkmark_green");
                             if (check) {
                                 try {
-                                    if (dao.AddNewVideo(video, 3)) {
+                                    if (dao.AddNewVideo(video, 4)) {
                                         Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {
@@ -171,7 +175,7 @@ public class AddVideoActivity extends AppCompatActivity {
                                 }
                             } else {
                                 try {
-                                    if (dao.AddNewVideo(video, 4)) {
+                                    if (dao.AddNewVideo(video, 3)) {
                                         Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {

@@ -68,7 +68,6 @@ public class HomeMenuActivity extends AppCompatActivity {
                             fragment = new HomeFragment();
                         }if(finalRoleID==2){
                         fragment = new HomeTrainerFragment();
-
                         }
                         break;
                     case R.id.action_booking:
@@ -149,10 +148,17 @@ public class HomeMenuActivity extends AppCompatActivity {
 
     public void clickToViewVideo(View view) {
         Intent intent = new Intent(HomeMenuActivity.this, VideoList.class);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User userProfile = (User) bundle.get("userProfile");
+        bundle.putSerializable("userProfile", userProfile);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
         startActivity(intent);
     }
-
-
 
     public void clickToCheckMark(View view) {
         if(!check){
@@ -188,6 +194,18 @@ public class HomeMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clickToViewListCustomer(View view) {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        User userProfile = (User) bundle.get("userProfile");
+        bundle.putSerializable("userProfile", userProfile);
+        Intent intent = new Intent(this, CustomerList.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     public void clickToviewSchedules(View view) {
         Bundle bundle=getIntent().getExtras();
         if(bundle==null){
@@ -198,9 +216,4 @@ public class HomeMenuActivity extends AppCompatActivity {
         intent.putExtra("ID",ID);
         startActivity(intent);
     }
-
-//    public void clickToViewBaiTapDone(View view) {
-//        Intent intent = new Intent(HomeMenuActivity.this, UserVideoList.class);
-//        startActivity(intent);
-//    }
 }

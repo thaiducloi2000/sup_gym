@@ -79,6 +79,18 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public User(String ID, String name, String position, String description, String image, Date birthday, String phoneNumber, String gender, int roleID) {
+        this.ID = ID;
+        this.name = name;
+        this.position = position;
+        this.description = description;
+        this.image = image;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.roleID = roleID;
+    }
+
     public String getID() {
         return ID;
     }
