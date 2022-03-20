@@ -188,6 +188,17 @@ public class HomeMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clickToviewSchedules(View view) {
+        Bundle bundle=getIntent().getExtras();
+        if(bundle==null){
+            return;
+        }
+        String ID=(String)bundle.get("ID");
+        Intent intent=new Intent(this,ViewCustomer.class);
+        intent.putExtra("ID",ID);
+        startActivity(intent);
+    }
+
 //    public void clickToViewBaiTapDone(View view) {
 //        Intent intent = new Intent(HomeMenuActivity.this, UserVideoList.class);
 //        startActivity(intent);

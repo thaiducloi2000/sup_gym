@@ -542,4 +542,97 @@ public class GetData {
         }
         return wallet;
     }
+
+    public String getSchedulesCustomerToday(String userID, Date day) throws SQLException {
+        String today="";
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT startTime" +
+                        " FROM tblSchedules " +
+                        " WHERE bookingID in (Select bookingID from tblBooking where trainerID LIKE '"+userID+"') AND sheduleDay LIKE CONVERT(date,?)";
+                stm=conn.prepareStatement(sql);
+                java.sql.Date ulDay=new java.sql.Date(day.getTime());
+                stm.setDate(1, ulDay);
+                rs=stm.executeQuery();
+                if (rs.next()){
+                    Time startTime=rs.getTime("startTime");
+                    today=startTime.getHours()+":"+String.format("%02d",startTime.getMinutes());
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return today;
+    }
+
+    public List<User> getListCustomer(String id) throws SQLException {
+        List<User> list=null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try{
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql = "Select " +
+                        "ID," +
+                        "fullName," +
+                        "position, " +
+                        "description, " +
+                        "image, " +
+                        "birthday, " +
+                        "phoneNumber, " +
+                        "gender, " +
+                        "email " +
+                        "from " +
+                        " tblUserAccounts " +
+                        "WHERE ID IN " +
+                        " (SELECT " +
+                        "   customerID " +
+                        "   FROM " +
+                        "  tblBooking " +
+                        " WHERE " +
+                        "  trainerID LIKE '"+id+"')";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                while(rs.next()){
+                    String name = rs.getString("fullName");
+                    String position = rs.getString("position");
+                    String description = rs.getString("description");
+                    String image = rs.getString("image");
+                    Date birthday = rs.getDate("birthday");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String gender = rs.getString("gender");
+                    String email = rs.getString("email");
+                    if(list==null){
+                        list=new ArrayList<>();
+                    }
+                    User user = new User(id,name,position,description, image, birthday, phoneNumber, gender, email);
+                    list.add(user);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
 }

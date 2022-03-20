@@ -70,7 +70,8 @@
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:background="@drawable/ic_schedule"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:onClick="clickToviewSchedules"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
