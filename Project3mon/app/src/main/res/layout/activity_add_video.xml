@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/dark_gray"
     android:padding="10dp"
     tools:context=".AddVideoActivity">
 
@@ -34,29 +34,61 @@
         android:layout_below="@+id/videoVidew"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:shadowRadius="20"
         android:layout_weight="1"
+        android:backgroundTint="@color/gray"
+        android:shadowRadius="20"
         android:text="Đăng Video"
         android:textColor="@color/green"
         app:strokeColor="@color/green"
         app:strokeWidth="1dp" />
 
-    <TextView
-        android:id="@+id/txtCommentTitle"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/formEvaluate"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnUploadVideo"
         android:layout_marginTop="20dp"
-        android:text="Đánh Giá Từ Huấn Luyện Viên"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:background="@color/gray"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCommentTitle"
-        android:layout_marginTop="20dp"
-        android:text="@string/philosophy" />
+        <TextView
+            android:id="@+id/txtCommentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Đánh Giá Từ Huấn Luyện Viên:"
+            android:textColor="@color/green"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtEvaluate"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Rất tốt"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEvaluate"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/formEvaluate"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:onClick="clickToEvaluateVideo"
+        android:shadowRadius="20"
+        android:text="Đăng"
+        android:textColor="@color/green"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:strokeColor="@color/green"
+        app:strokeWidth="1dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pickVideoTab"

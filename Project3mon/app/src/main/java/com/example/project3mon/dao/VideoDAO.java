@@ -23,7 +23,7 @@ public class VideoDAO {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="SELECT videoName, videoUrl, background, checkmark, ID FROM tblVideo WHERE userID = ?";
+                String sql="SELECT videoName, videoUrl, background, checkmark, ID, evaluate FROM tblVideo WHERE userID = ?";
                 stm=conn.prepareStatement(sql);
                 stm.setInt(1, userID);
                 rs=stm.executeQuery();
@@ -33,10 +33,11 @@ public class VideoDAO {
                     String videoUrl = rs.getString("videoUrl");
                     String background = rs.getString("background");
                     String checkmark = rs.getString("checkmark");
+                    String evaluate = rs.getString("evaluate");
                     if(list == null){
                         list = new ArrayList<>();
                     }
-                    list.add( new Video(ID, videoName, videoUrl, background, checkmark));
+                    list.add( new Video(ID, videoName, videoUrl, background, checkmark, evaluate));
                 }
             }
         }catch (Exception e){
@@ -60,14 +61,15 @@ public class VideoDAO {
         try {
             conn = DBUtils.openConnection();
             if(conn!=null){
-                String sql="INSERT INTO tblVideo VALUES (?,?,?,?,?,?);";
+                String sql="INSERT INTO tblVideo VALUES (?,?,?,?,?,?,?);";
                 stm=conn.prepareStatement(sql);
                 stm.setString(1,video.getVideoID());
                 stm.setString(2,video.getVideoName());
                 stm.setString(3,video.getVideoUrl());
-                stm.setString(4, video.getBackground());
+                stm.setString(4,video.getBackground());
                 stm.setInt(5, userID);
                 stm.setString(6,video.getCheckMark());
+                stm.setString(7,video.getEvaluate());
                 int result = stm.executeUpdate();
                 if(result > 0){
                     check = true;
@@ -84,5 +86,34 @@ public class VideoDAO {
         }
         return check;
     }
+
+    public boolean updateEvaluate(String evaluate, String videoID) throws Exception{
+        Connection conn=null;
+        PreparedStatement stm=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="Update tblVideo SET evaluate = ? WHERE ID= ?";
+                stm=conn.prepareStatement(sql);
+                stm.setString(1,evaluate);
+                stm.setString(2,videoID);
+                int result = stm.executeUpdate();
+                if(result > 0){
+                    return true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return false;
+    }
+
+
 
 }

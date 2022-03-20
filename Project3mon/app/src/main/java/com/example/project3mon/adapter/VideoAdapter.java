@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project3mon.R;
+import com.example.project3mon.User;
 import com.example.project3mon.VideoPlay;
 import com.example.project3mon.dto.Video;
 
@@ -24,10 +25,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private Context mContext;
     private List<Video> list;
+    private User user;
 
-    public VideoAdapter(Context mContext, List<Video> list) {
+    public VideoAdapter(Context mContext, List<Video> list, User user) {
         this.mContext = mContext;
         this.list = list;
+        this.user = user;
     }
 
     @NonNull
@@ -46,7 +49,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         int imgResID = mContext.getResources().getIdentifier(video.getBackground(), "drawable", mContext.getPackageName());
         holder.txtVideoBackground.setImageResource(imgResID);
 
-
         int markResID = mContext.getResources().getIdentifier(video.getCheckMark(), "drawable", mContext.getPackageName());
         holder.txtCheckMark.setImageResource(markResID);
         holder.txtVideoName.setText(video.getVideoName());
@@ -64,6 +66,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         Intent intent = new Intent(mContext, VideoPlay.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("videoPlay", video);
+        bundle.putSerializable("user", video);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
     }
