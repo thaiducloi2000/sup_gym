@@ -87,6 +87,7 @@
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="140dp"
+                        android:onClick="clickToViewListCustomer"
                         android:layout_height="140dp"
                         android:background="@drawable/ic_viewlist_student"
                         android:layout_gravity="center"/>

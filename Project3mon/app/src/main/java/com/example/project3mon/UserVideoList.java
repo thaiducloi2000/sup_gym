@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.project3mon.adapter.VideoAdapter;
+import com.example.project3mon.dao.VideoDAO;
 import com.example.project3mon.dto.Video;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,11 @@ public class UserVideoList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
 
-        adapter = new VideoAdapter(this, getListVideo());
+        try {
+            adapter = new VideoAdapter(this, getListVideo());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         rcvVideo = this.findViewById(R.id.rcv_video);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
@@ -32,12 +38,10 @@ public class UserVideoList extends AppCompatActivity {
 
     }
 
-    public List<Video> getListVideo (){
+    public List<Video> getListVideo () throws SQLException {
         List<Video> videos = new ArrayList<>();
-        videos.add( new Video("video1","video_gym_1","exercise1", "bài nộp 1", "icon_checkmark_green"));
-        videos.add( new Video("video2","video_gym_1","exercice2", "bài nộp 2", "icon_checkmark_gray"));
-        videos.add( new Video("video3","video_gym_1", "exercice3", "bài nộp 3", "icon_checkmark_gray"));
-        videos.add( new Video("video4","video_gym_1", "exercice4", "bài nộp 4", "icon_checkmark_gray"));
+        VideoDAO dao = new VideoDAO();
+        videos = dao.getUserVideo(4);
         return videos ;
     }
 

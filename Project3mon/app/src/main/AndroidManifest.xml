@@ -14,8 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3mon">
+
         <activity
             android:name=".ViewCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerList"
             android:exported="false" />
         <activity
             android:name=".ViewUploadedVideo"
