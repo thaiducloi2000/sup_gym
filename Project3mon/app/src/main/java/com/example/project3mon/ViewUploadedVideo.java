@@ -22,10 +22,20 @@ public class ViewUploadedVideo extends AppCompatActivity {
     private RecyclerView rcvVideo;
     private VideoUploadListAdapter adapter;
 
+    Bundle bundle;
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_uploaded_video);
+
+        bundle = getIntent().getExtras();
+        if(bundle == null){
+        }
+        else {
+            user = (User) bundle.get("User");
+        }
 
         try {
             adapter = new VideoUploadListAdapter(this, getListVideo());
@@ -42,7 +52,7 @@ public class ViewUploadedVideo extends AppCompatActivity {
     public List<Video> getListVideo () throws SQLException {
         List<Video> videos = new ArrayList<>();
         VideoDAO dao = new VideoDAO();
-        videos = dao.getUserVideo(3);
+        videos = dao.getUserVideo(Integer.parseInt(user.getID()));
         return videos ;
     }
 

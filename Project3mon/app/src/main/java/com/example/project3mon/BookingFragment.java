@@ -22,6 +22,7 @@ public class BookingFragment extends Fragment {
     private RecyclerView rcvData;
     private TrainerListAdapter trainerListAdapter;
     private BottomNavigationItemView booking;
+    Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,15 +38,19 @@ public class BookingFragment extends Fragment {
         booking = getActivity().findViewById(R.id.action_booking);
         booking.setEnabled(false);
         Bundle bundle = getActivity().getIntent().getExtras();
-        if(bundle == null){
+        if (bundle == null) {
             return;
         }
+        User user = (User) bundle.get("userProfile");
         int roleID = (int) bundle.get("roleID");
+
         try {
-            trainerListAdapter = new TrainerListAdapter(getActivity(),getListTrainer(), roleID);
+            trainerListAdapter = new TrainerListAdapter(getActivity(), getListTrainer(), roleID);
         } catch (Exception e) {
             e.printStackTrace();
+
         }
+
         rcvData = getActivity().findViewById(R.id.rcv_data_booking);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         rcvData.setLayoutManager(linearLayoutManager);
@@ -59,4 +64,5 @@ public class BookingFragment extends Fragment {
         listTrainer = data.getListTrainer(100);
         return listTrainer;
     }
+
 }

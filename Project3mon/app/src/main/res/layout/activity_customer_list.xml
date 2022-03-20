@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/dark_gray"
     android:orientation="vertical"
-    tools:context=".ViewUploadedVideo">
+    android:background="@color/dark_gray"
+    android:layout_height="match_parent"
+    tools:context=".CustomerList">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,13 +21,8 @@
             android:background="#0000"
             android:onClick="clicktoBack2"
             android:src="@drawable/ic_baseline_arrow_back_24" />
+
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,36 +32,16 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:gravity="center"
-            android:text="Bài Tập Đã Đăng"
+            android:text="Danh Sách Học Viên"
             android:textColor="@color/green"
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <Button
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/btnDone"
-            android:layout_marginStart="110dp"
-            android:layout_marginEnd="30dp"
-            android:onClick="clickToUploadNewVideo"
-            android:shadowRadius="20"
-            android:text="Đăng Video"
-            android:textColor="@color/green"
-            android:textSize="10dp"
-            android:textStyle="bold"
-            app:strokeColor="@color/green"
-            app:strokeWidth="1dp" />
-
-    </LinearLayout>
-
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_exercise"
+        android:id="@+id/rcv_customerList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp" />
-
 
 </LinearLayout>

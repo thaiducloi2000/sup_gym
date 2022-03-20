@@ -635,4 +635,50 @@ public class GetData {
         }
         return list;
     }
+
+    public List<User> getListCustomer_2(int trainerID) throws SQLException {
+        List<User> list = null;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="SELECT A.ID, fullName, position, description, image, birthday, phoneNumber, gender, roleID \n" +
+                        "From tblUserAccounts A Join tblBooking B ON A.ID = B.customerID Where B.trainerID = ?";
+                stm=conn.prepareStatement(sql);
+                stm.setInt(1, trainerID );
+                rs=stm.executeQuery();
+                while (rs.next()){
+                    String id = String.valueOf(rs.getInt("ID"));
+                    String fullName = rs.getString("fullName");
+                    String position = rs.getString("position");
+                    String description = rs.getString("description");
+                    String image = rs.getString("image");
+                    Date birthday = rs.getDate("birthday");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String gender = rs.getString("gender");
+                    int roleID = rs.getInt("roleID");
+
+                    if(list == null){
+                        list = new ArrayList<>();
+                    }
+                    list.add(new User(id, fullName, position, description, image, birthday, phoneNumber, gender, roleID));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                rs.close();
+            }if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+
 }
