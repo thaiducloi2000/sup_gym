@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,10 +26,13 @@ public class CustomerAdapter extends  RecyclerView.Adapter<CustomerAdapter.Custo
 
     private Context mContext;
     private List<User> mList;
+    private User trainer;
 
-    public CustomerAdapter(Context mContext, List<User> mList) {
+
+    public CustomerAdapter(Context mContext, List<User> mList, User trainer) {
         this.mContext = mContext;
         this.mList = mList;
+        this.trainer = trainer;
     }
 
     @NonNull
@@ -59,7 +63,8 @@ public class CustomerAdapter extends  RecyclerView.Adapter<CustomerAdapter.Custo
     private void onClickToDetal(User user) {
         Intent intent = new Intent(mContext, ViewUploadedVideo.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("User", user);
+        bundle.putSerializable("user", user);
+        bundle.putSerializable("trainer" , trainer);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
     }

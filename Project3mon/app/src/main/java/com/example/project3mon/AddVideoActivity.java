@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -43,10 +44,12 @@ import java.util.HashMap;
 public class AddVideoActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
-    private EditText edtTitle;
+    private EditText edtTitle, edtEvaluate;
     private VideoView videoView;
-    private Button btnUploadVideo;
+    private Button btnUploadVideo, btnEvaluate;
     private FloatingActionButton pickVideoTab;
+    private LinearLayout formEvaluate;
+
 
     private static final int VIDEO_PICK_GALLERY_CODE = 100;
     private static final int VIDEO_PICK_CAMERA_CODE = 101;
@@ -58,6 +61,8 @@ public class AddVideoActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private Bundle bundle;
+    private User user;
+    private Video video;
     private boolean check = true;
 
 
@@ -75,17 +80,46 @@ public class AddVideoActivity extends AppCompatActivity {
         videoView = findViewById(R.id.videoVidew);
         btnUploadVideo = findViewById(R.id.btnUploadVideo);
         pickVideoTab = findViewById(R.id.pickVideoTab);
+        edtEvaluate = findViewById(R.id.edtEvaluate);
+        formEvaluate = findViewById(R.id.formEvaluate);
+        btnEvaluate = findViewById(R.id.btnEvaluate);
 
         bundle = getIntent().getExtras();
+        try {
+            user = (User) bundle.get("user");
+            video = (Video) bundle.get("video");
+            Toast.makeText(this, user.getID(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, video.getVideoName(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            formEvaluate.setVisibility(View.GONE);
+        }
+
         if (bundle == null) {
             check = true;
         }
-        try {
-            Video video = (Video) bundle.get("video");
-            Toast.makeText(this, video+"", Toast.LENGTH_SHORT).show();
-            if (video != null) {
-                btnUploadVideo.setText("Edit Video");
+
+        if (user.getRoleID() == 2 && video != null) {
+            edtTitle.setFocusable(false);
+            edtEvaluate.setFocusable(true);
+            btnEvaluate.setVisibility(View.VISIBLE);
+            btnUploadVideo.setVisibility(View.GONE);
+            pickVideoTab.setVisibility(View.GONE);
+
+            MediaController mediaController = new MediaController(this);
+            mediaController.setAnchorView(videoView);
+
+            Uri uri = Uri.parse(video.getVideoUrl());
+            videoView.setMediaController(mediaController);
+            videoView.setVideoURI(uri);
+            videoView.requestFocus();
+            check = false;
+
+        } else {
+            try {
+                formEvaluate.setVisibility(View.VISIBLE);
                 edtTitle.setText(video.getVideoName());
+                edtEvaluate.setText(video.getEvaluate());
+//                    edtEvaluate.setFocusable(false);
 
                 MediaController mediaController = new MediaController(this);
                 mediaController.setAnchorView(videoView);
@@ -94,14 +128,15 @@ public class AddVideoActivity extends AppCompatActivity {
                 videoView.setMediaController(mediaController);
                 videoView.setVideoURI(uri);
                 videoView.requestFocus();
-                videoView.start();
+                check = false;
+
+            } catch (Exception e) {
+                formEvaluate.setVisibility(View.GONE);
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 check = false;
             }
-        } catch (Exception e) {
-            check = false;
         }
 
-        Toast.makeText(this, check+"", Toast.LENGTH_SHORT).show();
 
         // setup progress dialog
         progressDialog = new ProgressDialog(this);
@@ -143,7 +178,7 @@ public class AddVideoActivity extends AppCompatActivity {
         String filePathName = "Videos/" + "video_" + timestamp;
 
         StorageReference storageReference = FirebaseStorage
-                .getInstance("gs://supgym-fd72d.appspot.com")
+                .getInstance("gs://supgym2-d9b5f.appspot.com")
                 .getReference(filePathName);
 
         storageReference.putFile(videoUri)
@@ -164,10 +199,10 @@ public class AddVideoActivity extends AppCompatActivity {
                             hashMap.put("videoUrl", dowloadUri + "");
 
                             Video video =
-                                    new Video(timestamp, title, dowloadUri + "", "exercice1", "icon_checkmark_green");
+                                    new Video(timestamp, title, dowloadUri + "", "exercice1", "icon_checkmark_gray", "");
                             if (check) {
                                 try {
-                                    if (dao.AddNewVideo(video, 4)) {
+                                    if (dao.AddNewVideo(video, Integer.parseInt(user.getID()))) {
                                         Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {
@@ -175,35 +210,36 @@ public class AddVideoActivity extends AppCompatActivity {
                                 }
                             } else {
                                 try {
-                                    if (dao.AddNewVideo(video, 3)) {
+                                    if (dao.AddNewVideo(video, Integer.parseInt(user.getID()))) {
                                         Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {
                                     throwables.printStackTrace();
                                 }
                             }
+                            progressDialog.dismiss();
 
-                            DatabaseReference databaseReference =
-                                    FirebaseDatabase
-                                            .getInstance("https://supgym-fd72d-default-rtdb.asia-southeast1.firebasedatabase.app")
-                                            .getReference("Videos");
+//                            DatabaseReference databaseReference =
+//                                    FirebaseDatabase
+//                                            .getInstance("https://supgym-fd72d-default-rtdb.asia-southeast1.firebasedatabase.app")
+//                                            .getReference("Videos");
 
-                            databaseReference.child(timestamp)
-                                    .setValue(hashMap)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void unused) {
-                                            progressDialog.dismiss();
-                                            Toast.makeText(AddVideoActivity.this, "Video Đã Được Đăng...", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            progressDialog.dismiss();
-                                            Toast.makeText(AddVideoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+//                            databaseReference.child(timestamp)
+//                                    .setValue(hashMap)
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void unused) {
+//                                            progressDialog.dismiss();
+////                                            Toast.makeText(AddVideoActivity.this, "Video Đã Được Đăng...", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            progressDialog.dismiss();
+//                                            Toast.makeText(AddVideoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
                         }
                     }
                 })
@@ -321,5 +357,17 @@ public class AddVideoActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    public void clickToEvaluateVideo(View view) throws Exception {
+        VideoDAO dao = new VideoDAO();
+        boolean check;
+        check = dao.updateEvaluate(edtEvaluate.getText().toString(), video.getVideoID());
+        if (check) {
+            Toast.makeText(this, "Đăng Đánh Giá Thành Công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Đăng Đánh Giá Thất Bại", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

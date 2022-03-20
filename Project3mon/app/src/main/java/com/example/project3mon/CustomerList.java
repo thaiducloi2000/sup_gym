@@ -30,9 +30,10 @@ public class CustomerList extends AppCompatActivity {
             return;
         }
         user = (User) bundle.get("userProfile");
+        Toast.makeText(this, user.getName(), Toast.LENGTH_SHORT).show();
 
         try {
-            listAdapter = new CustomerAdapter(this, getListCustomer());
+            listAdapter = new CustomerAdapter(this, getListCustomer(), user);
         } catch (Exception e) {
             e.printStackTrace();
 
