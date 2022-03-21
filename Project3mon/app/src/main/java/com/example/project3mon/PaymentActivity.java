@@ -9,8 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project3mon.dao.SaveDataDAO;
+import com.example.project3mon.dto.Booking;
+import com.example.project3mon.dto.Schedules;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -44,17 +50,33 @@ public class PaymentActivity extends AppCompatActivity {
         }
         txtTotalPrice.setText(("Tổng: " + total + " SUP Coins"));
 
+
     }
 
     public void clickToBack(View view) {
         finish();
     }
 
-    public void clickToConfirmPayment(View view) {
+    public void clickToConfirmPayment(View view) throws SQLException {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
         int confirm = wallet - total;
         if(confirm < 0){
             Toast.makeText(this, "Số dư không đủ", Toast.LENGTH_SHORT).show();
         }else if(confirm >= 0){
+            Booking booking = (Booking) bundle.get("booking");
+            SaveDataDAO save = new SaveDataDAO();
+            //boolean result = save.createBooking(booking);
+            boolean result = save.saveWallet(confirm,userID);
+            List<String> listDate = (List<String>) bundle.get("dateBooking");
+            List<String> listTime = (List<String>) bundle.get("bookingTime");
+            if(result){
+                Toast.makeText(this, "Đặt lịch thành công", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "Đặt lịch thất bại", Toast.LENGTH_SHORT).show();
+            }
             finish();
         }
 

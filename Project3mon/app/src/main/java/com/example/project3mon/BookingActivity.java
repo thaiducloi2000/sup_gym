@@ -3,8 +3,8 @@ package com.example.project3mon;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.AdapterView;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,8 +18,10 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.example.project3mon.dto.Booking;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,10 +35,11 @@ public class BookingActivity extends AppCompatActivity {
     private RoundedImageView imageAvatar;
     int hour,minute,hour2,minute2;
     private AppCompatSpinner spChooseDate,spChooseDate2,spChooseDate3,spChooseDate4,spChooseDate5,spChooseDate6,spChooseDate7, spLoopOption;
-    private List<String> dateSelect,dateSelect2, loop_option , listday;
+    private List<String> dateSelect,dateSelect2, loop_option , listday, listDate, listTime;
     private LinearLayout layoutspinner7,layoutspinner2,layoutspinner3,layoutspinner4,layoutspinner5,layoutspinner6, layout_loop_option;
     private int loop;
-    private String userID;
+    private String userID, selectedDate1, selectedDate2, selectedDate3,selectedDate4,selectedDate5,selectedDate6,selectedDate7;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,32 +119,39 @@ public class BookingActivity extends AppCompatActivity {
         if(bundle == null){
             return;
         }
-        User user=(User) bundle.get("User");
+        user=(User) bundle.get("User");
         int imgResID = this.getResources().getIdentifier(user.getImage(), "drawable", this.getPackageName());
         imageAvatar.setImageResource(imgResID);
         txtName.setText(user.getName());
         txtPrice.setText((int) user.getPrice()+" VND/1h");
         CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
         listday=new ArrayList<>();
+        listDate= new ArrayList<>();
+        listTime= new ArrayList<>();
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
                 int date=eventDay.getCalendar().getTime().getDate();
                 int month=eventDay.getCalendar().getTime().getMonth()+1;
-                String alo="";
-                if(listday.contains(date+"")){
-                    listday.remove(date+"");
-                }else{
-                    listday.add(date+"");
+                int year= eventDay.getCalendar().getTime().getYear();
+                String alo = "";
+                if (listday.contains(date + "/" + month)) {
+                    listday.remove(date + "/" + month);
+                    listDate.remove(date+"-"+month+"-"+year);
+                } else {
+                    listday.add(date + "/" + month);
+                    listDate.add(date+"-"+month+"-"+year);
                 }
+
                 Collections.sort(listday);
                 for (int i = 0; i < listday.size(); i++) {
-                    if(i==(listday.size()-1)){
+                    if (i == (listday.size() - 1)) {
                         alo += listday.get(i);
-                    }else{
+                    } else {
                         alo += listday.get(i) + ",";
                     }
                 }
+
                 GetData dao=new GetData();
                 List<String> list=new ArrayList<>();
                 try {
@@ -152,7 +162,7 @@ public class BookingActivity extends AppCompatActivity {
                 if(list==null){
                     txtNotiCheck.setBackground(null);
                 }
-                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" tháng " + month +" năm 2022");
+                txtShow.setText("Buổi tập sễ diễn ra vào ngày "+alo+" năm 2022");
                 txtSumary.setText((int)(listday.size()*user.getPrice())+" VNĐ");
 
                 btnConfirm.setEnabled(true);
@@ -227,6 +237,13 @@ public class BookingActivity extends AppCompatActivity {
                 }else if(listday.size() == 0){
                     btnConfirm.setEnabled(false);
                 }
+                selectedTime1();
+                selectedTime2();
+                selectedTime3();
+                selectedTime4();
+                selectedTime5();
+                selectedTime6();
+                selectedTime7();
             }
         });
         userID = (String) bundle.get("userID");
@@ -255,8 +272,133 @@ public class BookingActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putSerializable("userID", userID);
         bundle.putSerializable("totalPrice", txtSumary.getText().toString());
+        Booking booking = new Booking(listday.size(),"Normal",userID,user.getID());
+        bundle.putSerializable("booking", booking);
+        bundle.putSerializable("dateBooking", (Serializable) listDate);
+        listTime.add(selectedDate1);
+        if(selectedDate2 != null){
+            listTime.add(selectedDate2);
+        }
+        if(selectedDate3 != null){
+            listTime.add(selectedDate3);
+        }
+        if(selectedDate4 != null){
+            listTime.add(selectedDate4);
+        }
+        if(selectedDate5 != null){
+            listTime.add(selectedDate5);
+        }
+        if(selectedDate5 != null){
+            listTime.add(selectedDate5);
+        }
+        if(selectedDate6 != null){
+            listTime.add(selectedDate6);
+        }
+        if(selectedDate7 != null){
+            listTime.add(selectedDate7);
+        }
+        bundle.putSerializable("bookingTime", (Serializable) listTime);
         intent.putExtras(bundle);
         startActivity(intent);
-       
+        listTime.clear();
+    }
+
+    public void selectedTime1(){
+        spChooseDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedDate1 = spChooseDate.getSelectedItem().toString();
+                Toast.makeText(BookingActivity.this, selectedDate1 + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void selectedTime2(){
+        spChooseDate2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedDate2 = spChooseDate2.getSelectedItem().toString();
+                Toast.makeText(BookingActivity.this, selectedDate2 + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void selectedTime3(){
+        spChooseDate3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedDate3 = spChooseDate3.getSelectedItem().toString();
+                Toast.makeText(BookingActivity.this, selectedDate3 + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void selectedTime4(){
+            spChooseDate4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    selectedDate4 = spChooseDate4.getSelectedItem().toString();
+                    Toast.makeText(BookingActivity.this, selectedDate4 + "", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+    }
+    public void selectedTime5(){
+        spChooseDate5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedDate5 = spChooseDate5.getSelectedItem().toString();
+                Toast.makeText(BookingActivity.this, selectedDate5 + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void selectedTime6(){
+        spChooseDate6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedDate6 = spChooseDate6.getSelectedItem().toString();
+                Toast.makeText(BookingActivity.this, selectedDate6 + "", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void selectedTime7(){
+            spChooseDate7.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    selectedDate7 = spChooseDate7.getSelectedItem().toString();
+                    Toast.makeText(BookingActivity.this, selectedDate7 + "", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
     }
 }
