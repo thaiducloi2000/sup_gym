@@ -1,7 +1,10 @@
 package com.example.project3mon.dao;
 
+import static java.lang.System.currentTimeMillis;
+
 import com.example.project3mon.DBUtils;
 import com.example.project3mon.User;
+import com.example.project3mon.dto.Booking;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -139,6 +142,94 @@ public class SaveDataDAO implements Serializable {
                 }if(conn!=null){
                     conn.close();
                 }
+            }
+        }
+        return check;
+    }
+
+    public boolean createBooking(Booking booking) throws SQLException{
+        boolean check=false;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="INSERT INTO tblBooking VALUES (?,?,?,?,?,?,?,'True')";
+                stm=conn.prepareStatement(sql);
+                Date date = new Date(System.currentTimeMillis());
+                stm.setDate(1, date);
+                stm.setDate(2, date);
+                stm.setDate(3, date);
+                stm.setInt(4,booking.getSessions());
+                stm.setString(5,booking.getOption());
+                stm.setInt(6,Integer.parseInt(booking.getUserID()));
+                stm.setInt(7,Integer.parseInt(booking.getTrainerID()));
+                int result = stm.executeUpdate();
+                if(result > 0){
+                    check = true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
+    public boolean createSchedule() throws SQLException{
+        boolean check = false;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="INSERT INTO tblSchedules VALUES (?,?,?,?,?,?,?,'True')";
+                stm=conn.prepareStatement(sql);
+                Date date = new Date(System.currentTimeMillis());
+
+                int result = stm.executeUpdate();
+                if(result > 0){
+                    check = true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
+            }
+        }
+        return check;
+    }
+    public boolean saveWallet(float wallet, String userID) throws SQLException{
+        boolean check = false;
+        Connection conn=null;
+        PreparedStatement stm=null;
+        try {
+            conn = DBUtils.openConnection();
+            if(conn!=null){
+                String sql="Update tblUserAccounts Set wallet=? Where ID=?";
+                stm=conn.prepareStatement(sql);
+                stm.setFloat(1,wallet);
+                stm.setString(2,userID);
+                int result = stm.executeUpdate();
+                if(result > 0){
+                    check = true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stm!=null){
+                stm.close();
+            }if(conn!=null){
+                conn.close();
             }
         }
         return check;
