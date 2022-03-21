@@ -61,11 +61,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         holder.txtName.setText("Họ Tên: "+shortName);
         GetData data=new GetData();
-        Calendar calendar=Calendar.getInstance();
-        Date today=new Date();
-        today.setYear(calendar.getTime().getYear());
         try {
-            String time=data.getSchedulesCustomerToday(userID,today);
+            String time=data.getSchedulesCustomerToday(userID);
             holder.txtSchudulesTime.setText("Giờ bắt đầu: "+time);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -75,13 +72,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         int curDate = Calendar.getInstance().getTime().getYear();
         int age=curDate-year;
         holder.txtAge.setText("Tuổi :"+age);
-        holder.btnDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(mContext,UserVideoList.class);
-                mContext.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -97,7 +87,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         private ImageView imageView;
         private TextView txtName, txtAge,txtSchudulesTime;
         private LinearLayout layoutItem;
-        private Button btnDetail;
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,7 +96,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             txtName = itemView.findViewById(R.id.txtName);
             txtSchudulesTime = itemView.findViewById(R.id.txtSchudulesTime);
             txtAge = itemView.findViewById(R.id.txtAge);
-            btnDetail=itemView.findViewById(R.id.btnDetail);
         }
     }
 }

@@ -88,8 +88,6 @@ public class AddVideoActivity extends AppCompatActivity {
         try {
             user = (User) bundle.get("user");
             video = (Video) bundle.get("video");
-            Toast.makeText(this, user.getID(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, video.getVideoName(), Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             formEvaluate.setVisibility(View.GONE);
         }
@@ -98,7 +96,7 @@ public class AddVideoActivity extends AppCompatActivity {
             check = true;
         }
 
-        if (user.getRoleID() == 2 && video != null) {
+        if ((user.getRoleID()== 2) && video.getVideoID() != null) {
             edtTitle.setFocusable(false);
             edtEvaluate.setFocusable(true);
             btnEvaluate.setVisibility(View.VISIBLE);
@@ -202,7 +200,7 @@ public class AddVideoActivity extends AppCompatActivity {
                             if (check) {
                                 try {
                                     if (dao.AddNewVideo(video, Integer.parseInt(user.getID()))) {
-                                        Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AddVideoActivity.this, "Đăng Video Thành Công", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {
                                     throwables.printStackTrace();
@@ -210,7 +208,7 @@ public class AddVideoActivity extends AppCompatActivity {
                             } else {
                                 try {
                                     if (dao.AddNewVideo(video, Integer.parseInt(user.getID()))) {
-                                        Toast.makeText(AddVideoActivity.this, "Upload To Database Success", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AddVideoActivity.this, "Đăng Video Thành Công", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (SQLException throwables) {
                                     throwables.printStackTrace();
@@ -254,11 +252,11 @@ public class AddVideoActivity extends AppCompatActivity {
     }
 
     private void videoPickDialog() {
-        String[] option = {"Camera", "Gallery"};
+        String[] option = {"Máy Ảnh", "Thư Viện"};
 
         // dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick Video From").setItems(option, new DialogInterface.OnClickListener() {
+        builder.setTitle("Lấy video từ").setItems(option, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
@@ -291,7 +289,7 @@ public class AddVideoActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Video"), VIDEO_PICK_GALLERY_CODE);
+        startActivityForResult(Intent.createChooser(intent, "Chọn video"), VIDEO_PICK_GALLERY_CODE);
     }
 
     private void videoPickCamera() {
@@ -363,9 +361,9 @@ public class AddVideoActivity extends AppCompatActivity {
         boolean check;
         check = dao.updateEvaluate(edtEvaluate.getText().toString(), video.getVideoID());
         if (check) {
-            Toast.makeText(this, "Đăng Đánh Giá Thành Công", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Đăng đánh giá bài tập thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Đăng Đánh Giá Thất Bại", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Đăng đánh giá bài tập thất bại", Toast.LENGTH_SHORT).show();
         }
 
     }

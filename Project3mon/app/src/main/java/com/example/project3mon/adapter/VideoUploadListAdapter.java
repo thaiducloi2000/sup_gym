@@ -63,7 +63,6 @@ public class VideoUploadListAdapter extends RecyclerView.Adapter<VideoUploadList
     private void onClickToDetal(Video video) {
         Intent intent = new Intent(mContext, AddVideoActivity.class);
         Bundle bundle = new Bundle();
-        Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
         bundle.putSerializable("user", user);
         bundle.putSerializable("video", video);
         intent.putExtras(bundle);

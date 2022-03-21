@@ -45,7 +45,6 @@ public class VideoList extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(VideoList.this, ViewUploadedVideo.class);
                     Bundle bundle = new Bundle();
-                    Toast.makeText(VideoList.this, user.getName(), Toast.LENGTH_SHORT).show();
                     bundle.putSerializable("user", user);
                     intent.putExtras(bundle);
                     startActivity(intent);
