@@ -57,6 +57,8 @@ public class HomeMenuActivity extends AppCompatActivity {
             botNav = findViewById(R.id.botNav);
             getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
             botNav.setSelectedItemId(R.id.action_home);
+            MenuItem item=botNav.getMenu().findItem(R.id.action_booking);
+            item.setVisible(false);
         }
         botNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

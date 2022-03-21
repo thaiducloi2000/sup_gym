@@ -107,15 +107,7 @@ public class ViewCalendarFragment extends Fragment {
                                 public void onClick(View view) {
                                     txtStatus.setText(" Đã Xác Nhận");
                                     txtStatus.setTextColor(getResources().getColor(R.color.green));
-                                    baitapDone.setVisibility(View.VISIBLE);
                                     btnAccpet.setVisibility(View.GONE);
-                                    baitapDone.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            Intent intent = new Intent(getActivity(), UserVideoList.class);
-                                            startActivity(intent);
-                                        }
-                                    });
                                     txtStatus.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_circle, 0, 0, 0);
                                 }
                             });

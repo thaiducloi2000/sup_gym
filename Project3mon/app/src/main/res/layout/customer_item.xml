@@ -22,7 +22,7 @@
 
     <LinearLayout
         android:paddingLeft="10dp"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
@@ -47,24 +47,5 @@
             android:text="Age"
             android:textSize="20dp"
             android:textColor="@color/dark_white"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnDetail"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Bài Tập"
-            android:background="@drawable/custom_button"
-            android:textColor="@color/green"
-            android:textSize="10dp"
-            />
-
     </LinearLayout>
 </LinearLayout>
