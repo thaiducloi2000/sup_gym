@@ -61,11 +61,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         holder.txtName.setText("Họ Tên: "+shortName);
         GetData data=new GetData();
-        Calendar calendar=Calendar.getInstance();
-        Date today=new Date();
-        today.setYear(calendar.getTime().getYear());
         try {
-            String time=data.getSchedulesCustomerToday(userID,today);
+            String time=data.getSchedulesCustomerToday(userID);
             holder.txtSchudulesTime.setText("Giờ bắt đầu: "+time);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

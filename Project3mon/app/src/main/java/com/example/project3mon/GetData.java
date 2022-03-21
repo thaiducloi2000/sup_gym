@@ -543,7 +543,7 @@ public class GetData {
         return wallet;
     }
 
-    public String getSchedulesCustomerToday(String userID, Date day) throws SQLException {
+    public String getSchedulesCustomerToday(String userID) throws SQLException {
         String today="";
         Connection conn=null;
         PreparedStatement stm=null;
@@ -553,10 +553,9 @@ public class GetData {
             if(conn!=null){
                 String sql="SELECT startTime" +
                         " FROM tblSchedules " +
-                        " WHERE bookingID in (Select bookingID from tblBooking where trainerID LIKE '"+userID+"') AND sheduleDay LIKE CONVERT(date,?)";
+                        " WHERE bookingID in (Select bookingID from tblBooking where trainerID LIKE '"+userID+"') AND sheduleDay LIKE CONVERT(date,CONVERT(date, SYSDATETIME()))";
                 stm=conn.prepareStatement(sql);
-                java.sql.Date ulDay=new java.sql.Date(day.getTime());
-                stm.setDate(1, ulDay);
+
                 rs=stm.executeQuery();
                 if (rs.next()){
                     Time startTime=rs.getTime("startTime");
@@ -577,7 +576,7 @@ public class GetData {
         return today;
     }
 
-    public List<User> getListCustomer(String id) throws SQLException {
+    public List<User> getListCustomerToday(String id) throws SQLException {
         List<User> list=null;
         Connection conn=null;
         PreparedStatement stm=null;
@@ -601,9 +600,11 @@ public class GetData {
                         " (SELECT " +
                         "   customerID " +
                         "   FROM " +
-                        "  tblBooking " +
+                        "  tblBooking,tblSchedules " +
                         " WHERE " +
-                        "  trainerID LIKE '"+id+"')";
+                        " tblBooking.ID=tblSchedules.bookingID AND " +
+                        "  trainerID LIKE '"+id+"'AND " +
+                        " tblSchedules.sheduleDay LIKE CONVERT(date,CONVERT(date, SYSDATETIME())))";
                 stm = conn.prepareStatement(sql);
                 rs = stm.executeQuery();
                 while(rs.next()){

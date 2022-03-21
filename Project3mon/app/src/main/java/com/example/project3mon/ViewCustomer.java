@@ -44,7 +44,7 @@ public class ViewCustomer extends AppCompatActivity {
     private List<User> getListCustomer(String ID) throws Exception {
         List<User> listCustomer = new ArrayList<>();
         GetData data = new GetData();
-        listCustomer = data.getListCustomer(ID);
+        listCustomer = data.getListCustomerToday(ID);
         return listCustomer;
     }
     public void clicktoBack2(View view) {
