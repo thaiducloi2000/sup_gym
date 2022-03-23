@@ -7,9 +7,17 @@
 * README.md - this file itself to show the home-page of a repo
 ### About Project:
 * Is a mobile application with Android Studio and Java.
-* Is the demo project with Android Studio and Assignment of 3 Subject in FPT University
-* Project will be update every day
-* Project still in process.
+* Is the demo project with Android Studio and Assignment of 3 Subject in FPT University.
+* Project was closed.
+* Project is a system that allow to User booking trainer to support himself pratice and
+do excerside online .
+### All Feature:
+* Register(With Customer/Trainer role)
+* View List Customer with some special title.
+* Booking trainer .
+* Connect to SQL Server for get data.
+* View Calender after Booking.
+* Connect upload,get Video from filebase.
 
 ### Connect me via:
 * [Facebook](https://www.facebook.com/loi.thaiduc.2000/)
