@@ -10,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project3mon.dao.SaveDataDAO;
-import com.example.project3mon.dto.Booking;
-import com.example.project3mon.dto.Schedules;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -66,7 +64,6 @@ public class PaymentActivity extends AppCompatActivity {
         if(confirm < 0){
             Toast.makeText(this, "Số dư không đủ", Toast.LENGTH_SHORT).show();
         }else if(confirm >= 0){
-            Booking booking = (Booking) bundle.get("booking");
             SaveDataDAO save = new SaveDataDAO();
             //boolean result = save.createBooking(booking);
             boolean result = save.saveWallet(confirm,userID);
