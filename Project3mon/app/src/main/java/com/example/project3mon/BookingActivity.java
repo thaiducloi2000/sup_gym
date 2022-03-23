@@ -18,7 +18,6 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
-import com.example.project3mon.dto.Booking;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.Serializable;
@@ -272,8 +271,6 @@ public class BookingActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putSerializable("userID", userID);
         bundle.putSerializable("totalPrice", txtSumary.getText().toString());
-        Booking booking = new Booking(listday.size(),"Normal",userID,user.getID());
-        bundle.putSerializable("booking", booking);
         bundle.putSerializable("dateBooking", (Serializable) listDate);
         listTime.add(selectedDate1);
         if(selectedDate2 != null){
