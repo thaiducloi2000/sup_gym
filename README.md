@@ -1,4 +1,8 @@
 # Welcome to Sup Gym Project
+### This project was collab with :
+* [Gia Huy](https://github.com/Huy100720) 
+* [Long DK](https://github.com/LongDK0486) 
+* [Danh NPC](https://github.com/danhnpc) 
 ### This repository contains a java code of Sup Gym System
 
 ### You will find in this repo:
